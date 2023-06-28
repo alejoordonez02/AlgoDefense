@@ -21,7 +21,7 @@ public class Entrega1Test {
 
     @Test
     public void Test02TorreBlancaTardaEnConstruirseLosTurnosEsperadosYLuegoEstaOperativa() {
-        TorreBlanca torreBlanca = new TorreBlanca();
+        TorreBlanca torreBlanca = new TorreBlanca(new Posicion(0,0));
 
         assertFalse(torreBlanca.operativa());
         torreBlanca.pasarTurno();
@@ -30,7 +30,7 @@ public class Entrega1Test {
 
     @Test
     public void Test03TorrePlateadaTardaEnConstruirseLosTurnosEsperadosYLuegoEstaOperativa() {
-        TorrePlateada torrePlateada = new TorrePlateada();
+        TorrePlateada torrePlateada = new TorrePlateada(new Posicion(0,0));
 
         assertFalse(torrePlateada.operativa());
         torrePlateada.pasarTurno();
@@ -43,8 +43,8 @@ public class Entrega1Test {
     public void Test04JugadorConCreditosSuficientesConstruyeTorreBlancaYTorrePlateadaYNoSeLanzaExcepcion() {
         Jugador jugador = new Jugador("Juan");
 
-        Torre torreBlanca = new TorreBlanca();
-        Torre torrePlateada = new TorrePlateada();
+        Torre torreBlanca = new TorreBlanca(new Posicion(0,0));
+        Torre torrePlateada = new TorrePlateada(new Posicion(0,0));
 
         assertDoesNotThrow(() -> jugador.construir(torreBlanca));
         assertDoesNotThrow(() -> jugador.construir(torrePlateada));
@@ -56,10 +56,43 @@ public class Entrega1Test {
         Tierra tierra = new Tierra(new Posicion(0,0));
         Roca roca = new Roca(new Posicion(0,0));
 
-        Torre torre = new TorreBlanca();
+        Torre torre = new TorreBlanca(new Posicion(0,0));
 
         assertThrows(ParcelaInvalida.class, () -> pasarela.construirTorre(torre));
         assertDoesNotThrow(() -> tierra.construirTorre(torre));
         assertThrows(ParcelaInvalida.class, () -> roca.construirTorre(torre));
+    }
+
+    @Test
+    public void Test06TorreBlancaAtacaDentroDelRangoEsperado() {
+        TorreBlanca torreBlanca = new TorreBlanca();
+        Parcela[][] parcelas = new Parcela[7][7];
+
+        for (int x = 0; x < 7; x++) {
+
+            for (int y = 0; y < 7; y++) {
+                parcelas[x][y] = new Pasarela(new Posicion(x,y));
+            }
+        }
+
+
+        parcelas[3][3] = new Tierra(new Posicion(3,3));
+
+        try {
+            parcelas[3][3].construirTorre(torreBlanca);
+        } catch(Exception e) {}
+
+        parcelas[0][0].agregarEnemigo(new Hormiga());
+        parcelas[2][1].agregarEnemigo(new Hormiga());
+
+        Mapa mapa = new Mapa(parcelas);
+
+        assertEquals(1, torreBlanca.atacar(mapa));
+        assertEquals(0, torreBlanca.atacar(mapa));
+    }
+
+    @Test
+    public void Test06TorrePlateadaAtacaDentroDelRangoEsperado() {
+
     }
 }

@@ -10,15 +10,20 @@ public class Rango {
         this.posicion = posicion;
     }
 
-    // public Parcela buscar() {
-    //     for (int x = -alcance; x <= alcance; x++) {
-    //         for (int y = -(alcance - abs(x)); y <= alcance - abs(x); y++) {
-    //             // código
-    //         }
-    //     }
-    // }
+    public Parcela buscarEnemigo(Mapa mapa) {
 
-    public boolean alcanza(Posicion posicion) {
-        return this.posicion.distancia(posicion) <= alcance;
+        for (int x = -alcance; x <= alcance; x++) {
+
+            for (int y = -(alcance - abs(x)); y <= alcance - abs(x); y++) {
+                Posicion posicion = this.posicion.sumar(new Posicion(x,y));
+
+                if (mapa.tieneEnemigo(posicion)) {
+                    return mapa.getParcela(posicion);
+                }
+            }
+        }
+
+        return null;
     }
+
 }

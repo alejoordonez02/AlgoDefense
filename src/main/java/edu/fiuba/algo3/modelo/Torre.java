@@ -3,13 +3,14 @@ package edu.fiuba.algo3.modelo;
 public class Torre implements Defensa {
     int costo;
     int tiempoDeConstruccion;
-    int rangoDeAtaque;
+    Rango rango;
     int danio;
     int turno;
     Posicion posicion;
 
-    public Torre() {
-        this.posicion = null;
+    public Torre(Posicion posicion) {
+        this.posicion = posicion;
+        this.turno = 0;
     }
 
     public int getCosto() {
@@ -20,8 +21,8 @@ public class Torre implements Defensa {
         return this.tiempoDeConstruccion;
     }
 
-    public int getRangoDeAtaque() {
-        return this.rangoDeAtaque;
+    public Rango getRango() {
+        return this.rango;
     }
 
     public int getDanio() {
@@ -40,6 +41,14 @@ public class Torre implements Defensa {
         this.posicion = posicion;
     }
 
+    public int atacar(Parcela parcela) {
+        return parcela.atacada(this.getDanio());
+    }
+
+    public int atacar(Mapa mapa) {
+        return atacar(this.rango.buscarEnemigo(mapa));
+    }
+
     public boolean operativa() {
         return turno >= tiempoDeConstruccion;
     }
@@ -54,7 +63,7 @@ public class Torre implements Defensa {
             Torre c = (Torre)o;
             return this.getCosto() == (c.getCosto())
                 && this.getTiempoDeConstruccion() == (c.getTiempoDeConstruccion())
-                && this.getRangoDeAtaque() == (c.getRangoDeAtaque())
+                && this.getRango().equals(c.getRango())
                 && this.getDanio() == (c.getDanio())
                 && this.getTurno() == (c.getTurno())
                 && this.getPosicion().equals(c.getPosicion());

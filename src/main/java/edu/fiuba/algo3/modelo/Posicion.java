@@ -28,4 +28,8 @@ public class Posicion {
         return abs((posicion.x() - this.x()) + (posicion.y() - this.y()));
     }
 
+    public Posicion sumar(Posicion posicion) {
+        return new Posicion(this.x() + posicion.x(), this.y() + posicion.y());
+    }
+
 }
