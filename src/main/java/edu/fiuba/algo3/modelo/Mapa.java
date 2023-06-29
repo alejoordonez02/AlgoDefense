@@ -29,6 +29,20 @@ public class Mapa {
         return this.parcelas[posicion.x()][posicion.y()];
     }
 
+	public void construirTorre(Jugador jugador, Posicion posicion, Torre torre) {
+		try {
+			this.parcelas[posicion.x()][posicion.y()].construirTorre(torre);
+		} catch (Exception e) {
+
+		}
+	}
+
+	public void construirTrampa(Jugador jugador, Posicion posicion, TrampaArenosa trampaArenosa) {
+		try {
+			this.parcelas[posicion.x()][posicion.y()].construirTrampa(trampaArenosa);
+		} catch (Exception e) {}
+	}
+
 	public void establecerEnemigos(List<Enemigo> enemigos) {
 		this.pasarelaInicial.agregarEnemigos(enemigos);
 	}

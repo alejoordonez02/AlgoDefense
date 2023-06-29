@@ -17,6 +17,14 @@ public class Juego {
         this.turno = 1;
     }
 
+	public Mapa getMapa() {
+		return mapa;
+	}
+
+	public Jugador getJugador() {
+		return jugador;
+	}
+
 	public boolean victoria() {
 		return (jugador.estaVivo() && !(mapa.tieneEnemigos()));
 	}

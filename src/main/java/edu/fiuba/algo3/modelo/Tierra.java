@@ -8,9 +8,26 @@ public class Tierra extends Parcela {
 		torre = null;
     }
 
+	@Override
+	public Torre getTorre() {
+		return torre;
+	}
+
+	@Override
+	public boolean hayTorre() {
+		if (torre != null) {
+			return true;
+		}
+		return false;
+	}
+
     public void construirTorre(Torre torre) throws Exception {
         this.torre = torre;
         this.torre.setPosicion(this.posicion);
+    }
+
+	public void construirTrampa(TrampaArenosa trampaArenosa) throws Exception {
+        throw new ParcelaInvalida("No se puede construir en Tierra");
     }
 
 	public void jugarTurno(Mapa mapa, Jugador jugador) {

@@ -29,7 +29,29 @@ public abstract class Parcela {
         return this.posicion;
     }
 
+	public Enemigo getEnemigo() {
+		return enemigos.get(0);
+	}
+
+	public TrampaArenosa getTrampa() {
+		return null;
+	}
+
+	public Torre getTorre() {
+		return null;
+	}
+
+	public boolean hayTorre() {
+		return false;
+	}
+
+	public boolean hayTrampa() {
+		return false;
+	}
+
     public abstract void construirTorre(Torre torre) throws Exception;
+
+	public abstract void construirTrampa(TrampaArenosa trampaArenosa) throws Exception;
 
     public boolean tieneEnemigos() {
         return !(this.enemigos.isEmpty());
