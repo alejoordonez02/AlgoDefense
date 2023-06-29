@@ -9,6 +9,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.util.List;
+import java.util.ArrayList;
 
 /*MapaParser parser = new MapaParser(mapa.json);
 Mapa mapa = new Mapa (parser.parsear());*/
@@ -30,27 +32,68 @@ public class JsonMapRepository implements MapRepository {
         return jsonObj;
     }
 
+    private Posicion buscarPasarelaSiguiente(boolean[][] pasarelas, Posicion posicion, Posicion anterior) {
+        List<Posicion> posiciones = new ArrayList<Posicion>();
+
+        posiciones.add(posicion.sumar(new Posicion(-1,0)));
+        posiciones.add(posicion.sumar(new Posicion(0,1)));
+        posiciones.add(posicion.sumar(new Posicion(1,0)));
+        posiciones.add(posicion.sumar(new Posicion(0,-1)));
+
+        for (Posicion p : posiciones)  {
+
+            if(pasarelas[p.x()][p.y()] && !(anterior.equals(p))) {
+                return p;
+            }
+        }
+
+        return null;
+    }
+
     public Mapa parsear() throws IOException, FormatoJSONInvalido {
         JSONObject jsonObj = null;
 
         try {
             jsonObj = setJSON();
         } catch (ParseException e) {
+
             throw new RuntimeException(e);
         }
 
         JSONObject map = (JSONObject) jsonObj.get("Mapa");
         Parcela[][] mapa = new Parcela[SIZE][SIZE];
+        boolean[][] pasarelas = new boolean[SIZE][SIZE];
+
+        Pasarela pasarelaInicial = null;
+        Pasarela pasarelaFinal = null;
 
         for (int x = 0; x < SIZE; x++) {
             JSONArray line = (JSONArray) map.get(Integer.toString(x + 1));
 
             for (int y = 0; y < SIZE; y++) {
-                mapa[x][y] = asignar((String) line.get(x), x, y);
+
+                Parcela parcela = asignar((String) line.get(y), x, y);
+
+                mapa[x][y] = parcela;
+
+                if (("Pasarela".equals(line.get(y)))) {
+                    pasarelaFinal = (Pasarela) parcela;
+                    pasarelas[x][y] = true;
+
+                    if (pasarelaInicial == null) {
+                        pasarelaInicial = (Pasarela) parcela;
+                    }
+                } else {
+                    pasarelas[x][y] = false;
+                }
             }
+
         }
 
-        Mapa m = new Mapa(mapa);
+        Posicion posicionEncontrada = buscarPasarelaSiguiente(pasarelas, pasarelaInicial.getPosicion(), null);
+        pasarelaInicial.setSiguiente((Pasarela) mapa[posicionEncontrada.x()][posicionEncontrada.y()]);
+
+        Mapa m = new Mapa(mapa, pasarelaInicial, pasarelaFinal);
 
         return m;
     }
@@ -79,6 +122,7 @@ public class JsonMapRepository implements MapRepository {
         JSONObject jsonObj = setJSON();
 
         if (jsonObj.isEmpty()) {
+
             throw new JSONVacio("El archivo JSON de enemigos esta vacio.");
         }
 
@@ -96,7 +140,9 @@ public class JsonMapRepository implements MapRepository {
                     }
                 }
             }
+
         } catch (Exception e) {
+
             throw new FormatoJSONInvalido("El formato del archivo JSON de enemigos esta vacio");
         }
     }

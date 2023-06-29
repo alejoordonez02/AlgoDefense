@@ -12,6 +12,10 @@ public abstract class Parcela {
         this.enemigos = new ArrayList<Enemigo>();
     }
 
+    public Posicion getPosicion() {
+        return this.posicion;
+    }
+
     public abstract void construirTorre(Torre torre) throws Exception;
 
     public boolean tieneEnemigos() {

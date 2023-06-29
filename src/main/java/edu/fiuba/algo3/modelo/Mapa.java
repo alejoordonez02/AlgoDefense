@@ -4,14 +4,13 @@ import java.util.List;
 
 public class Mapa {
     Parcela[][] parcelas;
-	List<Pasarela> camino;
 	Pasarela pasarelaInicial;
 	Pasarela pasarelaFinal;
 
-    public Mapa(Parcela[][] parcelas) {
+    public Mapa(Parcela[][] parcelas, Pasarela pasarelaInicial, Pasarela pasarelaFinal) {
         this.parcelas = parcelas;
-		this.pasarelaInicial = null;
-		this.pasarelaFinal = null;
+		this.pasarelaInicial = pasarelaInicial;
+		this.pasarelaFinal = pasarelaFinal;
     }
 
     public Parcela getParcela(Posicion posicion) {
