@@ -87,15 +87,11 @@ public class Mapa {
 	public void jugarTurno(Jugador jugador, int turno) {
 		for (int x = this.parcelas.length - 1; x >= 0 ; x--) {
 			for (int y = this.parcelas[x].length - 1; y >= 0 ; y--) {
-				System.out.println("posicion: " + x + "," + y);
 				this.parcelas[x][y].jugarTurno(this, jugador);
 			}
 		}
 
-		System.out.println("out for");
-		
 		this.pasarelaFinal.atacar(jugador, turno);
-		System.out.println("fin turno");
 	}
 
 	@Override

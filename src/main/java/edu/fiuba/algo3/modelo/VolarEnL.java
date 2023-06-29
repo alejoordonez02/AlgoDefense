@@ -41,7 +41,6 @@ public class VolarEnL implements Movedor {
 		}
 
 		parcela.agregarEnemigo(enemigo);
-		parcelaAnterior.quitarEnemigo(enemigo);
 
 		return parcela;
     }

@@ -26,11 +26,8 @@ public class Juego {
 	}
 
     public void pasarTurno() throws IOException, FormatoJSONInvalido{
-		System.out.println("1");
         mapa.jugarTurno(jugador, turno);
-		System.out.println("2");
 		mapa.establecerEnemigos(enemigoParser.parsear(turno, mapa));
-		System.out.println("3");
 		turno++;
     }
 

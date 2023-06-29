@@ -54,7 +54,9 @@ public class Jugador {
     }
 
 	public void destruirTorre() {
-		this.torres.remove(0);
+		if (!torres.isEmpty()) {
+			this.torres.remove(0);
+		}
 	}
 
     @Override

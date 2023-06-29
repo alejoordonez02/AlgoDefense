@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: edu.fiuba.algo3.entrega_2.Entrega2Test
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.827 s <<< FAILURE! - in edu.fiuba.algo3.entrega_2.Entrega2Test
-test20JugadorJuegaYPierdeUnaPartida  Time elapsed: 0.52 s  <<< ERROR!
-java.util.ConcurrentModificationException
-	at edu.fiuba.algo3/edu.fiuba.algo3.entrega_2.Entrega2Test.test20JugadorJuegaYPierdeUnaPartida(Entrega2Test.java:129)
-
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.312 s - in edu.fiuba.algo3.entrega_2.Entrega2Test
