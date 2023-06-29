@@ -1,0 +1,48 @@
+@startuml
+
+class Juego {
+    - Mapa mapa
+    - Jugador jugador
+    - MapRepository mapaParser
+    - EnemyRepository enemigoParser
+    - int turno
+
+    + Juego(String nombre, MapRepository mapaParser, EnemyRepository enemigoParser)
+    + boolean victoria()
+    + boolean derrota()
+    + void pasarTurno()
+}
+
+class Jugador {
+    - String nombre
+    - int vida
+    - int creditos
+    - List<Defensa> torres
+
+    + Jugador(String nombre)
+    + void atacado(int danio)
+    + boolean estaVivo()
+    + void cobrar(int creditos)
+    + void pagar(int creditos)
+    + void construir(Defensa defensa)
+}
+
+class Mapa {
+    - Parcela[][] parcelas
+    - Pasarela pasarelaInicial
+    - Pasarela pasarelaFinal
+
+    + Mapa(Parcela[][] parcelas, Pasarela pasarelaInicial, Pasarela pasarelaFinal)
+    + void establecerEnemigos(List<Enemigo> enemigos)
+    + boolean posicionValida(Posicion posicion)
+    + boolean tieneEnemigos(Posicion posicion)
+    + void jugarTurno(Jugador jugador, int turno)
+}
+
+Juego *-- Mapa
+Juego *-- Jugador
+Mapa ..> Jugador
+
+
+
+@enduml
