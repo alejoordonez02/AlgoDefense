@@ -48,16 +48,25 @@ public class Torre implements Defensa {
 		return 0;
     }
 
-    public int atacar(Mapa mapa) {
-        return atacar(this.rango.buscarEnemigo(mapa, this.posicion));
-    }
-
     public boolean operativa() {
         return turno >= tiempoDeConstruccion;
     }
 
+    public int atacar(Mapa mapa) {
+        if (this.operativa()) {
+            return atacar(this.rango.buscarEnemigo(mapa, this.posicion));
+        }
+
+        return 0;
+    }
+
     public void pasarTurno() {
         this.turno++;
+    }
+
+    public void jugarTurno(Mapa mapa, Jugador jugador) {
+        jugador.cobrar(this.atacar(mapa));
+        this.pasarTurno();
     }
 
     @Override

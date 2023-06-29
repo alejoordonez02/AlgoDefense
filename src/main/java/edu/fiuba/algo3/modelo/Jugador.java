@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.modelo;
-import java.util.*;
 
 public class Jugador {
     String nombre;
@@ -27,6 +26,10 @@ public class Jugador {
 	public void atacado(int danio) {
 		this.vida -= danio;
 	}
+
+    public void cobrar(int creditos) {
+        this.creditos += creditos;
+    }
 
     public void pagar(int creditos) {
         this.creditos -= creditos;

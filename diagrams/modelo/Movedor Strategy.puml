@@ -1,0 +1,31 @@
+@startuml
+
+class Enemigo {
+    - Movedor movedor
+
+    + mover()
+}
+
+interface Movedor {
+    + mover()
+}
+
+class CaminarSobrePasarela {
+    + mover()
+}
+
+class VolarEnL {
+    + mover()
+}
+
+class VolarRecto {
+    + mover()
+}
+
+Movedor <|.. CaminarSobrePasarela
+Movedor <|.. VolarEnL
+Movedor <|.. VolarRecto
+
+Enemigo *-- Movedor
+
+@enduml

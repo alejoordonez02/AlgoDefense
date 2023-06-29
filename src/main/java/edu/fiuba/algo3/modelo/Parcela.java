@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.ListIterator;
 
 public abstract class Parcela {
     Posicion posicion;
@@ -10,14 +9,8 @@ public abstract class Parcela {
 
     public Parcela(Posicion posicion) {
         this.posicion = posicion;
-        enemigos = new ArrayList<Enemigo>();
+        this.enemigos = new ArrayList<Enemigo>();
     }
-
-	public Parcela getSiguiente() {
-		return this;
-	}
-
-	public void setSiguiente(Parcela pasarela) {}
 
     public abstract void construirTorre(Torre torre) throws Exception;
 
@@ -26,12 +19,11 @@ public abstract class Parcela {
     }
 
     public void agregarEnemigo(Enemigo enemigo) {
-
-        enemigos.add(enemigo);
+        this.enemigos.add(enemigo);
     }
 
-	public void quitarEnemigo() {
-		this.enemigos.remove(0);
+	public void quitarEnemigo(Enemigo enemigo) {
+		this.enemigos.remove(enemigo);
 	}
 
     public int atacada(int danio) {
@@ -41,7 +33,7 @@ public abstract class Parcela {
             int credito = enemigo.atacado(danio);
 
             if (!enemigo.estaVivo()) {
-                quitarEnemigo();
+                this.quitarEnemigo(enemigo);
             }
 
             return credito;
@@ -50,17 +42,16 @@ public abstract class Parcela {
         return 0;
     }
 
-    public void mover() {
-		if (tieneEnemigo()) {
-			ListIterator<Enemigo> iterator = enemigos.listIterator();
+    public void moverEnemigos() {
 
-			while (iterator.hasNext()) {
-				iterator.next().mover(this);
-				iterator.remove();
-			}
-		}
-	}
-	
+        if (this.tieneEnemigo()) {
+            for (Enemigo enemigo : this.enemigos) {
+                enemigo.mover();
+                this.quitarEnemigo(enemigo);
+            }
+        }
+    }
+
     // public void abstract construirTrampaArenosa(TrampaArenosa trampaArenosa) throws Exception;
 
 }

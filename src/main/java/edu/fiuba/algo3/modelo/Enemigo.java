@@ -4,12 +4,7 @@ public abstract class Enemigo {
     int vida;
     int danio;
     int creditos;
-	int velocidad;
-	Parcela parcela;
-
-	public Enemigo(Parcela parcela) {
-		this.parcela = parcela;
-	}
+    Movedor movedor;
 
     public int atacado(int danio) {
         this.vida -= danio;
@@ -25,14 +20,9 @@ public abstract class Enemigo {
         return this.vida > 0;
     }
 
-	public void mover(Parcela parcela) {
-		for (int i = 0; i < velocidad; i++) {
-			parcela = parcela.getSiguiente();
-		}
-
-		this.parcela = parcela;
-		parcela.agregarEnemigo(this);
-	}
+	public void mover() {
+        movedor.mover(this);
+    }
 		
 	public abstract void atacar(Jugador jugador);
 

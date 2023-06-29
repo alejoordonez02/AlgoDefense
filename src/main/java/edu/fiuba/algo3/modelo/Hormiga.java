@@ -4,15 +4,22 @@ public class Hormiga extends Enemigo {
 	static int destruidas = 0;
 
 	public Hormiga(Parcela parcela) {
-		super(parcela);
 		this.vida = 1;
 		this.danio = 1;
 		this.creditos = 1;
-		this.velocidad = 1;
+		this.movedor = new CaminarSobrePasarela((Pasarela) parcela, 1);
 	}
 
 	public void atacar(Jugador jugador) {
 		jugador.atacado(danio);
+	}
+
+	public int getVida() {
+		return this.vida;
+	}
+
+	public static int getDestruidas() {
+		return destruidas;
 	}
 
 	@Override
