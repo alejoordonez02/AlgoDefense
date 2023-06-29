@@ -3,15 +3,15 @@ package edu.fiuba.algo3.modelo;
 import java.util.List;
 
 public class TrampaArenosa implements Defensa{
-	int costo;
+	Credito costo;
 	int tiempoDeFuncionamiento;
 	
 	public TrampaArenosa() {
-		this.costo = 25;
+		this.costo = new Credito(25);
 		this.tiempoDeFuncionamiento = 3;
 	}
 
-	public int getCosto() {
+	public Credito getCosto() {
 		return this.costo;
 	}
 

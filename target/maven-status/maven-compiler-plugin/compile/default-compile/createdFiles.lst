@@ -13,6 +13,7 @@ edu/fiuba/algo3/modelo/CreditosInsuficientes.class
 edu/fiuba/algo3/modelo/Jugador.class
 module-info.class
 edu/fiuba/algo3/modelo/Arania.class
+edu/fiuba/algo3/modelo/Credito.class
 edu/fiuba/algo3/modelo/CaminarSobrePasarela.class
 edu/fiuba/algo3/modelo/Defensa.class
 edu/fiuba/algo3/modelo/Enemigo.class
@@ -35,3 +36,4 @@ edu/fiuba/algo3/modelo/Parcela.class
 edu/fiuba/algo3/modelo/TrampaArenosa.class
 edu/fiuba/algo3/modelo/Hormiga.class
 edu/fiuba/algo3/modelo/Roca.class
+edu/fiuba/algo3/modelo/Vida.class

@@ -3,15 +3,15 @@
 import java.util.List;
 
 public class TrampaArenosa implements Defensa{
-	int costo;
+	Credito costo;
 	int tiempoDeFuncionamiento;
 	
 <span class="nc" id="L9">	public TrampaArenosa() {</span>
-<span class="nc" id="L10">		this.costo = 25;</span>
+<span class="nc" id="L10">		this.costo = new Credito(25);</span>
 <span class="nc" id="L11">		this.tiempoDeFuncionamiento = 3;</span>
 <span class="nc" id="L12">	}</span>
 
-	public int getCosto() {
+	public Credito getCosto() {
 <span class="nc" id="L15">		return this.costo;</span>
 	}
 

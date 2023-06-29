@@ -47,11 +47,11 @@ public abstract class Parcela {
 		this.enemigos.remove(enemigo);
 	}
 
-    public int atacada(int danio) {
+    public Credito atacada(int danio) {
 
         if (this.tieneEnemigos()) {
             Enemigo enemigo = this.enemigos.get(0);
-            int credito = enemigo.atacado(danio);
+            Credito credito = enemigo.atacado(danio);
 
             if (!enemigo.estaVivo()) {
                 this.quitarEnemigo(enemigo);
@@ -60,7 +60,7 @@ public abstract class Parcela {
             return credito;
         }
 
-        return 0;
+        return new Credito(0);
     }
 
     // habría que iterar el camino al revés para no quitar a los enemigos que se acaban de mover

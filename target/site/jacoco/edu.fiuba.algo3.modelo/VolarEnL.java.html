@@ -35,14 +35,13 @@ public class VolarEnL implements Movedor {
 <span class="nc" id="L35">	public void ralentizar() {}</span>
 
     public Parcela mover(Enemigo enemigo) {
-<span class="fc" id="L38">		Parcela parcelaAnterior = parcela;</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">		for (int i = 0; i &lt; this.velocidad; i++) {</span>
-<span class="fc" id="L40">			parcela = parcela.getSiguiente();</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">		for (int i = 0; i &lt; this.velocidad; i++) {</span>
+<span class="fc" id="L39">			parcela = parcela.getSiguiente();</span>
 		}
 
-<span class="fc" id="L43">		parcela.agregarEnemigo(enemigo);</span>
+<span class="fc" id="L42">		parcela.agregarEnemigo(enemigo);</span>
 
-<span class="fc" id="L45">		return parcela;</span>
+<span class="fc" id="L44">		return parcela;</span>
     }
 
 }

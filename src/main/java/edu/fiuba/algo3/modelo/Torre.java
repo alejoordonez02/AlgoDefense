@@ -1,13 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
 public class Torre implements Defensa {
-    int costo;
+    Credito costo;
     int tiempoDeConstruccion;
     Rango rango;
     int danio;
     Posicion posicion;
 
-    public int getCosto() {
+    public Credito getCosto() {
         return this.costo;
     }
 
@@ -35,20 +35,20 @@ public class Torre implements Defensa {
         return tiempoDeConstruccion <= 0;
     }
 
-    public int atacar(Parcela parcela) {
+    public Credito atacar(Parcela parcela) {
 		if (parcela != null){
 			return parcela.atacada(this.getDanio());
 		}
 		
-		return 0;
+		return new Credito(0);
     }
 
-    public int atacar(Mapa mapa) {
+    public Credito atacar(Mapa mapa) {
         if (this.operativa()) {
             return atacar(this.rango.buscarEnemigo(mapa, this.posicion));
         }
 
-        return 0;
+        return new Credito(0);
     }
 
     public void pasarTurno() {

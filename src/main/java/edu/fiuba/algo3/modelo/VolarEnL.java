@@ -35,7 +35,6 @@ public class VolarEnL implements Movedor {
 	public void ralentizar() {}
 
     public Parcela mover(Enemigo enemigo) {
-		Parcela parcelaAnterior = parcela;
 		for (int i = 0; i < this.velocidad; i++) {
 			parcela = parcela.getSiguiente();
 		}

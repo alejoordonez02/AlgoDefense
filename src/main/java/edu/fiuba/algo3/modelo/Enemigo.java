@@ -1,27 +1,27 @@
 package edu.fiuba.algo3.modelo;
 
 public abstract class Enemigo {
-    int vida;
+    Vida vida;
     int danio;
-    int creditos;
+    Credito creditos;
     Movedor movedor;
 
-    public int atacado(int danio) {
-        this.vida -= danio;
+    public Credito atacado(int danio) {
+        this.vida.restar(new Vida(danio));
 
         if (!this.estaVivo()) {
             return this.creditos;
         }
 
-        return 0;
+        return new Credito(0);
     }
 
-    public int getCreditos() {
+    public Credito getCreditos() {
         return this.creditos;
     }
 
     public boolean estaVivo() {
-        return this.vida > 0;
+        return this.vida.mayorQue(new Vida(0));
     }
 
 	public void ralentizar() {

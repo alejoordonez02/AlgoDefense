@@ -5,14 +5,14 @@ import java.util.ArrayList;
 
 public class Jugador {
     String nombre;
-    int vida;
-    int creditos;
+    Vida vida;
+    Credito creditos;
 	List<Defensa> torres;
 
     public Jugador(String nombre) {
         this.nombre = nombre;
-        this.vida = 20;
-        this.creditos = 100;
+        this.vida = new Vida(20);
+        this.creditos = new Credito(100);
 		this.torres = new ArrayList<Defensa>();
     }
 
@@ -20,32 +20,32 @@ public class Jugador {
         return this.nombre;
     }
 
-    public int getVida() {
+    public Vida getVida() {
         return this.vida;
     }
 
-    public int getCreditos() {
+    public Credito getCreditos() {
         return this.creditos;
     }
 
 	public void atacado(int danio) {
-		this.vida -= danio;
+		this.vida.restar(new Vida(danio));
 	}
 
 	public boolean estaVivo() {
-		return this.vida > 0;
+		return this.vida.mayorQue(new Vida(0));
 	}
 
-    public void cobrar(int creditos) {
-        this.creditos += creditos;
+    public void cobrar(Credito creditos) {
+        this.creditos.sumar(creditos);
     }
 
-    public void pagar(int creditos) {
-        this.creditos -= creditos;
+    public void pagar(Credito creditos) {
+        this.creditos.restar(creditos);
     }
 
     public void construir(Defensa defensa) throws Exception {
-        if (this.getCreditos() >= defensa.getCosto()) {
+        if (this.creditos.mayorIgualQue(defensa.getCosto())) {
             this.pagar(defensa.getCosto());
 			torres.add(defensa);
         } else {

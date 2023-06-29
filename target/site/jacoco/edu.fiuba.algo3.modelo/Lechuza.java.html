@@ -3,27 +3,34 @@
 public class Lechuza extends Enemigo {
 
 	Mapa mapa;
+	Parcela parcela;
 
-<span class="fc" id="L7">	public Lechuza(Mapa mapa) {</span>
-<span class="fc" id="L8">		this.vida = 5;</span>
-<span class="fc" id="L9">		this.danio = 0;</span>
-<span class="fc" id="L10">		this.creditos = 0;</span>
-<span class="fc" id="L11">		this.mapa = mapa;</span>
-<span class="fc" id="L12">		this.movedor = new VolarEnL(mapa, 5);</span>
-<span class="fc" id="L13">	}</span>
+<span class="fc" id="L8">	public Lechuza(Mapa mapa) {</span>
+<span class="fc" id="L9">		this.vida = new Vida(5);</span>
+<span class="fc" id="L10">		this.danio = 0;</span>
+<span class="fc" id="L11">		this.creditos = new Credito(0);</span>
+<span class="fc" id="L12">		this.mapa = mapa;</span>
+<span class="fc" id="L13">		this.parcela = this.mapa.getInicial();</span>
+<span class="fc" id="L14">		this.movedor = new VolarEnL(mapa, 5);</span>
+<span class="fc" id="L15">	}</span>
 
 	public void atacar(Jugador jugador, int turno) {
-<span class="fc" id="L16">		jugador.destruirTorre();</span>
-<span class="fc" id="L17">	}</span>
+<span class="fc" id="L18">		jugador.destruirTorre();</span>
+<span class="fc" id="L19">	}</span>
 
-	public int atacado(int danio) {
-<span class="nc" id="L20">		this.vida -= danio;</span>
+	@Override
+	public void mover() {
+<span class="fc" id="L23">        this.parcela = movedor.mover(this);</span>
+<span class="fc" id="L24">    }</span>
 
-<span class="nc bnc" id="L22" title="All 2 branches missed.">		if (this.vida &lt; 5 / 2) {</span>
-<span class="nc" id="L23">			movedor = new VolarRecto(mapa, 5);</span>
+	public Credito atacado(int danio) {
+<span class="nc" id="L27">		this.vida.restar(new Vida(danio));</span>
+
+<span class="nc bnc" id="L29" title="All 2 branches missed.">		if (this.vida.menorIgualQue(new Vida(5 / 2))) {</span>
+<span class="nc" id="L30">			movedor = new VolarRecto(mapa, parcela, 5);</span>
 		}
 
-<span class="nc" id="L26">		return 0;</span>
+<span class="nc" id="L33">		return new Credito(0);</span>
 	}
 	
 }

@@ -4,9 +4,9 @@ public class Hormiga extends Enemigo {
 	static int destruidas = 0;
 
 	public Hormiga(Parcela parcela) {
-		this.vida = 1;
+		this.vida = new Vida(1);
 		this.danio = 1;
-		this.creditos = 1;
+		this.creditos = new Credito(1);
 		this.movedor = new CaminarSobrePasarela((Pasarela) parcela, 1);
 	}
 
@@ -15,19 +15,19 @@ public class Hormiga extends Enemigo {
 	}
 
 	@Override
-	public int atacado(int danio) {
-        this.vida -= danio;
+	public Credito atacado(int danio) {
+        this.vida.restar(new Vida(danio));
 
         if (!this.estaVivo()) {
 			destruidas++;
 
-			if (creditos != 2 && destruidas > 10) {
-				this.creditos = 2;
+			if (!creditos.equals(new Credito(2)) && destruidas > 10) {
+				this.creditos = new Credito(2);
 			}
 
             return this.creditos;
         }
 
-        return 0;
+        return new Credito(0);
     }
 }

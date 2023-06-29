@@ -29,32 +29,6 @@ public class Mapa {
         return this.parcelas[posicion.x()][posicion.y()];
     }
 
-	/* public void establecerCamino() {
-
-		for (int x = 0; x < this.parcelas.length; x++) {
-
-			for (int y = 0; y < this.parcelas[x].length; y++) {
-
-				if (this.parcelas[x][y].esPasarela()){
-
-					if (x < this.parcelas.length - 1 && this.parcelas[x + 1][y].esPasarela()) {
-						((Pasarela) this.parcelas[x][y]).setSiguiente((Pasarela) this.parcelas[x + 1][y]);
-						this.pasarelaFinal = (Pasarela) this.parcelas[x + 1][y];
-					}
-
-					if (y < this.parcelas[x].length - 1 && this.parcelas[x][y + 1].esPasarela()) {
-						((Pasarela) this.parcelas[x][y]).setSiguiente((Pasarela) this.parcelas[x][y + 1]);
-						this.pasarelaFinal = (Pasarela) this.parcelas[x][y + 1];
-					}
-
-					if (this.pasarelaInicial != null){
-						this.pasarelaInicial = (Pasarela) this.parcelas[x][y];
-					}
-				}
-			}
-		}
-	} */
-
 	public void establecerEnemigos(List<Enemigo> enemigos) {
 		this.pasarelaInicial.agregarEnemigos(enemigos);
 	}

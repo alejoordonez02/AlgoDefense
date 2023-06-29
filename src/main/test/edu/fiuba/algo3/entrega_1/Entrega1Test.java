@@ -15,8 +15,8 @@ public class Entrega1Test {
     public void test01JugadorEmpiezaConLaVidaYLosCreditosEsperados() {
         Jugador jugador = new Jugador("Juan");
 
-        assertEquals(20, jugador.getVida());
-        assertEquals(100, jugador.getCreditos());
+        assertEquals(new Vida(20), jugador.getVida());
+        assertEquals(new Credito(100), jugador.getCreditos());
     }
 
     @Test

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 
 public class Posicion {
     int x;
@@ -24,8 +25,8 @@ public class Posicion {
         this.y = y;
     }
 
-    public int distancia(Posicion posicion) {
-        return abs((posicion.x() - this.x()) + (posicion.y() - this.y()));
+    public double distancia(Posicion posicion) {
+        return Math.sqrt(Math.pow((posicion.x() - this.x()), 2) + Math.pow((posicion.y() - this.y()), 2));
     }
 
     public Posicion sumar(Posicion posicion) {

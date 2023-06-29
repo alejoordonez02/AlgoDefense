@@ -3,12 +3,14 @@ package edu.fiuba.algo3.modelo;
 public class Lechuza extends Enemigo {
 
 	Mapa mapa;
+	Parcela parcela;
 
 	public Lechuza(Mapa mapa) {
-		this.vida = 5;
+		this.vida = new Vida(5);
 		this.danio = 0;
-		this.creditos = 0;
+		this.creditos = new Credito(0);
 		this.mapa = mapa;
+		this.parcela = this.mapa.getInicial();
 		this.movedor = new VolarEnL(mapa, 5);
 	}
 
@@ -16,14 +18,19 @@ public class Lechuza extends Enemigo {
 		jugador.destruirTorre();
 	}
 
-	public int atacado(int danio) {
-		this.vida -= danio;
+	@Override
+	public void mover() {
+        this.parcela = movedor.mover(this);
+    }
 
-		if (this.vida < 5 / 2) {
-			movedor = new VolarRecto(mapa, 5);
+	public Credito atacado(int danio) {
+		this.vida.restar(new Vida(danio));
+
+		if (this.vida.menorIgualQue(new Vida(5 / 2))) {
+			movedor = new VolarRecto(mapa, parcela, 5);
 		}
 
-		return 0;
+		return new Credito(0);
 	}
 	
 }

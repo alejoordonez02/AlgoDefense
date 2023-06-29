@@ -47,11 +47,11 @@ public abstract class Parcela {
 <span class="fc" id="L47">		this.enemigos.remove(enemigo);</span>
 <span class="fc" id="L48">	}</span>
 
-    public int atacada(int danio) {
+    public Credito atacada(int danio) {
 
 <span class="pc bpc" id="L52" title="1 of 2 branches missed.">        if (this.tieneEnemigos()) {</span>
 <span class="fc" id="L53">            Enemigo enemigo = this.enemigos.get(0);</span>
-<span class="fc" id="L54">            int credito = enemigo.atacado(danio);</span>
+<span class="fc" id="L54">            Credito credito = enemigo.atacado(danio);</span>
 
 <span class="fc bfc" id="L56" title="All 2 branches covered.">            if (!enemigo.estaVivo()) {</span>
 <span class="fc" id="L57">                this.quitarEnemigo(enemigo);</span>
@@ -60,7 +60,7 @@ public abstract class Parcela {
 <span class="fc" id="L60">            return credito;</span>
         }
 
-<span class="nc" id="L63">        return 0;</span>
+<span class="nc" id="L63">        return new Credito(0);</span>
     }
 
     // habría que iterar el camino al revés para no quitar a los enemigos que se acaban de mover

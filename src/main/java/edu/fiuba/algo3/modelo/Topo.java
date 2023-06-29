@@ -5,17 +5,17 @@ public class Topo extends Enemigo {
 	Pasarela pasarela;
 	
 	public Topo(Parcela parcela) {
-		this.vida = 0;
+		this.vida = new Vida(0);
 		this.danio = 2;
-		this.creditos = 0;
+		this.creditos = new Credito(0);
 		this.movimientos = 0;
 		this.pasarela = (Pasarela) parcela;
 		this.movedor = new CaminarSobrePasarela(pasarela, 1);
 	}
 
 	@Override
-	public int atacado(int danio) {
-		return 0;
+	public Credito atacado(int danio) {
+		return new Credito(0);
 	}
 
 	public void atacar(Jugador jugador, int turno) {

@@ -5,9 +5,9 @@ import static java.lang.Math.random;
 public class Arania extends Enemigo {
 
 <span class="fc" id="L7">	public Arania(Parcela parcela) {</span>
-<span class="fc" id="L8">		this.vida = 2;</span>
+<span class="fc" id="L8">		this.vida = new Vida(2);</span>
 <span class="fc" id="L9">		this.danio = 2;</span>
-<span class="fc" id="L10">		this.creditos = (int)(random() * 10);</span>
+<span class="fc" id="L10">		this.creditos = new Credito(((int)(random() * 10)));</span>
 <span class="fc" id="L11">		this.movedor = new CaminarSobrePasarela((Pasarela) parcela, 2);</span>
 <span class="fc" id="L12">	}</span>
 
