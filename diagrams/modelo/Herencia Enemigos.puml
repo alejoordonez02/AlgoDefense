@@ -1,0 +1,35 @@
+@startuml
+
+abstract Enemigo {
+    - int vida
+    - int danio
+    - int creditos
+    - Movedor movedor
+
+    + int atacado(int danio)
+    + int getCreditos()
+    + boolean estaVivo()
+    + Parcela mover()
+    + void {abstract} atacar()
+}
+
+class Hormiga {
+    - int vida
+    - int danio
+    - int creditos
+    - Movedor movedor
+
+    + Hormiga(Parcela parcela)
+    + atacar(Jugador jugador)
+    + atacado(int danio)
+}
+
+class Arania {
+    - int vida
+    - int danio
+    - int creditos
+
+    + void atacar(Jugador jugador)
+}
+
+@enduml
