@@ -71,8 +71,10 @@ public class Torre implements Defensa {
 
     @Override
     public boolean equals(Object o){
+
         if (this.getClass().equals(o.getClass())) {
             Torre c = (Torre)o;
+
             return this.getCosto() == (c.getCosto())
                 && this.getTiempoDeConstruccion() == (c.getTiempoDeConstruccion())
                 && this.getRango().equals(c.getRango())
