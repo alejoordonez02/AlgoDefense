@@ -5,12 +5,7 @@ public class Torre implements Defensa {
     int tiempoDeConstruccion;
     Rango rango;
     int danio;
-    int turno;
     Posicion posicion;
-
-    public Torre() {
-        this.turno = 0;
-    }
 
     public int getCosto() {
         return this.costo;
@@ -28,10 +23,6 @@ public class Torre implements Defensa {
         return this.danio;
     }
 
-    public int getTurno() {
-        return this.turno;
-    }
-
     public Posicion getPosicion() {
         return this.posicion;
     }
@@ -41,7 +32,7 @@ public class Torre implements Defensa {
     }
 
     public boolean operativa() {
-        return turno >= tiempoDeConstruccion;
+        return tiempoDeConstruccion <= 0;
     }
 
     public int atacar(Parcela parcela) {
@@ -61,7 +52,7 @@ public class Torre implements Defensa {
     }
 
     public void pasarTurno() {
-        this.turno++;
+        this.tiempoDeConstruccion--;
     }
 
     public void jugarTurno(Mapa mapa, Jugador jugador) {
@@ -79,7 +70,6 @@ public class Torre implements Defensa {
                 && this.getTiempoDeConstruccion() == (c.getTiempoDeConstruccion())
                 && this.getRango().equals(c.getRango())
                 && this.getDanio() == (c.getDanio())
-                && this.getTurno() == (c.getTurno())
                 && this.getPosicion().equals(c.getPosicion());
         }
             return false;

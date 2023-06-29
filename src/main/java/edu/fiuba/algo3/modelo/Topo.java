@@ -5,10 +5,10 @@ public class Topo extends Enemigo {
 	Pasarela pasarela;
 	
 	public Topo(Parcela parcela) {
-		this.movimientos = 0;
 		this.vida = 0;
 		this.danio = 2;
 		this.creditos = 0;
+		this.movimientos = 0;
 		this.pasarela = (Pasarela) parcela;
 		this.movedor = new CaminarSobrePasarela(pasarela, 1);
 	}

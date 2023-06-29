@@ -24,6 +24,10 @@ public abstract class Enemigo {
         return this.vida > 0;
     }
 
+	public void ralentizar() {
+		movedor.ralentizar();
+	}
+
 	public void mover() {
         movedor.mover(this);
     }
