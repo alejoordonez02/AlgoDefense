@@ -37,7 +37,11 @@ Implementación de la totalidad de la interfaz gráfica.
 Entrega final con el trabajo completo funcionando, con interfaz gráfica y sonidos.
 ## Desarrollo
 <!-- ## Supuestos -->
-<!-- Diagramas de clases -->
+## Diagramas de clases
+![Defensas](diagrams/modelo/Defensas.png)
+![Defensas y Parcelas](diagrams/modelo/Defensas\ y\ Parcelas.png)
+![Herencia Enemigos](diagrams/modelo/Herencia\ Enemigos.png)
+![Movedor con Strategy](diagrams/modelo/Movedor\ con\ Strategy.png)
 <!-- Diagramas de secuencia -->
 <!-- Diagrama de paquetes -->
 <!-- Diagramas de estado -->

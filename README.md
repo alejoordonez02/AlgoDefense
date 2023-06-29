@@ -4,7 +4,7 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo 11
 
 * **Alejo Ordoñez** - [Alejo Ordoñez](https://github.com/alejoordonez02)
 * **Fernando Yu** - [Fernando Yu](https://github.com/FernandoYu)
