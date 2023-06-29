@@ -10,4 +10,8 @@ public class Roca extends Parcela {
         throw new ParcelaInvalida("No se puede construir en una roca");
     }
 
+	public void jugarTurno(Mapa mapa, Jugador jugador) {
+		this.moverEnemigos();
+	}
+
 }

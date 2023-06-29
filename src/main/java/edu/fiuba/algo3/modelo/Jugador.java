@@ -27,6 +27,10 @@ public class Jugador {
 		this.vida -= danio;
 	}
 
+	public boolean estaVivo() {
+		return this.vida > 0;
+	}
+
     public void cobrar(int creditos) {
         this.creditos += creditos;
     }

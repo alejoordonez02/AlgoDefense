@@ -14,9 +14,13 @@ public abstract class Parcela {
 
     public abstract void construirTorre(Torre torre) throws Exception;
 
-    public boolean tieneEnemigo() {
+    public boolean tieneEnemigos() {
         return !(this.enemigos.isEmpty());
     }
+
+	public void agregarEnemigos(List<Enemigo> enemigos) {
+		this.enemigos = enemigos;
+	}
 
     public void agregarEnemigo(Enemigo enemigo) {
         this.enemigos.add(enemigo);
@@ -28,7 +32,7 @@ public abstract class Parcela {
 
     public int atacada(int danio) {
 
-        if (this.tieneEnemigo()) {
+        if (this.tieneEnemigos()) {
             Enemigo enemigo = this.enemigos.get(0);
             int credito = enemigo.atacado(danio);
 
@@ -44,13 +48,15 @@ public abstract class Parcela {
 
     // habría que iterar el camino al revés para no quitar a los enemigos que se acaban de mover
     public void moverEnemigos() {
-        if (this.tieneEnemigo()) {
+        if (this.tieneEnemigos()) {
             for (Enemigo enemigo : this.enemigos) {
                 enemigo.mover();
             }
             this.enemigos.removeAll(enemigos);
         }
     }
+
+	public abstract void jugarTurno(Mapa mapa, Jugador jugador);
 
     // public void abstract construirTrampaArenosa(TrampaArenosa trampaArenosa) throws Exception;
 

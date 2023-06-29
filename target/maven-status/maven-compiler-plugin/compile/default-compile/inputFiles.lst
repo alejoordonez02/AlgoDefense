@@ -1,27 +1,32 @@
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/CaminarSobrePasarela.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Arania.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Jugador.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Torre.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/TorrePlateada.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/VolarEnL.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/App.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Hormiga.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/VolarRecto.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Message.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/TorreBlanca.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Pasarela.java
-/home/alejo/code/AlgoDefense/src/main/java/module-info.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Rango.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Enemigo.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/ParcelaInvalida.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Parcela.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/Main.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/SystemInfo.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Roca.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Mapa.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/CreditosInsuficientes.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Tierra.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Defensa.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Localize.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Movedor.java
-/home/alejo/code/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Posicion.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Tierra.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/VolarEnL.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/ParcelaInvalida.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/Main.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Localize.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Juego.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Torre.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/CreditosInsuficientes.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Enemigo.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Parcela.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Rango.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/TorreBlanca.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Hormiga.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Defensa.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Mapa.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Posicion.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/App.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Movedor.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/CaminarSobrePasarela.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Pasarela.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/FormatoJSONInvalido.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Jugador.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/VolarRecto.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Message.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/EnemyRepository.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Roca.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/repositories/JsonEnemyRepository.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/MapRepository.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/TorrePlateada.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/module-info.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/SystemInfo.java
+/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/src/main/java/edu/fiuba/algo3/modelo/Arania.java

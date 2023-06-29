@@ -20,4 +20,18 @@ public class Pasarela extends Parcela {
         throw new ParcelaInvalida("No se puede construir una torre en una pasarela");
     }
 
+	public void jugarTurno(Mapa mapa, Jugador jugador) {
+		this.moverEnemigos();
+	}
+
+	public void atacar(Jugador jugador) {
+		if (this.tieneEnemigos()) {
+			for (Enemigo enemigo : this.enemigos) {
+				enemigo.atacar(jugador);
+			}
+	
+			enemigos.removeAll(enemigos);
+		}
+	}
+
 }

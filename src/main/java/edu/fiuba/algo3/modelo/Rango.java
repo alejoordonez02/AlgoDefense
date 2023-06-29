@@ -14,7 +14,7 @@ public class Rango {
 
             for (int y = -(alcance - abs(x)); y <= alcance - abs(x); y++) {
                 Posicion posicionObjetivo = posicion.sumar(new Posicion(x,y));
-                if (mapa.tieneEnemigo(posicionObjetivo)) {
+                if (mapa.posicionValida(posicionObjetivo) && mapa.tieneEnemigos(posicionObjetivo)) {
                     return mapa.getParcela(posicionObjetivo);
                 }
             }
