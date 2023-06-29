@@ -28,8 +28,38 @@ class Arania {
     - int vida
     - int danio
     - int creditos
+    - Movedor movedor
 
     + void atacar(Jugador jugador)
 }
+
+class Topo {
+    - int vida
+    - int danio
+    - int creditos
+    - Movedor movedor
+    - int movimientos
+    - Pasarela pasarela
+
+    + void atacado(int danio)
+    + void atacar(Jugador jugador, int turno)
+    + void mover()
+}
+
+class Lechuza {
+    - int vida
+    - int danio
+    - int creditos
+    - Movedor movedor
+    - Mapa mapa
+
+    + void atacar(Jugador jugador, int turno)
+    + int atacado(int danio)
+}
+
+Enemigo <|-- Hormiga
+Enemigo <|-- Arania
+Enemigo <|-- Topo
+Enemigo <|-- Lechuza
 
 @enduml
