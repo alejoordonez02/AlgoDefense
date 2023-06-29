@@ -1,0 +1,48 @@
+@startuml
+
+abstract Enemigo {
+    - int vida
+    - int danio
+    - int creditos
+    - Movedor movedor
+
+    + int atacado(int danio)
+    + int getCreditos()
+    + boolean estaVivo()
+    + Parcela mover()
+    + void atacar()
+}
+
+interface Movedor {
+    + Parcela mover(Enemigo enemigo)
+}
+
+class CaminarSobrePasarela {
+    - Pasarela pasarela
+    - int velocidad
+
+    + CaminarSobrePasarela(Pasarela pasarela, int velocidad)
+    + Parcela mover(Enemigo enemigo)
+}
+
+class VolarEnL {
+    + Parcela mover(Enemigo enemigo)
+}
+
+class VolarRecto {
+    + Parcela mover(Enemigo enemigo)
+}
+
+note right of Enemigo::"mover()"
+    void mover() {
+        movedor.mover();
+    }
+end note
+
+Movedor <|.. CaminarSobrePasarela
+Movedor <|.. VolarEnL
+Movedor <|.. VolarRecto
+
+Enemigo *-- Movedor
+
+@enduml

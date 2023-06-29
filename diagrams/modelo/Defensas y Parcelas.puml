@@ -1,0 +1,120 @@
+@startuml
+
+interface Defensa {
+    + int getCosto()
+}
+
+class Torre {
+    - int costo
+    - int tiempoDeConstruccion
+    - Rango rango
+    - int danio
+    - Posicion posicion
+
+    + Torre()
+    + getCosto()
+    + void setPosicion(Posicion posicion)
+    + boolean operativa()
+    + int atacar(Mapa mapa)
+    + void jugarTurno(Mapa mapa, Jugador jugador)
+}
+
+' class TorreBlanca {
+'     - int costo
+'     - int tiempoDeConstruccion
+'     - Rango rango
+'     - int danio
+'     - Posicion posicion
+
+'     + TorreBlanca()
+' }
+
+' class TorrePlateada {
+'     - int costo
+'     - int tiempoDeConstruccion
+'     - Rango rango
+'     - int danio
+'     - Posicion posicion
+
+'     + TorrePlateada()
+' }
+
+class TrampaArenosa {
+    - int costo
+    - int tiempoDeFuncionamiento
+
+    + TrampaArenosa()
+    + int getCosto()
+    + TrampaArenosa jugarTurno(List<Enemigo> enemigos)
+}
+
+' Torre <|-- TorrePlateada
+' Torre <|-- TorreBlanca
+
+Defensa <|.. Torre
+Defensa <|.. TrampaArenosa
+
+abstract Parcela {
+    - Posicion posicion
+    - List<enemigo> enemigos
+    - Parcela siguiente
+
+    + Parcela(Posicion posicion)
+    + void {abstract} contruirTorre(Torre torre)
+    + void agregarEnemigos(List<Enemigo> enemigos)
+    + void quitarEnemigo(Enemigo enemigo)
+    + int atacada(int danio)
+    + void moverEnemigos()
+}
+
+class Tierra {
+    - Posicion posicion
+    - List<enemigo> enemigos
+    - Parcela siguiente
+    - Torre torre
+
+    + Tierra(Posicion posicion)
+    + void construirTorre(Torre torre)
+    + void jugarTurno(Mapa mapa, Jugador jugador)
+}
+
+class Pasarela {
+    - Posicion posicion
+    - List<enemigo> enemigos
+    - Pasarela siguiente
+    - TrampaArenosa trampaArenosa
+
+    + Pasarela(Posicion posicion)
+    + construirTorre(Torre torre)
+    + void construirTrampa(TrampaArenosa trampaArenosa)
+    + void construirTrampa(TrampaArenosa trampaArenosa)
+    + void jugarTurno(Mapa mapa, Jugador jugador)
+    + void atacar(Jugador jugador, int turno)
+}
+
+class Roca {
+    - Posicion posicion
+    - List<enemigo> enemigos
+    - Parcela siguiente
+
+    + Roca(Posicion posicion)
+    + void construirTorre(Torre torre)
+    + void jugarTurno(Mapa mapa, Jugador jugador)
+}
+
+note left of Roca::"construirTorre(Torre torre)"
+    void construirTorre(Torre torre) {
+        throw new ParcelaInvalida();
+    }
+end note
+
+Parcela <|-- Tierra
+Parcela <|-- Pasarela
+Parcela <|-- Roca
+
+Tierra o-- Torre
+Pasarela o-- TrampaArenosa
+
+Defensa <.. Parcela
+
+@enduml

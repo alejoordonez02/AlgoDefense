@@ -1,0 +1,40 @@
+@startuml
+
+' Defensas
+interface Defensa
+
+abstract Torre
+
+class TorreBlanca
+class TorrePlateada
+
+class TrampaArenosa
+
+Torre <|-- TorreBlanca
+Torre <|-- TorrePlateada
+
+Defensa <|.. Torre
+Defensa <|.. TrampaArenosa
+
+abstract Parcela
+
+class Roca
+class Tierra
+class Pasarela
+
+Parcela <|-- Roca
+Parcela <|-- Tierra
+Parcela <|-- Pasarela
+
+Tierra o-- Torre
+Pasarela o-- TrampaArenosa
+
+class Rango
+
+Torre *-- Rango
+
+class Jugador
+
+Jugador ..> Defensa
+
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+
+class Juego {
+
+    + void pasarTurno()
+}
+
+note right of Juego::"pasarTurno()"
+    voidpasarTurno {
+        turno.pasar(mapa, jugador)
+    }
+end note
+
+class Mapa
+
+Interface MapRepository
+Interface EnemyRepository
+
+class JsonMapRepository
+class JsonEnemyRepository
+
+class Turno {
+
+    - int turno
+
+    + void pasar(Mapa mapa, Jugador jugador)
+}
+
+MapRepository <|.. JsonMapRepository
+EnemyRepository <|.. JsonEnemyRepository
+
+Juego *-- Mapa
+Juego *-- MapRepository
+Juego *-- EnemyRepository
+Juego *-- Turno
+
+@enduml
