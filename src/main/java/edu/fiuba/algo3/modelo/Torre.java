@@ -8,8 +8,7 @@ public class Torre implements Defensa {
     int turno;
     Posicion posicion;
 
-    public Torre(Posicion posicion) {
-        this.posicion = posicion;
+    public Torre() {
         this.turno = 0;
     }
 
@@ -42,11 +41,15 @@ public class Torre implements Defensa {
     }
 
     public int atacar(Parcela parcela) {
-        return parcela.atacada(this.getDanio());
+		if (parcela != null){
+			return parcela.atacada(this.getDanio());
+		}
+		
+		return 0;
     }
 
     public int atacar(Mapa mapa) {
-        return atacar(this.rango.buscarEnemigo(mapa));
+        return atacar(this.rango.buscarEnemigo(mapa, this.posicion));
     }
 
     public boolean operativa() {

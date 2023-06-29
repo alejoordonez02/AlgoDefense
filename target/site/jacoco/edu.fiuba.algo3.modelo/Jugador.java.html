@@ -24,27 +24,31 @@ public class Jugador {
 <span class="fc" id="L24">        return this.creditos;</span>
     }
 
+	public void atacado(int danio) {
+<span class="nc" id="L28">		this.vida -= danio;</span>
+<span class="nc" id="L29">	}</span>
+
     public void pagar(int creditos) {
-<span class="fc" id="L28">        this.creditos -= creditos;</span>
-<span class="fc" id="L29">    }</span>
+<span class="fc" id="L32">        this.creditos -= creditos;</span>
+<span class="fc" id="L33">    }</span>
 
     public void construir(Defensa defensa) throws Exception {
-<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        if (this.getCreditos() &gt;= defensa.getCosto()) {</span>
-<span class="fc" id="L33">            this.pagar(defensa.getCosto());</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        if (this.getCreditos() &gt;= defensa.getCosto()) {</span>
+<span class="fc" id="L37">            this.pagar(defensa.getCosto());</span>
         } else {
-<span class="nc" id="L35">            throw new CreditosInsuficientes(&quot;Creditos insuficientes&quot;);</span>
+<span class="nc" id="L39">            throw new CreditosInsuficientes(&quot;Creditos insuficientes&quot;);</span>
         }
-<span class="fc" id="L37">    }</span>
+<span class="fc" id="L41">    }</span>
 
     @Override
     public boolean equals(Object o){
-<span class="nc bnc" id="L41" title="All 2 branches missed.">        if (this.getClass().equals(o.getClass())) {</span>
-<span class="nc" id="L42">            Jugador c = (Jugador)o;</span>
-<span class="nc bnc" id="L43" title="All 2 branches missed.">            return this.getNombre().equals(c.getNombre())</span>
-<span class="nc bnc" id="L44" title="All 2 branches missed.">                &amp;&amp; this.getVida() == (c.getVida())</span>
-<span class="nc bnc" id="L45" title="All 2 branches missed.">                &amp;&amp; this.getCreditos() == (c.getCreditos());</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        if (this.getClass().equals(o.getClass())) {</span>
+<span class="nc" id="L46">            Jugador c = (Jugador)o;</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">            return this.getNombre().equals(c.getNombre())</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">                &amp;&amp; this.getVida() == (c.getVida())</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">                &amp;&amp; this.getCreditos() == (c.getCreditos());</span>
         }
-<span class="nc" id="L47">            return false;</span>
+<span class="nc" id="L51">            return false;</span>
     }
 
 }

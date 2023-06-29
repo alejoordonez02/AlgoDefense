@@ -24,6 +24,10 @@ public class Jugador {
         return this.creditos;
     }
 
+	public void atacado(int danio) {
+		this.vida -= danio;
+	}
+
     public void pagar(int creditos) {
         this.creditos -= creditos;
     }

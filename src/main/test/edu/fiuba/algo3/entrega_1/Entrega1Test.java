@@ -21,7 +21,7 @@ public class Entrega1Test {
 
     @Test
     public void Test02TorreBlancaTardaEnConstruirseLosTurnosEsperadosYLuegoEstaOperativa() {
-        TorreBlanca torreBlanca = new TorreBlanca(new Posicion(0,0));
+        TorreBlanca torreBlanca = new TorreBlanca();
 
         assertFalse(torreBlanca.operativa());
         torreBlanca.pasarTurno();
@@ -30,7 +30,7 @@ public class Entrega1Test {
 
     @Test
     public void Test03TorrePlateadaTardaEnConstruirseLosTurnosEsperadosYLuegoEstaOperativa() {
-        TorrePlateada torrePlateada = new TorrePlateada(new Posicion(0,0));
+        TorrePlateada torrePlateada = new TorrePlateada();
 
         assertFalse(torrePlateada.operativa());
         torrePlateada.pasarTurno();
@@ -43,8 +43,8 @@ public class Entrega1Test {
     public void Test04JugadorConCreditosSuficientesConstruyeTorreBlancaYTorrePlateadaYNoSeLanzaExcepcion() {
         Jugador jugador = new Jugador("Juan");
 
-        Torre torreBlanca = new TorreBlanca(new Posicion(0,0));
-        Torre torrePlateada = new TorrePlateada(new Posicion(0,0));
+        Torre torreBlanca = new TorreBlanca();
+        Torre torrePlateada = new TorrePlateada();
 
         assertDoesNotThrow(() -> jugador.construir(torreBlanca));
         assertDoesNotThrow(() -> jugador.construir(torrePlateada));
@@ -56,7 +56,7 @@ public class Entrega1Test {
         Tierra tierra = new Tierra(new Posicion(0,0));
         Roca roca = new Roca(new Posicion(0,0));
 
-        Torre torre = new TorreBlanca(new Posicion(0,0));
+        Torre torre = new TorreBlanca();
 
         assertThrows(ParcelaInvalida.class, () -> pasarela.construirTorre(torre));
         assertDoesNotThrow(() -> tierra.construirTorre(torre));
@@ -65,7 +65,55 @@ public class Entrega1Test {
 
     @Test
     public void Test06TorreBlancaAtacaDentroDelRangoEsperado() {
-        TorreBlanca torreBlanca = new TorreBlanca();
+		Rango rangoTorreBlanca = new Rango(3);
+		Parcela[][] parcelas = new Parcela[7][7];
+
+        for (int x = 0; x < 7; x++) {
+
+            for (int y = 0; y < 7; y++) {
+                parcelas[x][y] = new Pasarela(new Posicion(x,y));
+            }
+        }
+
+        parcelas[0][0].agregarEnemigo(new Hormiga(parcelas[0][0]));
+        parcelas[2][1].agregarEnemigo(new Hormiga(parcelas[2][1]));
+
+        Mapa mapa = new Mapa(parcelas);
+
+        assertEquals(parcelas[2][1], rangoTorreBlanca.buscarEnemigo(mapa, new Posicion(3,3)));
+
+		parcelas[2][1].quitarEnemigo();
+
+        assertEquals(null, rangoTorreBlanca.buscarEnemigo(mapa, new Posicion(3,3)));
+    }
+
+    @Test
+    public void Test06TorrePlateadaAtacaDentroDelRangoEsperado() {
+		Rango rangoTorrePlateada = new Rango(5);
+		Parcela[][] parcelas = new Parcela[11][11];
+
+        for (int x = 0; x < 11; x++) {
+
+            for (int y = 0; y < 11; y++) {
+                parcelas[x][y] = new Pasarela(new Posicion(x,y));
+            }
+        }
+
+        parcelas[2][2].agregarEnemigo(new Hormiga(parcelas[2][2]));
+        parcelas[2][3].agregarEnemigo(new Hormiga(parcelas[2][3]));
+
+        Mapa mapa = new Mapa(parcelas);
+
+        assertEquals(parcelas[2][3], rangoTorrePlateada.buscarEnemigo(mapa, new Posicion(5,5)));
+
+		parcelas[2][3].quitarEnemigo();
+
+        assertEquals(null, rangoTorrePlateada.buscarEnemigo(mapa, new Posicion(5,5)));
+    }
+
+	@Test
+	public void Test07TorreBlancaAtacaAHormigaYAraniaYHormigaMuerePeroAraniaNo() {
+		TorreBlanca torreBlanca = new TorreBlanca();
         Parcela[][] parcelas = new Parcela[7][7];
 
         for (int x = 0; x < 7; x++) {
@@ -75,24 +123,89 @@ public class Entrega1Test {
             }
         }
 
-
         parcelas[3][3] = new Tierra(new Posicion(3,3));
 
         try {
             parcelas[3][3].construirTorre(torreBlanca);
         } catch(Exception e) {}
 
-        parcelas[0][0].agregarEnemigo(new Hormiga());
-        parcelas[2][1].agregarEnemigo(new Hormiga());
+        parcelas[2][1].agregarEnemigo(new Hormiga(parcelas[2][1]));
+        parcelas[2][2].agregarEnemigo(new Arania(parcelas[2][2]));
 
         Mapa mapa = new Mapa(parcelas);
 
-        assertEquals(1, torreBlanca.atacar(mapa));
-        assertEquals(0, torreBlanca.atacar(mapa));
-    }
+		torreBlanca.atacar(mapa);
+		torreBlanca.atacar(mapa);
 
-    @Test
-    public void Test06TorrePlateadaAtacaDentroDelRangoEsperado() {
+        //assertEquals(1, torreBlanca.atacar(mapa));
+        //assertEquals(0, torreBlanca.atacar(mapa));
+		assertTrue(!(parcelas[2][1].tieneEnemigo()));
+		assertTrue(parcelas[2][2].tieneEnemigo());
 
-    }
+	}
+	
+	@Test
+	public void Test08TorrePlateadaAtacaAHormigaYAraniaYAmbosMueren() {
+		TorrePlateada torrePlateada = new TorrePlateada();
+        Parcela[][] parcelas = new Parcela[11][11];
+
+        for (int x = 0; x < 11; x++) {
+
+            for (int y = 0; y < 11; y++) {
+                parcelas[x][y] = new Pasarela(new Posicion(x,y));
+            }
+        }
+
+        parcelas[5][5] = new Tierra(new Posicion(5,5));
+
+        try {
+            parcelas[5][5].construirTorre(torrePlateada);
+        } catch(Exception e) {}
+
+        parcelas[2][3].agregarEnemigo(new Hormiga(parcelas[2][3]));
+        parcelas[3][3].agregarEnemigo(new Arania(parcelas[3][3]));
+
+        Mapa mapa = new Mapa(parcelas);
+
+		torrePlateada.atacar(mapa);
+		torrePlateada.atacar(mapa);
+
+        //assertEquals(1, torreBlanca.atacar(mapa));
+        //assertEquals(0, torreBlanca.atacar(mapa));
+		assertTrue(!(parcelas[2][3].tieneEnemigo()));
+		assertTrue(!(parcelas[3][3].tieneEnemigo()));
+	}
+
+	@Test
+	public void Test09EnemigosSeMuevenSoloPorLasPasarelas() {
+		Parcela[][] parcelas = new Parcela[3][3];
+
+		for (int x = 0; x < 3; x++) {
+
+			for (int y = 0; y < 3; y++) {
+				parcelas[x][y] = new Tierra(new Posicion(x,y));
+			}
+		}
+
+		parcelas[0][0] = new Pasarela(new Posicion(0,0));
+		parcelas[1][0] = new Pasarela(new Posicion(1,0));
+		parcelas[1][1] = new Pasarela(new Posicion(1,1));
+		parcelas[1][2] = new Pasarela(new Posicion(1,2));
+		parcelas[2][2] = new Pasarela(new Posicion(2,2));
+
+		parcelas[0][0].setSiguiente(parcelas[1][0]);
+		parcelas[1][0].setSiguiente(parcelas[1][1]);
+		parcelas[1][1].setSiguiente(parcelas[1][2]);
+		parcelas[1][2].setSiguiente(parcelas[2][2]);
+
+		parcelas[0][0].agregarEnemigo(new Hormiga(parcelas[0][0]));
+		parcelas[0][0].agregarEnemigo(new Arania(parcelas[0][0]));
+
+		parcelas[0][0].mover();
+
+		assertTrue(!(parcelas[0][0].tieneEnemigo()));
+		assertTrue(parcelas[1][0].tieneEnemigo());
+		assertTrue(parcelas[1][1].tieneEnemigo());
+	}
+
 }

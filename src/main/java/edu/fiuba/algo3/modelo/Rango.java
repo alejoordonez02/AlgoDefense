@@ -3,22 +3,19 @@ import static java.lang.Math.abs;
 
 public class Rango {
     int alcance;
-    Posicion posicion;
 
-    public Rango(int alcance, Posicion posicion) {
+    public Rango(int alcance) {
         this.alcance = alcance;
-        this.posicion = posicion;
     }
 
-    public Parcela buscarEnemigo(Mapa mapa) {
+    public Parcela buscarEnemigo(Mapa mapa, Posicion posicion) {
 
         for (int x = -alcance; x <= alcance; x++) {
 
             for (int y = -(alcance - abs(x)); y <= alcance - abs(x); y++) {
-                Posicion posicion = this.posicion.sumar(new Posicion(x,y));
-
-                if (mapa.tieneEnemigo(posicion)) {
-                    return mapa.getParcela(posicion);
+                Posicion posicionObjetivo = posicion.sumar(new Posicion(x,y));
+                if (mapa.tieneEnemigo(posicionObjetivo)) {
+                    return mapa.getParcela(posicionObjetivo);
                 }
             }
         }

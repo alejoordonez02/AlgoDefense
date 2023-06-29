@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public abstract class Parcela {
     Posicion posicion;
@@ -12,10 +13,15 @@ public abstract class Parcela {
         enemigos = new ArrayList<Enemigo>();
     }
 
+	public Parcela getSiguiente() {
+		return this;
+	}
+
+	public void setSiguiente(Parcela pasarela) {}
+
     public abstract void construirTorre(Torre torre) throws Exception;
 
     public boolean tieneEnemigo() {
-
         return !(this.enemigos.isEmpty());
     }
 
@@ -24,6 +30,10 @@ public abstract class Parcela {
         enemigos.add(enemigo);
     }
 
+	public void quitarEnemigo() {
+		this.enemigos.remove(0);
+	}
+
     public int atacada(int danio) {
 
         if (this.tieneEnemigo()) {
@@ -31,7 +41,7 @@ public abstract class Parcela {
             int credito = enemigo.atacado(danio);
 
             if (!enemigo.estaVivo()) {
-                this.enemigos.remove(0);
+                quitarEnemigo();
             }
 
             return credito;
@@ -40,8 +50,17 @@ public abstract class Parcela {
         return 0;
     }
 
-    // public void abstract construirTrampaArenosa(TrampaArenosa trampaArenosa) throws Exception;
+    public void mover() {
+		if (tieneEnemigo()) {
+			ListIterator<Enemigo> iterator = enemigos.listIterator();
 
-    // public abstract void mover(Enemigo enemigo);
+			while (iterator.hasNext()) {
+				iterator.next().mover(this);
+				iterator.remove();
+			}
+		}
+	}
+	
+    // public void abstract construirTrampaArenosa(TrampaArenosa trampaArenosa) throws Exception;
 
 }
