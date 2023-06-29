@@ -1,0 +1,51 @@
+@startuml
+
+interface Defensa {
+
+    + int getCosto()
+}
+
+class Torre {
+    - int costo
+    - int tiempoDeConstruccion
+    - Rango rango
+    - int danio
+    - Posicion posicion
+
+    + Torre()
+    + void setPosicion(Posicion posicion)
+    + boolean operativa()
+    + int atacar(Mapa mapa)
+    + void jugarTurno(Mapa mapa, Jugador jugador)
+}
+
+class TorreBlanca {
+    - int costo
+    - int tiempoDeConstruccion
+    - Rango rango
+    - int danio
+    - Posicion posicion
+
+    + TorreBlanca()
+}
+
+class TorrePlateada {
+    - int costo
+    - int tiempoDeConstruccion
+    - Rango rango
+    - int danio
+    - Posicion posicion
+
+    + TorrePlateada()
+}
+
+class TrampaArenosa {
+    
+}
+
+Defensa <|.. Torre
+
+Torre <|-- TorrePlateada
+Torre <|-- TorreBlanca
+
+@enduml
