@@ -9,13 +9,19 @@ public class CaminarSobrePasarela implements Movedor {
         this.velocidad = velocidad;
     }
 
-    public void mover(Enemigo enemigo) {
+	public void cambiarVelocidad(int velocidad) {
+		this.velocidad = velocidad;
+	}
+
+    public Parcela mover(Enemigo enemigo) {
 
         for (int i = 0; i < this.velocidad; i++) {
-            this.pasarela = this.pasarela.getSiguiente();
+            this.pasarela = (Pasarela) this.pasarela.getSiguiente();
         }
 
         this.pasarela.agregarEnemigo(enemigo);
+
+		return this.pasarela;
     }
 
 }

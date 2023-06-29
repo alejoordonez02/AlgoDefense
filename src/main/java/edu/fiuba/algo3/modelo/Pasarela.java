@@ -8,14 +8,6 @@ public class Pasarela extends Parcela {
 		siguiente = null;
     }
 
-	public Pasarela getSiguiente() {
-		return this.siguiente;
-	}
-
-	public void setSiguiente(Pasarela pasarela) {
-		this.siguiente = pasarela;
-	}
-
     public void construirTorre(Torre torre) throws Exception {
         throw new ParcelaInvalida("No se puede construir una torre en una pasarela");
     }
@@ -24,10 +16,10 @@ public class Pasarela extends Parcela {
 		this.moverEnemigos();
 	}
 
-	public void atacar(Jugador jugador) {
+	public void atacar(Jugador jugador, int turno) {
 		if (this.tieneEnemigos()) {
 			for (Enemigo enemigo : this.enemigos) {
-				enemigo.atacar(jugador);
+				enemigo.atacar(jugador, turno);
 			}
 	
 			enemigos.removeAll(enemigos);

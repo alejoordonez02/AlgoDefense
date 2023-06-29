@@ -12,7 +12,7 @@ import edu.fiuba.algo3.modelo.*;
 public class Entrega1Test {
 
     @Test
-    public void Test01JugadorEmpiezaConLaVidaYLosCreditosEsperados() {
+    public void test01JugadorEmpiezaConLaVidaYLosCreditosEsperados() {
         Jugador jugador = new Jugador("Juan");
 
         assertEquals(20, jugador.getVida());
@@ -20,7 +20,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void Test02TorreBlancaTardaEnConstruirseLosTurnosEsperadosYLuegoEstaOperativa() {
+    public void test02TorreBlancaTardaEnConstruirseLosTurnosEsperadosYLuegoEstaOperativa() {
         TorreBlanca torreBlanca = new TorreBlanca();
 
         assertFalse(torreBlanca.operativa());
@@ -29,7 +29,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void Test03TorrePlateadaTardaEnConstruirseLosTurnosEsperadosYLuegoEstaOperativa() {
+    public void test03TorrePlateadaTardaEnConstruirseLosTurnosEsperadosYLuegoEstaOperativa() {
         TorrePlateada torrePlateada = new TorrePlateada();
 
         assertFalse(torrePlateada.operativa());
@@ -40,7 +40,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void Test04JugadorConCreditosSuficientesConstruyeTorreBlancaYTorrePlateadaYNoSeLanzaExcepcion() {
+    public void test04JugadorConCreditosSuficientesConstruyeTorreBlancaYTorrePlateadaYNoSeLanzaExcepcion() {
         Jugador jugador = new Jugador("Juan");
 
         Torre torreBlanca = new TorreBlanca();
@@ -51,7 +51,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void Test05SoloSePuedenConstruirTorresSobreTierra() {
+    public void test05SoloSePuedenConstruirTorresSobreTierra() {
         Pasarela pasarela = new Pasarela(new Posicion(0,0));
         Tierra tierra = new Tierra(new Posicion(0,0));
         Roca roca = new Roca(new Posicion(0,0));
@@ -64,7 +64,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void Test06TorreBlancaAtacaDentroDelRangoEsperado() {
+    public void test06TorreBlancaAtacaDentroDelRangoEsperado() {
 		Rango rangoTorreBlanca = new Rango(3);
 		Parcela[][] parcelas = new Parcela[7][7];
 
@@ -81,7 +81,7 @@ public class Entrega1Test {
         parcelas[0][0].agregarEnemigo(hormiga1);
         parcelas[2][1].agregarEnemigo(hormiga2);
 
-        Mapa mapa = new Mapa(parcelas);
+        Mapa mapa = new Mapa(parcelas, (Pasarela) parcelas[0][0], (Pasarela) parcelas[6][6]);
 
         assertEquals(parcelas[2][1], rangoTorreBlanca.buscarEnemigo(mapa, new Posicion(3,3)));
 
@@ -91,7 +91,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void Test06TorrePlateadaAtacaDentroDelRangoEsperado() {
+    public void test06TorrePlateadaAtacaDentroDelRangoEsperado() {
 		Rango rangoTorrePlateada = new Rango(5);
 		Parcela[][] parcelas = new Parcela[11][11];
 
@@ -108,7 +108,7 @@ public class Entrega1Test {
         parcelas[2][2].agregarEnemigo(hormiga1);
         parcelas[2][3].agregarEnemigo(hormiga2);
 
-        Mapa mapa = new Mapa(parcelas);
+        Mapa mapa = new Mapa(parcelas, (Pasarela) parcelas[0][0], (Pasarela) parcelas[10][10]);
 
         assertEquals(parcelas[2][3], rangoTorrePlateada.buscarEnemigo(mapa, new Posicion(5,5)));
 
@@ -118,7 +118,7 @@ public class Entrega1Test {
     }
 
 	@Test
-	public void Test07TorreBlancaAtacaAHormigaYAraniaYHormigaMuerePeroAraniaNo() {
+	public void test07TorreBlancaAtacaAHormigaYAraniaYHormigaMuerePeroAraniaNo() {
 		TorreBlanca torreBlanca = new TorreBlanca();
         Parcela[][] parcelas = new Parcela[7][7];
 
@@ -141,7 +141,7 @@ public class Entrega1Test {
         parcelas[2][1].agregarEnemigo(hormiga);
         parcelas[2][2].agregarEnemigo(arania);
 
-        Mapa mapa = new Mapa(parcelas);
+        Mapa mapa = new Mapa(parcelas, (Pasarela) parcelas[0][0], (Pasarela) parcelas[6][6]);
 
         torreBlanca.pasarTurno();
 
@@ -153,7 +153,7 @@ public class Entrega1Test {
 	}
 	
 	@Test
-	public void Test08TorrePlateadaAtacaAHormigaYAraniaYAmbosMueren() {
+	public void test08TorrePlateadaAtacaAHormigaYAraniaYAmbosMueren() {
 		TorrePlateada torrePlateada = new TorrePlateada();
         Parcela[][] parcelas = new Parcela[11][11];
 
@@ -176,7 +176,7 @@ public class Entrega1Test {
         parcelas[2][3].agregarEnemigo(hormiga);
         parcelas[3][3].agregarEnemigo(arania);
 
-        Mapa mapa = new Mapa(parcelas);
+        Mapa mapa = new Mapa(parcelas, (Pasarela) parcelas[0][0], (Pasarela) parcelas[10][10]);
 
         torrePlateada.pasarTurno();
         torrePlateada.pasarTurno();
@@ -189,7 +189,7 @@ public class Entrega1Test {
 	}
 
 	@Test
-	public void Test09EnemigosSeMuevenSoloPorLasPasarelas() {
+	public void test09EnemigosSeMuevenSoloPorLasPasarelas() {
 
 		Parcela[][] parcelas = new Parcela[3][3];
 
@@ -221,8 +221,7 @@ public class Entrega1Test {
 	}
 
 	@Test
-	public void Test10ElCreditoCobradoAlDestruirUnaUnidadEnemigaEsElEsperado() {
-		System.out.println("test10");
+	public void test10ElCreditoCobradoAlDestruirUnaUnidadEnemigaEsElEsperado() {
 		TorrePlateada torrePlateada = new TorrePlateada();
 
 		Pasarela pasarela = new Pasarela(new Posicion(0,0));
@@ -241,7 +240,7 @@ public class Entrega1Test {
 	}
 
 	@Test
-	public void Test11AlEliminarATodasLasUnidadesEnemigasElJugadorGanaElJuego() {
+	public void test11AlEliminarATodasLasUnidadesEnemigasElJugadorGanaElJuego() {
 		Jugador jugador = new Jugador("Juan");
 		TorreBlanca torreBlanca = new TorreBlanca();
 		Parcela parcelas[][] = new Parcela[2][3];
@@ -268,17 +267,16 @@ public class Entrega1Test {
 			parcelas[1][0].construirTorre(torreBlanca);
 		} catch (Exception e) {}
 
-		Mapa mapa = new Mapa(parcelas);
-		mapa.setFinal((Pasarela) parcelas[1][2]);
+		Mapa mapa = new Mapa(parcelas, (Pasarela) parcelas[0][0], (Pasarela) parcelas[1][2]);
 
-		mapa.jugarTurno(jugador);
-		mapa.jugarTurno(jugador);
+		mapa.jugarTurno(jugador, 1);
+		mapa.jugarTurno(jugador, 2);
 
 		assertTrue(!(mapa.tieneEnemigos()) && jugador.estaVivo());
 	}
 
 	@Test
-	public void Test12JugadorNoEliminaTodasLasUnidadesPeroNoMuereYGanaElJuego() {
+	public void test12JugadorNoEliminaTodasLasUnidadesPeroNoMuereYGanaElJuego() {
 		Jugador jugador = new Jugador("Juan");
 		Parcela parcelas[][] = new Parcela[2][2];
 		
@@ -297,17 +295,16 @@ public class Entrega1Test {
 
 		parcelas[0][0].agregarEnemigo(hormiga);
 
-		Mapa mapa = new Mapa(parcelas);
-		mapa.setFinal((Pasarela) parcelas[1][1]);
+		Mapa mapa = new Mapa(parcelas, (Pasarela) parcelas[0][0], (Pasarela) parcelas[1][1]);
 
-		mapa.jugarTurno(jugador);
-		mapa.jugarTurno(jugador);
+		mapa.jugarTurno(jugador, 1);
+		mapa.jugarTurno(jugador, 2);
 
 		assertTrue(!(mapa.tieneEnemigos()) && jugador.estaVivo());
 	}
 
 	@Test
-	public void Test13LasUnidadesEnemigasMatanAlJugadorYPierdeElJuego() {
+	public void test13LasUnidadesEnemigasMatanAlJugadorYPierdeElJuego() {
 		Jugador jugador = new Jugador("Juan");
 		Parcela parcelas[][] = new Parcela[2][2];
 		
@@ -326,10 +323,9 @@ public class Entrega1Test {
 			parcelas[0][0].agregarEnemigo(new Arania(parcelas[0][0]));
 		}
 
-		Mapa mapa = new Mapa(parcelas);
-		mapa.setFinal((Pasarela) parcelas[1][1]);
+		Mapa mapa = new Mapa(parcelas, (Pasarela) parcelas[0][0], (Pasarela) parcelas[1][1]);
 
-		mapa.jugarTurno(jugador);
+		mapa.jugarTurno(jugador, 1);
 
 		assertTrue(!(jugador.estaVivo()));
 	}

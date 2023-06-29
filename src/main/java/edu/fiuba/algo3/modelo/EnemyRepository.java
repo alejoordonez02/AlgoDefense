@@ -4,5 +4,5 @@ import java.io.IOException;
 import java.util.List;
 
 public interface EnemyRepository {
-    List<Enemigo> parsear(int turno, Pasarela pasarelaInicial) throws IOException;
+    List<Enemigo> parsear(int turno, Mapa mapa) throws IOException;
 }

@@ -11,7 +11,7 @@ public class Arania extends Enemigo {
 		this.movedor = new CaminarSobrePasarela((Pasarela) parcela, 2);
 	}
 
-	public void atacar(Jugador jugador) {
+	public void atacar(Jugador jugador, int turno) {
 		jugador.atacado(danio);
 	}
 

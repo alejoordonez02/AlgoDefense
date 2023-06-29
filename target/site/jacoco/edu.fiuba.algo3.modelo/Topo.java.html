@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Topo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp2</a> &gt; <a href="index.source.html" class="el_package">edu.fiuba.algo3.modelo</a> &gt; <span class="el_source">Topo.java</span></div><h1>Topo.java</h1><pre class="source lang-java linenums">package edu.fiuba.algo3.modelo;
+
+public class Topo extends Enemigo {
+	int movimientos;
+	Pasarela pasarela;
+	
+<span class="fc" id="L7">	public Topo(Parcela parcela) {</span>
+<span class="fc" id="L8">		this.movimientos = 0;</span>
+<span class="fc" id="L9">		this.vida = 0;</span>
+<span class="fc" id="L10">		this.danio = 2;</span>
+<span class="fc" id="L11">		this.creditos = 0;</span>
+<span class="fc" id="L12">		this.pasarela = (Pasarela) parcela;</span>
+<span class="fc" id="L13">		this.movedor = new CaminarSobrePasarela(pasarela, 1);</span>
+<span class="fc" id="L14">	}</span>
+
+	@Override
+	public int atacado(int danio) {
+<span class="nc" id="L18">		return 0;</span>
+	}
+
+	public void atacar(Jugador jugador, int turno) {
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">		if (turno % 2 != 0) {</span>
+<span class="fc" id="L23">			this.danio = 5;</span>
+		}
+<span class="fc" id="L25">		jugador.atacado(danio);</span>
+<span class="fc" id="L26">	}</span>
+
+	@Override
+	public void mover() {
+<span class="fc bfc" id="L30" title="All 2 branches covered.">		if (movimientos == 6) {</span>
+<span class="fc" id="L31">			movedor = new CaminarSobrePasarela(pasarela, 2);</span>
+		}
+<span class="fc bfc" id="L33" title="All 2 branches covered.">		if (movimientos == 11) {</span>
+<span class="fc" id="L34">			movedor = new CaminarSobrePasarela(pasarela, 3);</span>
+		}
+
+<span class="fc" id="L37">		pasarela = (Pasarela) movedor.mover(this);</span>
+<span class="fc" id="L38">		movimientos++;</span>
+<span class="fc" id="L39">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

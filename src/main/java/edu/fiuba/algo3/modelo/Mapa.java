@@ -13,6 +13,18 @@ public class Mapa {
 		this.pasarelaFinal = pasarelaFinal;
     }
 
+	public Parcela[][] getParcelas() {
+		return parcelas;
+	}
+
+	public Pasarela getInicial() {
+		return pasarelaInicial;
+	}
+
+	public Pasarela getFinal() {
+		return pasarelaFinal;
+	}
+
     public Parcela getParcela(Posicion posicion) {
         return this.parcelas[posicion.x()][posicion.y()];
     }
@@ -43,8 +55,8 @@ public class Mapa {
 		}
 	} */
 
-	public void setFinal(Pasarela pasarela) {
-		this.pasarelaFinal = pasarela;
+	public void establecerEnemigos(List<Enemigo> enemigos) {
+		this.pasarelaInicial.agregarEnemigos(enemigos);
 	}
 
 	public boolean posicionValida(Posicion posicion) {
@@ -72,14 +84,38 @@ public class Mapa {
 		return tieneEnemigos;
 	}
 
-	public void jugarTurno(Jugador jugador) {
-
+	public void jugarTurno(Jugador jugador, int turno) {
 		for (int x = this.parcelas.length - 1; x >= 0 ; x--) {
 			for (int y = this.parcelas[x].length - 1; y >= 0 ; y--) {
 				this.parcelas[x][y].jugarTurno(this, jugador);
 			}
 		}
-		this.pasarelaFinal.atacar(jugador);
+
+		this.pasarelaFinal.atacar(jugador, turno);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this.getClass().equals(o.getClass())
+		 && this.getParcelas().length == ((Mapa) o).getParcelas().length
+		 && this.getParcelas()[0].length == ((Mapa) o).getParcelas()[0].length) {
+			boolean equals = true;
+			int x = 0;
+			int y = 0;
+
+			while (equals && x < this.getParcelas().length) {
+
+				while (equals && y < this.getParcelas()[0].length) {
+					equals = this.parcelas[x][y].equals(((Mapa) o).getParcelas()[x][y]);
+					y++;
+				}
+				x++;
+			}
+
+			return equals;
+		}
+
+		return false;
 	}
 
 }

@@ -11,6 +11,7 @@ public class Roca extends Parcela {
     }
 
 	public void jugarTurno(Mapa mapa, Jugador jugador) {
+
 		this.moverEnemigos();
 	}
 

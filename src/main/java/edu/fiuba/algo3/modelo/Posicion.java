@@ -32,4 +32,11 @@ public class Posicion {
         return new Posicion(this.x() + posicion.x(), this.y() + posicion.y());
     }
 
+	@Override
+	public boolean equals(Object o) {
+		return (this.getClass().equals(o.getClass())
+			 && this.x() == ((Posicion) o).x()
+			 && this.y() == ((Posicion) o).y());
+	}
+
 }

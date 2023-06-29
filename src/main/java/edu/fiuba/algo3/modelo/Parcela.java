@@ -6,11 +6,24 @@ import java.util.ArrayList;
 public abstract class Parcela {
     Posicion posicion;
     List<Enemigo> enemigos;
+	Parcela siguiente;
 
     public Parcela(Posicion posicion) {
         this.posicion = posicion;
         this.enemigos = new ArrayList<Enemigo>();
+		this.siguiente = null;
     }
+
+	public Parcela getSiguiente() {
+		if (siguiente != null) {
+			return this.siguiente;
+		}
+		return this;
+	}
+
+	public void setSiguiente(Parcela parcela) {
+		this.siguiente = parcela;
+	}
 
     public Posicion getPosicion() {
         return this.posicion;
@@ -54,13 +67,19 @@ public abstract class Parcela {
     public void moverEnemigos() {
         if (this.tieneEnemigos()) {
             for (Enemigo enemigo : this.enemigos) {
-                enemigo.mover();
+				enemigo.mover();
             }
             this.enemigos.removeAll(enemigos);
         }
     }
 
 	public abstract void jugarTurno(Mapa mapa, Jugador jugador);
+
+	@Override
+	public boolean equals(Object o) {
+		return (this.getClass().equals(o.getClass())
+			 && this.posicion.equals(((Parcela) o).getPosicion()));
+	}
 
     // public void abstract construirTrampaArenosa(TrampaArenosa trampaArenosa) throws Exception;
 

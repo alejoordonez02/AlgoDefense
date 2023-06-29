@@ -35,8 +35,7 @@ public class JsonEnemyRepository implements EnemyRepository {
     }
 
 
-    public List<Enemigo> parsear(int t, Pasarela pasarelaInicial) throws IOException {
-        
+    public List<Enemigo> parsear(int t, Mapa mapa) throws IOException {        
         t = this.turno(t);
         JSONArray map = null;
 
@@ -53,35 +52,36 @@ public class JsonEnemyRepository implements EnemyRepository {
         Object hormiga = e.get("hormiga");
         for(int i = 0; i < (Long) hormiga; i++){
 
-            enemigos.add(asignar("hormiga", pasarelaInicial));
+            enemigos.add(asignar("hormiga", mapa));
         }
 
         Object arana = e.get("arana");
         for(int i = 0; i < (Long) arana; i++){
 
-            enemigos.add(asignar("arana", pasarelaInicial));
+            enemigos.add(asignar("arana", mapa));
 
         }
 
         Object topo = e.get("topo");
         for(int i = 0; i < (Long) topo; i++){
 
-            enemigos.add(asignar("topo", pasarelaInicial));
+            enemigos.add(asignar("topo", mapa));
 
         }
 
         Object lechuza = e.get("lechuza");
         for(int i = 0; i < (Long) lechuza; i++){
 
-            enemigos.add(asignar("lechuza", pasarelaInicial));
+            enemigos.add(asignar("lechuza", mapa));
 
-        }     
+        }
 
         return enemigos;
     }
 
-    private Enemigo asignar(String s, Pasarela pasarelaInicial){
+    private Enemigo asignar(String s, Mapa mapa){
         Enemigo e = null;
+		Pasarela pasarelaInicial = mapa.getInicial();
         switch (s){
             case "arana":
                 e = new Arania(pasarelaInicial);
@@ -93,7 +93,7 @@ public class JsonEnemyRepository implements EnemyRepository {
                 e = new Topo(pasarelaInicial);
                 break;
             case "lechuza":
-                e = new Lechuza(pasarelaInicial);
+                e = new Lechuza(mapa);
                 break;
         }
         return e;

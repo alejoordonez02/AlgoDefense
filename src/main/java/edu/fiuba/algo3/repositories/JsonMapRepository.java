@@ -16,7 +16,6 @@ import java.util.ArrayList;
 Mapa mapa = new Mapa (parser.parsear());*/
 
 public class JsonMapRepository implements MapRepository {
-    final int SIZE = 15;
     private String path;
 
     public JsonMapRepository(String p) {
@@ -41,9 +40,30 @@ public class JsonMapRepository implements MapRepository {
         posiciones.add(posicion.sumar(new Posicion(0,-1)));
 
         for (Posicion p : posiciones)  {
+			int posX = p.x();
+			int posY = p.y();
 
-            if(pasarelas[p.x()][p.y()] && !(anterior.equals(p))) {
-                return p;
+			if (posX < 0) {
+				posX = 0;
+			}
+			if (posX > pasarelas.length - 1) {
+				posX = pasarelas.length - 1;
+			}
+			if (posY < 0) {
+				posY = 0;
+			}
+			if (posY > pasarelas.length - 1) {
+				posY = pasarelas.length - 1;
+			}
+			p.setPosicion(posX, posY);
+
+            if(pasarelas[posX][posY] && !(p.equals(posicion))) {
+				if (anterior == null) {
+					return p;
+				}
+				if (!(p.equals(anterior))) {
+					return p;
+				}
             }
         }
 
@@ -61,21 +81,18 @@ public class JsonMapRepository implements MapRepository {
         }
 
         JSONObject map = (JSONObject) jsonObj.get("Mapa");
-        Parcela[][] mapa = new Parcela[SIZE][SIZE];
-        boolean[][] pasarelas = new boolean[SIZE][SIZE];
+        Parcela[][] mapa = new Parcela[map.size()][map.size()];
+        boolean[][] pasarelas = new boolean[map.size()][map.size()];
 
         Pasarela pasarelaInicial = null;
         Pasarela pasarelaFinal = null;
 
-        for (int x = 0; x < SIZE; x++) {
+        for (int x = 0; x < map.size(); x++) {
             JSONArray line = (JSONArray) map.get(Integer.toString(x + 1));
 
-            for (int y = 0; y < SIZE; y++) {
-
+            for (int y = 0; y < map.size(); y++) {
                 Parcela parcela = asignar((String) line.get(y), x, y);
-
                 mapa[x][y] = parcela;
-
                 if (("Pasarela".equals(line.get(y)))) {
                     pasarelaFinal = (Pasarela) parcela;
                     pasarelas[x][y] = true;
@@ -91,7 +108,16 @@ public class JsonMapRepository implements MapRepository {
         }
 
         Posicion posicionEncontrada = buscarPasarelaSiguiente(pasarelas, pasarelaInicial.getPosicion(), null);
-        pasarelaInicial.setSiguiente((Pasarela) mapa[posicionEncontrada.x()][posicionEncontrada.y()]);
+		Pasarela pasarelaAnterior = pasarelaInicial;
+		Pasarela pasarelaSiguiente = (Pasarela) mapa[posicionEncontrada.x()][posicionEncontrada.y()];
+        pasarelaInicial.setSiguiente(pasarelaSiguiente);
+		posicionEncontrada = buscarPasarelaSiguiente(pasarelas, pasarelaSiguiente.getPosicion(), pasarelaAnterior.getPosicion());
+		while (posicionEncontrada != null) {
+			pasarelaAnterior = pasarelaSiguiente;
+			pasarelaSiguiente = (Pasarela) mapa[posicionEncontrada.x()][posicionEncontrada.y()];
+			pasarelaAnterior.setSiguiente(pasarelaSiguiente);
+			posicionEncontrada = buscarPasarelaSiguiente(pasarelas, pasarelaSiguiente.getPosicion(), pasarelaAnterior.getPosicion());
+		}
 
         Mapa m = new Mapa(mapa, pasarelaInicial, pasarelaFinal);
 
@@ -129,10 +155,10 @@ public class JsonMapRepository implements MapRepository {
         try {
             JSONObject map = (JSONObject) jsonObj.get("Mapa");
 
-            for (int x = 0; x < SIZE; x++) {
+            for (int x = 0; x < map.size(); x++) {
                 JSONArray line = (JSONArray) map.get(Integer.toString(x + 1));
 
-                for (int y = 0; y < SIZE; y++) {
+                for (int y = 0; y < map.size(); y++) {
                     String s = (String) line.get(y);
 
                     if (!s.equals("Tierra") && !s.equals("Rocoso") && !s.equals("Pasarela")) {

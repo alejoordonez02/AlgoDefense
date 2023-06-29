@@ -14,7 +14,9 @@ public class Tierra extends Parcela {
     }
 
 	public void jugarTurno(Mapa mapa, Jugador jugador) {
+		
 		this.moverEnemigos();
+
 		if (torre != null) {
 			this.torre.jugarTurno(mapa, jugador);
 		}

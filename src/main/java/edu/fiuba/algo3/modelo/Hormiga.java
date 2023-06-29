@@ -10,16 +10,8 @@ public class Hormiga extends Enemigo {
 		this.movedor = new CaminarSobrePasarela((Pasarela) parcela, 1);
 	}
 
-	public void atacar(Jugador jugador) {
+	public void atacar(Jugador jugador, int turno) {
 		jugador.atacado(danio);
-	}
-
-	public int getVida() {
-		return this.vida;
-	}
-
-	public static int getDestruidas() {
-		return destruidas;
 	}
 
 	@Override

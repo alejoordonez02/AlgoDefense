@@ -28,6 +28,11 @@ public abstract class Enemigo {
         movedor.mover(this);
     }
 		
-	public abstract void atacar(Jugador jugador);
+	public abstract void atacar(Jugador jugador, int turno);
+
+	@Override
+	public boolean equals(Object o) {
+		return this.getClass().equals(o.getClass());
+	}
 
 }

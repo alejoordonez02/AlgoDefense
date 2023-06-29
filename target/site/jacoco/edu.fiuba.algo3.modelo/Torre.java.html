@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Torre.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp2</a> &gt; <a href="index.source.html" class="el_package">edu.fiuba.algo3.modelo</a> &gt; <span class="el_source">Torre.java</span></div><h1>Torre.java</h1><pre class="source lang-java linenums">package edu.fiuba.algo3.modelo;
+
+public class Torre implements Defensa {
+    int costo;
+    int tiempoDeConstruccion;
+    Rango rango;
+    int danio;
+    int turno;
+    Posicion posicion;
+
+<span class="fc" id="L11">    public Torre() {</span>
+<span class="fc" id="L12">        this.turno = 0;</span>
+<span class="fc" id="L13">    }</span>
+
+    public int getCosto() {
+<span class="fc" id="L16">        return this.costo;</span>
+    }
+
+    public int getTiempoDeConstruccion() {
+<span class="nc" id="L20">        return this.tiempoDeConstruccion;</span>
+    }
+
+    public Rango getRango() {
+<span class="nc" id="L24">        return this.rango;</span>
+    }
+
+    public int getDanio() {
+<span class="fc" id="L28">        return this.danio;</span>
+    }
+
+    public int getTurno() {
+<span class="nc" id="L32">        return this.turno;</span>
+    }
+
+    public Posicion getPosicion() {
+<span class="nc" id="L36">        return this.posicion;</span>
+    }
+
+    public void setPosicion(Posicion posicion) {
+<span class="fc" id="L40">        this.posicion = posicion;</span>
+<span class="fc" id="L41">    }</span>
+
+    public boolean operativa() {
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        return turno &gt;= tiempoDeConstruccion;</span>
+    }
+
+    public int atacar(Parcela parcela) {
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">		if (parcela != null){</span>
+<span class="fc" id="L49">			return parcela.atacada(this.getDanio());</span>
+		}
+		
+<span class="nc" id="L52">		return 0;</span>
+    }
+
+    public int atacar(Mapa mapa) {
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        if (this.operativa()) {</span>
+<span class="fc" id="L57">            return atacar(this.rango.buscarEnemigo(mapa, this.posicion));</span>
+        }
+
+<span class="fc" id="L60">        return 0;</span>
+    }
+
+    public void pasarTurno() {
+<span class="fc" id="L64">        this.turno++;</span>
+<span class="fc" id="L65">    }</span>
+
+    public void jugarTurno(Mapa mapa, Jugador jugador) {
+<span class="fc" id="L68">        jugador.cobrar(this.atacar(mapa));</span>
+<span class="fc" id="L69">        this.pasarTurno();</span>
+<span class="fc" id="L70">    }</span>
+
+    @Override
+    public boolean equals(Object o){
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        if (this.getClass().equals(o.getClass())) {</span>
+<span class="nc" id="L75">            Torre c = (Torre)o;</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">            return this.getCosto() == (c.getCosto())</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">                &amp;&amp; this.getTiempoDeConstruccion() == (c.getTiempoDeConstruccion())</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">                &amp;&amp; this.getRango().equals(c.getRango())</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">                &amp;&amp; this.getDanio() == (c.getDanio())</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">                &amp;&amp; this.getTurno() == (c.getTurno())</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">                &amp;&amp; this.getPosicion().equals(c.getPosicion());</span>
+        }
+<span class="nc" id="L83">            return false;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -6,20 +6,29 @@ public class Juego {
     Mapa mapa;
     Jugador jugador;
     MapRepository mapaParser;
-    EnemyRepository enemyParser;
-    // turno int?
-    Turno turno;
+    EnemyRepository enemigoParser;
+    int turno;
 
-    public Juego(String nombre, MapRepository mapaParser, EnemyRepository enemyParser) throws IOException, FormatoJSONInvalido {
+    public Juego(String nombre, MapRepository mapaParser, EnemyRepository enemigoParser) throws IOException, FormatoJSONInvalido {
         this.mapaParser = mapaParser;
-        this.enemyParser = enemyParser;
+        this.enemigoParser = enemigoParser;
         this.mapa = mapaParser.parsear();
         this.jugador = new Jugador(nombre);
-        this.turno = new Turno();
+        this.turno = 1;
     }
 
-    public void pasarTurno() {
-        this.turno.pasar(this.mapa, this.jugador);
+	public boolean victoria() {
+		return (jugador.estaVivo() && !(mapa.tieneEnemigos()));
+	}
+
+	public boolean derrota() {
+		return (!jugador.estaVivo());
+	}
+
+    public void pasarTurno() throws IOException, FormatoJSONInvalido{
+        mapa.jugarTurno(jugador, turno);
+		mapa.establecerEnemigos(enemigoParser.parsear(turno, mapa));
+		turno++;
     }
 
 }
