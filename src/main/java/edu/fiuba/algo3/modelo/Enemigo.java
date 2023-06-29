@@ -16,6 +16,10 @@ public abstract class Enemigo {
         return 0;
     }
 
+    public int getCreditos() {
+        return this.creditos;
+    }
+
     public boolean estaVivo() {
         return this.vida > 0;
     }
