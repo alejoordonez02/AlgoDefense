@@ -19,21 +19,21 @@ Para el desarrollo se usaron JDK, JavaFX, JUnit: framework de pruebas unitarias 
 Además utilizamos formas de desarrollo en grupo como aprendizaje cooperativo, evaluación grupal y "pair programming".
 ## Metodología de desarrollo
 La realización de este trabajo consistió en 6 entregas semanales, en cada una de las cuáles recibimos una valoración sobre nuestro progreso por parte de nuestro corrector y consejos para seguir trabajando.
-## Semana 1
+# Semana 1
 - Planteo del modelo tentativo con diagramas de clases.
 - Creación del repositorio de código.
 - Configuración del servidor de integración continua.
 - Commits de los integrantes.
-## Semana 2
+# Semana 2
 Implementación de la primera parte del modelo con sus respectivas pruebas unitarias e integrales sin interfaz gráfica.
-## Semana 3
+# Semana 3
 Implementación de la lectura de los archivos JSON con la configuración del juego.
-## Semana 4
+# Semana 4
 - Extensión del modelo y finalización del mismo, con todas sus pruebas.
 - Implementación de la interfaz gráfica inicial.
-## Semana 5
+# Semana 5
 Implementación de la totalidad de la interfaz gráfica.
-## Semana 6
+# Semana 6
 Entrega final con el trabajo completo funcionando, con interfaz gráfica y sonidos.
 ## Desarrollo
 <!-- ## Supuestos -->
@@ -57,6 +57,8 @@ Para la implementación fuimos cuidadosos con los pilares de la programación or
 También hicimos uso del patrón de diseño "Strategy" para la implementación de la movilidad de los enemigos. Esto nos permitió no repetir código y lograr una solución mucho más robusta y de fácil extensión.
 ## Excepciones
 - ParcelaInvalida: se lanza cuando se quiere construir una defensa en un terreno en el cuál no se puede edificar.
-- CreditosInsuficientes: como indica su nombre, salta cuando los créditos del jugador no alcanzan para construir una defensa determinada.
+- CreditosInsuficientes: salta cuando los créditos del jugador no alcanzan para construir una defensa determinada.
+- JSONVacio: se arroja cada vez que se quiere parsear un JSON que está vacío
+- FormatoJSONINvalido: si el formato del JSON que se intenta parsear no es el correcto se arroja esta excepción
 
 
