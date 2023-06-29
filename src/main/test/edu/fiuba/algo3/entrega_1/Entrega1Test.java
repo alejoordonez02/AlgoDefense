@@ -143,12 +143,11 @@ public class Entrega1Test {
 
         Mapa mapa = new Mapa(parcelas);
 
+        torreBlanca.pasarTurno();
+
 		torreBlanca.atacar(mapa);
 		torreBlanca.atacar(mapa);
 
-// 
-        System.out.println(hormiga.getVida());
-        System.out.println(Hormiga.getDestruidas());
         assertFalse(hormiga.estaVivo());
         assertTrue(arania.estaVivo());
 	}
@@ -179,43 +178,69 @@ public class Entrega1Test {
 
         Mapa mapa = new Mapa(parcelas);
 
+        torrePlateada.pasarTurno();
+        torrePlateada.pasarTurno();
+
 		torrePlateada.atacar(mapa);
 		torrePlateada.atacar(mapa);
-// 
+
         assertFalse(hormiga.estaVivo());
         assertFalse(arania.estaVivo());
 	}
 
-	// @Test
-	// public void Test09EnemigosSeMuevenSoloPorLasPasarelas() {
-	// 	Parcela[][] parcelas = new Parcela[3][3];
+	@Test
+	public void Test09EnemigosSeMuevenSoloPorLasPasarelas() {
 
-	// 	for (int x = 0; x < 3; x++) {
+		Parcela[][] parcelas = new Parcela[3][3];
 
-	// 		for (int y = 0; y < 3; y++) {
-	// 			parcelas[x][y] = new Tierra(new Posicion(x,y));
-	// 		}
-	// 	}
+		for (int x = 0; x < 3; x++) {
+			for (int y = 0; y < 3; y++) {
+				parcelas[x][y] = new Tierra(new Posicion(x,y));
+			}
+		}
 
-	// 	parcelas[0][0] = new Pasarela(new Posicion(0,0));
-	// 	parcelas[1][0] = new Pasarela(new Posicion(1,0));
-	// 	parcelas[1][1] = new Pasarela(new Posicion(1,1));
-	// 	parcelas[1][2] = new Pasarela(new Posicion(1,2));
-	// 	parcelas[2][2] = new Pasarela(new Posicion(2,2));
+		parcelas[0][0] = new Pasarela(new Posicion(0,0));
+		parcelas[1][0] = new Pasarela(new Posicion(1,0));
+		parcelas[1][1] = new Pasarela(new Posicion(1,1));
+		parcelas[1][2] = new Pasarela(new Posicion(1,2));
+		parcelas[2][2] = new Pasarela(new Posicion(2,2));
 
-	// 	parcelas[0][0].setSiguiente(parcelas[1][0]);
-	// 	parcelas[1][0].setSiguiente(parcelas[1][1]);
-	// 	parcelas[1][1].setSiguiente(parcelas[1][2]);
-	// 	parcelas[1][2].setSiguiente(parcelas[2][2]);
+		((Pasarela) parcelas[0][0]).setSiguiente(((Pasarela) parcelas[1][0]));
+		((Pasarela) parcelas[1][0]).setSiguiente(((Pasarela) parcelas[1][1]));
+		((Pasarela) parcelas[1][1]).setSiguiente(((Pasarela) parcelas[1][2]));
+		((Pasarela) parcelas[1][2]).setSiguiente(((Pasarela) parcelas[2][2]));
 
-	// 	parcelas[0][0].agregarEnemigo(new Hormiga(parcelas[0][0]));
-	// 	parcelas[0][0].agregarEnemigo(new Arania(parcelas[0][0]));
+		parcelas[0][0].agregarEnemigo(new Hormiga(parcelas[0][0]));
+		parcelas[0][0].agregarEnemigo(new Arania(parcelas[0][0]));
 
-	// 	parcelas[0][0].mover();
+		parcelas[0][0].moverEnemigos();
 
-	// 	assertTrue(!(parcelas[0][0].tieneEnemigo()));
-	// 	assertTrue(parcelas[1][0].tieneEnemigo());
-	// 	assertTrue(parcelas[1][1].tieneEnemigo());
-	// }
+		assertFalse(parcelas[0][0].tieneEnemigo());
+		assertTrue(parcelas[1][0].tieneEnemigo());
+		assertTrue(parcelas[1][1].tieneEnemigo());
+	}
 
+	@Test
+	public void Test10ElCreditoCobradoAlDestruirUnaUnidadEnemigaEsElEsperado() {
+		TorrePlateada torrePlateada = new TorrePlateada();
+
+		Pasarela pasarela = new Pasarela(new Posicion(0,0));
+
+        Hormiga hormiga = new Hormiga(pasarela);
+        Arania arania = new Arania(pasarela);
+
+		pasarela.agregarEnemigo(hormiga);
+		pasarela.agregarEnemigo(arania);
+
+        torrePlateada.pasarTurno();
+        torrePlateada.pasarTurno();
+
+        assertEquals(hormiga.getCreditos(), torrePlateada.atacar(pasarela));
+        assertEquals(arania.getCreditos(), torrePlateada.atacar(pasarela));
+	}
+
+	@Test
+	public void Test11AlEliminarATodasLasUnidadesEnemigasElJugadorGanaElJuego() {
+		
+	}
 }

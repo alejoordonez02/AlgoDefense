@@ -40,16 +40,16 @@ public class Torre implements Defensa {
         this.posicion = posicion;
     }
 
+    public boolean operativa() {
+        return turno >= tiempoDeConstruccion;
+    }
+
     public int atacar(Parcela parcela) {
 		if (parcela != null){
 			return parcela.atacada(this.getDanio());
 		}
 		
 		return 0;
-    }
-
-    public boolean operativa() {
-        return turno >= tiempoDeConstruccion;
     }
 
     public int atacar(Mapa mapa) {

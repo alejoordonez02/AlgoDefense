@@ -1,12 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: edu.fiuba.algo3.entrega_1.Entrega1Test
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.026 s <<< FAILURE! - in edu.fiuba.algo3.entrega_1.Entrega1Test
-Test07TorreBlancaAtacaAHormigaYAraniaYHormigaMuerePeroAraniaNo  Time elapsed: 0.02 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
-	at edu.fiuba.algo3/edu.fiuba.algo3.entrega_1.Entrega1Test.Test07TorreBlancaAtacaAHormigaYAraniaYHormigaMuerePeroAraniaNo(Entrega1Test.java:152)
-
-Test08TorrePlateadaAtacaAHormigaYAraniaYAmbosMueren  Time elapsed: 0.002 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
-	at edu.fiuba.algo3/edu.fiuba.algo3.entrega_1.Entrega1Test.Test08TorrePlateadaAtacaAHormigaYAraniaYAmbosMueren(Entrega1Test.java:185)
-
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s - in edu.fiuba.algo3.entrega_1.Entrega1Test

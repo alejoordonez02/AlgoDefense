@@ -42,13 +42,13 @@ public abstract class Parcela {
         return 0;
     }
 
+    // habría que iterar el camino al revés para no quitar a los enemigos que se acaban de mover
     public void moverEnemigos() {
-
         if (this.tieneEnemigo()) {
             for (Enemigo enemigo : this.enemigos) {
                 enemigo.mover();
-                this.quitarEnemigo(enemigo);
             }
+            this.enemigos.removeAll(enemigos);
         }
     }
 

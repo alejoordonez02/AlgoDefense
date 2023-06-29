@@ -12,7 +12,7 @@ public class CaminarSobrePasarela implements Movedor {
     public void mover(Enemigo enemigo) {
 
         for (int i = 0; i < this.velocidad; i++) {
-            this.pasarela = pasarela.getSiguiente();
+            this.pasarela = this.pasarela.getSiguiente();
         }
 
         this.pasarela.agregarEnemigo(enemigo);
