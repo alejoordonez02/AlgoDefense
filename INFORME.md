@@ -8,6 +8,7 @@
 ## Descripción del juego
 El objetivo de este trabajo es el completo desarrollo de un Tower Defense, incluyendo el modelo de clases, sonidos e interfaz gráfica; acompañado por pruebas unitarias e integrales y documentación de diseño; utilizando el lenguaje Java, con un diseño orientado a objetos y trabajando con las técnicas de TDD e Integración Continua.
 AlgoDefense es un Tower Defense pero no en tiempo real, sino por turnos. Es un juego de estrategia y se basa en la construcción de defensas que impidan que los enemigos lleguen hasta el jugador.
+***
 El plantel de enemigos se encuentra conformado por hormigas, arañas, topos y lechuzas, todos con habilidades únicas que requerirán diferentes estrategias para ser derrotados.
 El jugador comienza con 20 puntos de vida y 100 créditos que le permitirán construir defensas, que irán retornando más créditos a medida que vayan eliminando enemigos según corresponda su unidad. A medida que los enemigos vayan llegando a la meta se le irán descontando puntos de vida al jugador y éste pierde la partida si llega a 0.
 Las defensas que el jugador podrá utilizar para defenderse de las unidades enemigas son la Torre Blanca, de rápida construcción pero menos potente que la Torre Plateada, que a pesar de ser más cara y de tardar más en construirse es más fuerte. También se pueden construir Trampas Arenosas que ralentizan el avance de los enemigos cuando caen en ellas.
