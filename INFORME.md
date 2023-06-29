@@ -38,10 +38,17 @@ Entrega final con el trabajo completo funcionando, con interfaz gráfica y sonid
 ## Desarrollo
 <!-- ## Supuestos -->
 ## Diagramas de clases
+### Juego Jugador y Mapa
+![JuegoJugadorYMapa](diagrams/modelo/JuegoJugadorYMapa.png)
+### Defensas
 ![Defensas](diagrams/modelo/Defensas.png)
-![Defensas y Parcelas](diagrams/modelo/Defensas\ y\ Parcelas.png)
-![Herencia Enemigos](diagrams/modelo/Herencia\ Enemigos.png)
-![Movedor con Strategy](diagrams/modelo/Movedor\ con\ Strategy.png)
+### Defensas y Parcelas
+![Defensas y Parcelas](diagrams/modelo/DefensasYParcelas.png)
+### Herencia Enemigos
+![Herencia Enemigos](diagrams/modelo/HerenciaEnemigos.png)
+### Movedor con Strategy
+![Movedor con Strategy](diagrams/modelo/MovedorConStrategy.png)
+
 <!-- Diagramas de secuencia -->
 <!-- Diagrama de paquetes -->
 <!-- Diagramas de estado -->
