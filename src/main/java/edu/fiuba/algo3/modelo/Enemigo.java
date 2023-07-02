@@ -6,6 +6,18 @@ public abstract class Enemigo {
     Credito creditos;
     Movedor movedor;
 
+    public Vida getVida() {
+        return this.vida;
+    }
+
+    public int getDanio() {
+        return this.danio;
+    }
+
+    public Credito getCreditos() {
+        return this.creditos;
+    }
+
     public Credito atacado(int danio) {
         this.vida.restar(new Vida(danio));
 
@@ -14,10 +26,6 @@ public abstract class Enemigo {
         }
 
         return new Credito(0);
-    }
-
-    public Credito getCreditos() {
-        return this.creditos;
     }
 
     public boolean estaVivo() {

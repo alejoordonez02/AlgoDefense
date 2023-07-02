@@ -8,6 +8,10 @@ public class Rango {
         this.alcance = alcance;
     }
 
+    public int getAlcance() {
+        return this.alcance;
+    }
+
     public Parcela buscarEnemigo(Mapa mapa, Posicion posicion) {
 
         for (int x = -alcance; x <= alcance; x++) {
@@ -23,4 +27,9 @@ public class Rango {
         return null;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        return this.getClass().equals(o.getClass())
+            && this.getAlcance() == ((Rango) o).getAlcance();
+    }
 }
