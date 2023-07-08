@@ -26,7 +26,7 @@ public class Posicion {
     }
 
     public double distancia(Posicion posicion) {
-        return Math.sqrt(Math.pow((posicion.x() - this.x()), 2) + Math.pow((posicion.y() - this.y()), 2));
+        return sqrt(pow((posicion.x() - this.x()), 2) + pow((posicion.y() - this.y()), 2));
     }
 
     public Posicion sumar(Posicion posicion) {

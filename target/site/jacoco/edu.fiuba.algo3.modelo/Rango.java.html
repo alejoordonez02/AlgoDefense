@@ -8,20 +8,29 @@ public class Rango {
 <span class="fc" id="L8">        this.alcance = alcance;</span>
 <span class="fc" id="L9">    }</span>
 
+    public int getAlcance() {
+<span class="fc" id="L12">        return this.alcance;</span>
+    }
+
     public Parcela buscarEnemigo(Mapa mapa, Posicion posicion) {
 
-<span class="fc bfc" id="L13" title="All 2 branches covered.">        for (int x = -alcance; x &lt;= alcance; x++) {</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        for (int x = -alcance; x &lt;= alcance; x++) {</span>
 
-<span class="fc bfc" id="L15" title="All 2 branches covered.">            for (int y = -(alcance - abs(x)); y &lt;= alcance - abs(x); y++) {</span>
-<span class="fc" id="L16">                Posicion posicionObjetivo = posicion.sumar(new Posicion(x,y));</span>
-<span class="fc bfc" id="L17" title="All 4 branches covered.">                if (mapa.posicionValida(posicionObjetivo) &amp;&amp; mapa.tieneEnemigos(posicionObjetivo)) {</span>
-<span class="fc" id="L18">                    return mapa.getParcela(posicionObjetivo);</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">            for (int y = -(alcance - abs(x)); y &lt;= alcance - abs(x); y++) {</span>
+<span class="fc" id="L20">                Posicion posicionObjetivo = posicion.sumar(new Posicion(x,y));</span>
+<span class="fc bfc" id="L21" title="All 4 branches covered.">                if (mapa.posicionValida(posicionObjetivo) &amp;&amp; mapa.tieneEnemigos(posicionObjetivo)) {</span>
+<span class="fc" id="L22">                    return mapa.getParcela(posicionObjetivo);</span>
                 }
             }
         }
 
-<span class="fc" id="L23">        return null;</span>
+<span class="fc" id="L27">        return null;</span>
     }
 
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        return this.getClass().equals(o.getClass())</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">            &amp;&amp; this.getAlcance() == ((Rango) o).getAlcance();</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

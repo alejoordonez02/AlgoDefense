@@ -29,67 +29,81 @@ public class Mapa {
 <span class="fc" id="L29">        return this.parcelas[posicion.x()][posicion.y()];</span>
     }
 
+	public void construirTorre(Jugador jugador, Posicion posicion, Torre torre) {
+		try {
+<span class="nc" id="L34">			this.parcelas[posicion.x()][posicion.y()].construirTorre(torre);</span>
+<span class="nc" id="L35">		} catch (Exception e) {</span>
+
+<span class="nc" id="L37">		}</span>
+<span class="nc" id="L38">	}</span>
+
+	public void construirTrampa(Jugador jugador, Posicion posicion, TrampaArenosa trampaArenosa) {
+		try {
+<span class="nc" id="L42">			this.parcelas[posicion.x()][posicion.y()].construirTrampa(trampaArenosa);</span>
+<span class="nc" id="L43">		} catch (Exception e) {}</span>
+<span class="nc" id="L44">	}</span>
+
 	public void establecerEnemigos(List&lt;Enemigo&gt; enemigos) {
-<span class="fc" id="L33">		this.pasarelaInicial.agregarEnemigos(enemigos);</span>
-<span class="fc" id="L34">	}</span>
+<span class="fc" id="L47">		this.pasarelaInicial.agregarEnemigos(enemigos);</span>
+<span class="fc" id="L48">	}</span>
 
 	public boolean posicionValida(Posicion posicion) {
-<span class="pc bpc" id="L37" title="1 of 4 branches missed.">		return ((posicion.x() &gt;= 0 &amp;&amp; posicion.x() &lt; parcelas.length) </span>
-<span class="pc bpc" id="L38" title="1 of 4 branches missed.">			 &amp;&amp; (posicion.y() &gt;= 0 &amp;&amp; posicion.y() &lt; parcelas[0].length));</span>
+<span class="pc bpc" id="L51" title="1 of 4 branches missed.">		return ((posicion.x() &gt;= 0 &amp;&amp; posicion.x() &lt; parcelas.length) </span>
+<span class="pc bpc" id="L52" title="1 of 4 branches missed.">			 &amp;&amp; (posicion.y() &gt;= 0 &amp;&amp; posicion.y() &lt; parcelas[0].length));</span>
 	}
 
     public boolean tieneEnemigos(Posicion posicion) {
-<span class="fc" id="L42">        return this.getParcela(posicion).tieneEnemigos();</span>
+<span class="fc" id="L56">        return this.getParcela(posicion).tieneEnemigos();</span>
     }
 
 	public boolean tieneEnemigos() {
-<span class="fc" id="L46">		int x = 0;</span>
-<span class="fc" id="L47">		int y = 0;</span>
-<span class="fc" id="L48">		boolean tieneEnemigos = false;</span>
+<span class="fc" id="L60">		int x = 0;</span>
+<span class="fc" id="L61">		int y = 0;</span>
+<span class="fc" id="L62">		boolean tieneEnemigos = false;</span>
 
-<span class="pc bpc" id="L50" title="1 of 4 branches missed.">		while (x &lt; this.parcelas.length &amp;&amp; !tieneEnemigos) {</span>
-<span class="pc bpc" id="L51" title="2 of 4 branches missed.">			while (y &lt; this.parcelas[x].length &amp;&amp; tieneEnemigos) {</span>
-<span class="nc" id="L52">				tieneEnemigos = this.parcelas[x][y].tieneEnemigos();</span>
-<span class="nc" id="L53">				y++;</span>
+<span class="pc bpc" id="L64" title="1 of 4 branches missed.">		while (x &lt; this.parcelas.length &amp;&amp; !tieneEnemigos) {</span>
+<span class="pc bpc" id="L65" title="2 of 4 branches missed.">			while (y &lt; this.parcelas[x].length &amp;&amp; tieneEnemigos) {</span>
+<span class="nc" id="L66">				tieneEnemigos = this.parcelas[x][y].tieneEnemigos();</span>
+<span class="nc" id="L67">				y++;</span>
 			}
-<span class="fc" id="L55">			x++;</span>
+<span class="fc" id="L69">			x++;</span>
 		}
 
-<span class="fc" id="L58">		return tieneEnemigos;</span>
+<span class="fc" id="L72">		return tieneEnemigos;</span>
 	}
 
 	public void jugarTurno(Jugador jugador, int turno) {
-<span class="fc bfc" id="L62" title="All 2 branches covered.">		for (int x = this.parcelas.length - 1; x &gt;= 0 ; x--) {</span>
-<span class="fc bfc" id="L63" title="All 2 branches covered.">			for (int y = this.parcelas[x].length - 1; y &gt;= 0 ; y--) {</span>
-<span class="fc" id="L64">				this.parcelas[x][y].jugarTurno(this, jugador);</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">		for (int x = this.parcelas.length - 1; x &gt;= 0 ; x--) {</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">			for (int y = this.parcelas[x].length - 1; y &gt;= 0 ; y--) {</span>
+<span class="fc" id="L78">				this.parcelas[x][y].jugarTurno(this, jugador);</span>
 			}
 		}
 
-<span class="fc" id="L68">		this.pasarelaFinal.atacar(jugador, turno);</span>
-<span class="fc" id="L69">	}</span>
+<span class="fc" id="L82">		this.pasarelaFinal.atacar(jugador, turno);</span>
+<span class="fc" id="L83">	}</span>
 
 	@Override
 	public boolean equals(Object o) {
-<span class="pc bpc" id="L73" title="1 of 2 branches missed.">		if (this.getClass().equals(o.getClass())</span>
-<span class="pc bpc" id="L74" title="1 of 2 branches missed.">		 &amp;&amp; this.getParcelas().length == ((Mapa) o).getParcelas().length</span>
-<span class="pc bpc" id="L75" title="1 of 2 branches missed.">		 &amp;&amp; this.getParcelas()[0].length == ((Mapa) o).getParcelas()[0].length) {</span>
-<span class="fc" id="L76">			boolean equals = true;</span>
-<span class="fc" id="L77">			int x = 0;</span>
-<span class="fc" id="L78">			int y = 0;</span>
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">		if (this.getClass().equals(o.getClass())</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">		 &amp;&amp; this.getParcelas().length == ((Mapa) o).getParcelas().length</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">		 &amp;&amp; this.getParcelas()[0].length == ((Mapa) o).getParcelas()[0].length) {</span>
+<span class="fc" id="L90">			boolean equals = true;</span>
+<span class="fc" id="L91">			int x = 0;</span>
+<span class="fc" id="L92">			int y = 0;</span>
 
-<span class="pc bpc" id="L80" title="1 of 4 branches missed.">			while (equals &amp;&amp; x &lt; this.getParcelas().length) {</span>
+<span class="pc bpc" id="L94" title="1 of 4 branches missed.">			while (equals &amp;&amp; x &lt; this.getParcelas().length) {</span>
 
-<span class="pc bpc" id="L82" title="1 of 4 branches missed.">				while (equals &amp;&amp; y &lt; this.getParcelas()[0].length) {</span>
-<span class="fc" id="L83">					equals = this.parcelas[x][y].equals(((Mapa) o).getParcelas()[x][y]);</span>
-<span class="fc" id="L84">					y++;</span>
+<span class="pc bpc" id="L96" title="1 of 4 branches missed.">				while (equals &amp;&amp; y &lt; this.getParcelas()[0].length) {</span>
+<span class="fc" id="L97">					equals = this.parcelas[x][y].equals(((Mapa) o).getParcelas()[x][y]);</span>
+<span class="fc" id="L98">					y++;</span>
 				}
-<span class="fc" id="L86">				x++;</span>
+<span class="fc" id="L100">				x++;</span>
 			}
 
-<span class="fc" id="L89">			return equals;</span>
+<span class="fc" id="L103">			return equals;</span>
 		}
 
-<span class="nc" id="L92">		return false;</span>
+<span class="nc" id="L106">		return false;</span>
 	}
 
 }

@@ -6,37 +6,45 @@
     Credito creditos;
     Movedor movedor;
 
-    public Credito atacado(int danio) {
-<span class="fc" id="L10">        this.vida.restar(new Vida(danio));</span>
+    public Vida getVida() {
+<span class="fc" id="L10">        return this.vida;</span>
+    }
 
-<span class="fc bfc" id="L12" title="All 2 branches covered.">        if (!this.estaVivo()) {</span>
-<span class="fc" id="L13">            return this.creditos;</span>
-        }
-
-<span class="fc" id="L16">        return new Credito(0);</span>
+    public int getDanio() {
+<span class="fc" id="L14">        return this.danio;</span>
     }
 
     public Credito getCreditos() {
-<span class="fc" id="L20">        return this.creditos;</span>
+<span class="fc" id="L18">        return this.creditos;</span>
+    }
+
+    public Credito atacado(int danio) {
+<span class="fc" id="L22">        this.vida.restar(new Vida(danio));</span>
+
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (!this.estaVivo()) {</span>
+<span class="fc" id="L25">            return this.creditos;</span>
+        }
+
+<span class="fc" id="L28">        return new Credito(0);</span>
     }
 
     public boolean estaVivo() {
-<span class="fc" id="L24">        return this.vida.mayorQue(new Vida(0));</span>
+<span class="fc" id="L32">        return this.vida.mayorQue(new Vida(0));</span>
     }
 
-	public void ralentizar() {
-<span class="nc" id="L28">		movedor.ralentizar();</span>
-<span class="nc" id="L29">	}</span>
+	public void ralentizado() {
+<span class="fc" id="L36">		movedor.ralentizado();</span>
+<span class="fc" id="L37">	}</span>
 
 	public void mover() {
-<span class="fc" id="L32">        movedor.mover(this);</span>
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L40">        movedor.mover(this);</span>
+<span class="fc" id="L41">    }</span>
 		
 	public abstract void atacar(Jugador jugador, int turno);
 
 	@Override
 	public boolean equals(Object o) {
-<span class="fc" id="L39">		return this.getClass().equals(o.getClass());</span>
+<span class="fc" id="L47">		return this.getClass().equals(o.getClass());</span>
 	}
 
 }

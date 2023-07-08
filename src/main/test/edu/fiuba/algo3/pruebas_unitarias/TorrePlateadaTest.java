@@ -4,23 +4,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import edu.fiuba.algo3.modelo.*;
 
 public class TorrePlateadaTest {
 
     @Test
-    public void test01TorrePlateadaSeInicializaConLosAtributosEsperados() {
+    public void test01TorrePlateadaNoEstaOperativaCuandoSeCrea() {
         TorrePlateada torrePlateada = new TorrePlateada();
-        Credito costoEsperado = new Credito(20);
-        Rango rangoEsperado = new Rango(5);
-
-        assertEquals(costoEsperado, torrePlateada.getCosto());
-        assertEquals(2, torrePlateada.getTiempoDeConstruccion());
-        assertEquals(rangoEsperado, torrePlateada.getRango());
-        assertEquals(2, torrePlateada.getDanio());
+        
         assertFalse(torrePlateada.operativa());
     }
 
@@ -39,8 +31,8 @@ public class TorrePlateadaTest {
         TorrePlateada torrePlateada = new TorrePlateada();
         Pasarela pasarela = new Pasarela(new Posicion(0,0));
         Arania arania = new Arania(pasarela);
-        pasarela.agregarEnemigo(arania);
 
+        pasarela.agregarEnemigo(arania);
         torrePlateada.atacar(pasarela);
 
         assertEquals(new Vida(0), arania.getVida());

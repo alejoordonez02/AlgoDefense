@@ -9,11 +9,11 @@ public class Juego {
     EnemyRepository enemigoParser;
     int turno;
 
-    public Juego(String nombre, MapRepository mapaParser, EnemyRepository enemigoParser) throws IOException, FormatoJSONInvalido {
+    public Juego(Jugador jugador, MapRepository mapaParser, EnemyRepository enemigoParser) throws IOException, FormatoJSONInvalido {
         this.mapaParser = mapaParser;
         this.enemigoParser = enemigoParser;
         this.mapa = mapaParser.parsear();
-        this.jugador = new Jugador(nombre);
+        this.jugador = jugador;
         this.turno = 1;
     }
 

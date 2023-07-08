@@ -29,56 +29,78 @@ public abstract class Parcela {
 <span class="fc" id="L29">        return this.posicion;</span>
     }
 
+	public Enemigo getEnemigo() {
+<span class="nc" id="L33">		return enemigos.get(0);</span>
+	}
+
+	public TrampaArenosa getTrampa() {
+<span class="nc" id="L37">		return null;</span>
+	}
+
+	public Torre getTorre() {
+<span class="nc" id="L41">		return null;</span>
+	}
+
+	public boolean hayTorre() {
+<span class="nc" id="L45">		return false;</span>
+	}
+
+	public boolean hayTrampa() {
+<span class="nc" id="L49">		return false;</span>
+	}
+
     public abstract void construirTorre(Torre torre) throws Exception;
 
+	public abstract void construirTrampa(TrampaArenosa trampaArenosa) throws Exception;
+
     public boolean tieneEnemigos() {
-<span class="fc bfc" id="L35" title="All 2 branches covered.">        return !(this.enemigos.isEmpty());</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        return !(this.enemigos.isEmpty());</span>
     }
 
 	public void agregarEnemigos(List&lt;Enemigo&gt; enemigos) {
-<span class="fc" id="L39">		this.enemigos = enemigos;</span>
-<span class="fc" id="L40">	}</span>
+<span class="fc" id="L61">		this.enemigos = enemigos;</span>
+<span class="fc" id="L62">	}</span>
 
     public void agregarEnemigo(Enemigo enemigo) {
-<span class="fc" id="L43">        this.enemigos.add(enemigo);</span>
-<span class="fc" id="L44">    }</span>
+<span class="fc" id="L65">        this.enemigos.add(enemigo);</span>
+<span class="fc" id="L66">    }</span>
 
 	public void quitarEnemigo(Enemigo enemigo) {
-<span class="fc" id="L47">		this.enemigos.remove(enemigo);</span>
-<span class="fc" id="L48">	}</span>
+<span class="fc" id="L69">		this.enemigos.remove(enemigo);</span>
+<span class="fc" id="L70">	}</span>
 
     public Credito atacada(int danio) {
 
-<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        if (this.tieneEnemigos()) {</span>
-<span class="fc" id="L53">            Enemigo enemigo = this.enemigos.get(0);</span>
-<span class="fc" id="L54">            Credito credito = enemigo.atacado(danio);</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">        if (this.tieneEnemigos()) {</span>
+<span class="fc" id="L75">            Enemigo enemigo = this.enemigos.get(0);</span>
+<span class="fc" id="L76">            Credito credito = enemigo.atacado(danio);</span>
 
-<span class="fc bfc" id="L56" title="All 2 branches covered.">            if (!enemigo.estaVivo()) {</span>
-<span class="fc" id="L57">                this.quitarEnemigo(enemigo);</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">            if (!enemigo.estaVivo()) {</span>
+<span class="fc" id="L79">                this.quitarEnemigo(enemigo);</span>
             }
 
-<span class="fc" id="L60">            return credito;</span>
+<span class="fc" id="L82">            return credito;</span>
         }
 
-<span class="nc" id="L63">        return new Credito(0);</span>
+<span class="nc" id="L85">        return new Credito(0);</span>
     }
 
     // habría que iterar el camino al revés para no quitar a los enemigos que se acaban de mover
     public void moverEnemigos() {
-<span class="fc bfc" id="L68" title="All 2 branches covered.">        if (this.tieneEnemigos()) {</span>
-<span class="fc bfc" id="L69" title="All 2 branches covered.">            for (Enemigo enemigo : this.enemigos) {</span>
-<span class="fc" id="L70">				enemigo.mover();</span>
-<span class="fc" id="L71">            }</span>
-<span class="fc" id="L72">            this.enemigos.removeAll(enemigos);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        if (this.tieneEnemigos()) {</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">            for (Enemigo enemigo : this.enemigos) {</span>
+<span class="fc" id="L92">				enemigo.mover();</span>
+<span class="fc" id="L93">            }</span>
+<span class="fc" id="L94">            this.enemigos.removeAll(enemigos);</span>
         }
-<span class="fc" id="L74">    }</span>
+<span class="fc" id="L96">    }</span>
 
 	public abstract void jugarTurno(Mapa mapa, Jugador jugador);
 
 	@Override
 	public boolean equals(Object o) {
-<span class="pc bpc" id="L80" title="1 of 2 branches missed.">		return (this.getClass().equals(o.getClass())</span>
-<span class="pc bpc" id="L81" title="1 of 2 branches missed.">			 &amp;&amp; this.posicion.equals(((Parcela) o).getPosicion()));</span>
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">		return (this.getClass().equals(o.getClass())</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">			 &amp;&amp; this.posicion.equals(((Parcela) o).getPosicion()));</span>
 	}
 
     // public void abstract construirTrampaArenosa(TrampaArenosa trampaArenosa) throws Exception;

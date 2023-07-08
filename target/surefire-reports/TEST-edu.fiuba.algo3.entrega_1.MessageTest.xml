@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="edu.fiuba.algo3.entrega_1.MessageTest" time="0.002" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="edu.fiuba.algo3.entrega_1.MessageTest" time="0.006" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter /home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/target/surefire 2023-06-29T18-03-09_642-jvmRun1 surefire10734485576706241779tmp surefire_011316648532141497062tmp"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter /home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/target/surefire 2023-07-07T19-56-57_417-jvmRun1 surefire5817902511711722591tmp surefire_08432749675712920666tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/fernandoyu/UBA/Algoritmos y programacion 3/TP2/AlgoDefense/target/test-classes:/home/fernandoyu/.m2/repository/junit/junit/4.10/junit-4.10.jar:/home/fernandoyu/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar:/home/fernandoyu/.m2/repository/org/openjfx/javafx-controls/15.0.1/javafx-controls-15.0.1.jar:/home/fernandoyu/.m2/repository/org/openjfx/javafx-graphics/15.0.1/javafx-graphics-15.0.1.jar:/home/fernandoyu/.m2/repository/org/openjfx/javafx-base/15.0.1/javafx-base-15.0.1.jar:/home/fernandoyu/.m2/repository/org/junit/jupiter/junit-jupiter/5.4.0/junit-jupiter-5.4.0.jar:/home/fernandoyu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.4.0/junit-jupiter-api-5.4.0.jar:/home/fernandoyu/.m2/repository/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar:/home/fernandoyu/.m2/repository/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar:/home/fernandoyu/.m2/repository/org/junit/platform/junit-platform-commons/1.4.0/junit-platform-commons-1.4.0.jar:/home/fernandoyu/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.4.0/junit-jupiter-params-5.4.0.jar:/home/fernandoyu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.4.0/junit-jupiter-engine-5.4.0.jar:/home/fernandoyu/.m2/repository/org/junit/platform/junit-platform-engine/1.4.0/junit-platform-engine-1.4.0.jar:/home/fernandoyu/.m2/repository/org/mockito/mockito-core/3.3.0/mockito-core-3.3.0.jar:/home/fernandoyu/.m2/repository/net/bytebuddy/byte-buddy/1.10.5/byte-buddy-1.10.5.jar:/home/fernandoyu/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.5/byte-buddy-agent-1.10.5.jar:/home/fernandoyu/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar:/home/fernandoyu/.m2/repository/com/tngtech/archunit/archunit/0.21.0/archunit-0.21.0.jar:/home/fernandoyu/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/home/fernandoyu/.m2/repository/org/slf4j/slf4j-simple/1.7.30/slf4j-simple-1.7.30.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -38,7 +38,7 @@
     <property name="java.runtime.version" value="11.0.19+7-post-Ubuntu-0ubuntu122.04.1"/>
     <property name="user.name" value="fernandoyu"/>
     <property name="path.separator" value=":"/>
-    <property name="os.version" value="5.19.0-45-generic"/>
+    <property name="os.version" value="5.19.0-46-generic"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
@@ -59,5 +59,5 @@
     <property name="java.class.version" value="55.0"/>
   </properties>
   <testcase name="messageGreetingDefaultLanguage" classname="edu.fiuba.algo3.entrega_1.MessageTest" time="0"/>
-  <testcase name="messageGreeting" classname="edu.fiuba.algo3.entrega_1.MessageTest" time="0"/>
+  <testcase name="messageGreeting" classname="edu.fiuba.algo3.entrega_1.MessageTest" time="0.005"/>
 </testsuite>

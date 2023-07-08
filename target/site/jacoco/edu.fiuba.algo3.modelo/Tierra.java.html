@@ -8,19 +8,36 @@ public class Tierra extends Parcela {
 <span class="fc" id="L8">		torre = null;</span>
 <span class="fc" id="L9">    }</span>
 
+	@Override
+	public Torre getTorre() {
+<span class="nc" id="L13">		return torre;</span>
+	}
+
+	@Override
+	public boolean hayTorre() {
+<span class="nc bnc" id="L18" title="All 2 branches missed.">		if (torre != null) {</span>
+<span class="nc" id="L19">			return true;</span>
+		}
+<span class="nc" id="L21">		return false;</span>
+	}
+
     public void construirTorre(Torre torre) throws Exception {
-<span class="fc" id="L12">        this.torre = torre;</span>
-<span class="fc" id="L13">        this.torre.setPosicion(this.posicion);</span>
-<span class="fc" id="L14">    }</span>
+<span class="fc" id="L25">        this.torre = torre;</span>
+<span class="fc" id="L26">        this.torre.setPosicion(this.posicion);</span>
+<span class="fc" id="L27">    }</span>
+
+	public void construirTrampa(TrampaArenosa trampaArenosa) throws Exception {
+<span class="nc" id="L30">        throw new ParcelaInvalida(&quot;No se puede construir en Tierra&quot;);</span>
+    }
 
 	public void jugarTurno(Mapa mapa, Jugador jugador) {
 		
-<span class="fc" id="L18">		this.moverEnemigos();</span>
+<span class="fc" id="L35">		this.moverEnemigos();</span>
 
-<span class="fc bfc" id="L20" title="All 2 branches covered.">		if (torre != null) {</span>
-<span class="fc" id="L21">			this.torre.jugarTurno(mapa, jugador);</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">		if (torre != null) {</span>
+<span class="fc" id="L38">			this.torre.jugarTurno(mapa, jugador);</span>
 		}
-<span class="fc" id="L23">	}</span>
+<span class="fc" id="L40">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

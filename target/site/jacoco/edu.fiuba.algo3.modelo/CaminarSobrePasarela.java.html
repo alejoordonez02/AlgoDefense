@@ -3,29 +3,34 @@
 public class CaminarSobrePasarela implements Movedor {
     Pasarela pasarela;
     int velocidad;
-    int velocidad_original;
+    boolean ralentizado;
 
 <span class="fc" id="L8">    public CaminarSobrePasarela(Pasarela pasarela, int velocidad) {</span>
 <span class="fc" id="L9">        this.pasarela = pasarela;</span>
 <span class="fc" id="L10">        this.velocidad = velocidad;</span>
-<span class="fc" id="L11">        this.velocidad_original = velocidad;</span>
+<span class="fc" id="L11">        this.ralentizado = false;</span>
 <span class="fc" id="L12">    }</span>
 
-	public void ralentizar() {
-<span class="nc" id="L15">		this.velocidad = velocidad / 2;</span>
-<span class="nc" id="L16">	}</span>
+	public void ralentizado() {
+<span class="fc" id="L15">		this.ralentizado = true;</span>
+<span class="fc" id="L16">	}</span>
 
     public Parcela mover(Enemigo enemigo) {
+<span class="fc" id="L19">		int velocidadActual = this.velocidad;</span>
 
-<span class="fc bfc" id="L20" title="All 2 branches covered.">        for (int i = 0; i &lt; this.velocidad; i++) {</span>
-<span class="fc" id="L21">            this.pasarela = (Pasarela) this.pasarela.getSiguiente();</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">		if (ralentizado) {</span>
+<span class="fc" id="L22">			velocidadActual /= 2;</span>
+		}
+
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        for (int i = 0; i &lt; velocidadActual; i++) {</span>
+<span class="fc" id="L26">            this.pasarela = (Pasarela) this.pasarela.getSiguiente();</span>
         }
 
-<span class="fc" id="L24">        this.pasarela.agregarEnemigo(enemigo);</span>
+<span class="fc" id="L29">        this.pasarela.agregarEnemigo(enemigo);</span>
 
-<span class="fc" id="L26">		this.velocidad = this.velocidad_original;</span>
+<span class="fc" id="L31">		this.ralentizado = false;</span>
 
-<span class="fc" id="L28">		return this.pasarela;</span>
+<span class="fc" id="L33">		return this.pasarela;</span>
     }
 
 }

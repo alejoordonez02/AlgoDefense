@@ -2,10 +2,6 @@ package edu.fiuba.algo3.pruebas_unitarias;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -14,7 +10,7 @@ import edu.fiuba.algo3.modelo.*;
 public class RangoTest {
 
     @Test
-    public void test01RangoSeInicializaCorrectamente() {
+    public void test01RangoSeInicializaConElRangoEsperado() {
         Rango rango = new Rango(3);
         int alcanceEsperado = 3;
 

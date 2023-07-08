@@ -17,19 +17,27 @@ public class Juego {
 <span class="fc" id="L17">        this.turno = 1;</span>
 <span class="fc" id="L18">    }</span>
 
+	public Mapa getMapa() {
+<span class="nc" id="L21">		return mapa;</span>
+	}
+
+	public Jugador getJugador() {
+<span class="nc" id="L25">		return jugador;</span>
+	}
+
 	public boolean victoria() {
-<span class="pc bpc" id="L21" title="2 of 4 branches missed.">		return (jugador.estaVivo() &amp;&amp; !(mapa.tieneEnemigos()));</span>
+<span class="pc bpc" id="L29" title="2 of 4 branches missed.">		return (jugador.estaVivo() &amp;&amp; !(mapa.tieneEnemigos()));</span>
 	}
 
 	public boolean derrota() {
-<span class="pc bpc" id="L25" title="1 of 2 branches missed.">		return (!jugador.estaVivo());</span>
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">		return (!jugador.estaVivo());</span>
 	}
 
     public void pasarTurno() throws IOException, FormatoJSONInvalido{
-<span class="fc" id="L29">        mapa.jugarTurno(jugador, turno);</span>
-<span class="fc" id="L30">		mapa.establecerEnemigos(enemigoParser.parsear(turno, mapa));</span>
-<span class="fc" id="L31">		turno++;</span>
-<span class="fc" id="L32">    }</span>
+<span class="fc" id="L37">        mapa.jugarTurno(jugador, turno);</span>
+<span class="fc" id="L38">		mapa.establecerEnemigos(enemigoParser.parsear(turno, mapa));</span>
+<span class="fc" id="L39">		turno++;</span>
+<span class="fc" id="L40">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.entrega_1;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -10,6 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import edu.fiuba.algo3.modelo.*;
 
 public class Entrega1Test {
+
+	@BeforeEach
+	public void setUp() {
+		Hormiga.resetDestruidas();
+	}
 
     @Test
     public void test01JugadorEmpiezaConLaVidaYLosCreditosEsperados() {

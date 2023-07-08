@@ -10,23 +10,29 @@ public class Hormiga extends Enemigo {
 		this.movedor = new CaminarSobrePasarela((Pasarela) parcela, 1);
 	}
 
+	public static void resetDestruidas() {
+		destruidas = 0;
+	}
+
 	public void atacar(Jugador jugador, int turno) {
 		jugador.atacado(danio);
 	}
 
 	@Override
 	public Credito atacado(int danio) {
-        this.vida.restar(new Vida(danio));
-
-        if (!this.estaVivo()) {
-			destruidas++;
-
-			if (!creditos.equals(new Credito(2)) && destruidas > 10) {
-				this.creditos = new Credito(2);
+		if (this.estaVivo()){
+			this.vida.restar(new Vida(danio));
+	
+			if (!this.estaVivo()) {
+				destruidas++;
+	
+				if (!creditos.equals(new Credito(2)) && destruidas > 10) {
+					this.creditos = new Credito(2);
+				}
+	
+				return this.creditos;
 			}
-
-            return this.creditos;
-        }
+		}
 
         return new Credito(0);
     }

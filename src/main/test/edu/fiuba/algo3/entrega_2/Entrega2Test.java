@@ -2,20 +2,16 @@ package edu.fiuba.algo3.entrega_2;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import java.util.ArrayList;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.repositories.*;
-import net.bytebuddy.build.Plugin.Engine.Listener.ForErrorHandler;
 
 public class Entrega2Test {
 	final String enemigosPath = "src/main/java/edu/fiuba/algo3/json/enemigos.json";
@@ -112,7 +108,9 @@ public class Entrega2Test {
 		EnemyRepository enemigoRepository = new JsonEnemyRepository(enemigosPath);
 		MapRepository mapaRepository = new JsonMapRepository(mapaPath);
 
-		Juego juego = new Juego("Juan", mapaRepository, enemigoRepository);
+		Jugador jugador = new Jugador("Juan");
+
+		Juego juego = new Juego(jugador, mapaRepository, enemigoRepository);
 
 		assertTrue(juego.victoria());
 	}
@@ -122,7 +120,9 @@ public class Entrega2Test {
 		EnemyRepository enemigoRepository = new JsonEnemyRepository(enemigosPath);
 		MapRepository mapaRepository = new JsonMapRepository(mapaPath);
 
-		Juego juego = new Juego("Juan", mapaRepository, enemigoRepository);
+		Jugador jugador = new Jugador("Juan");
+
+		Juego juego = new Juego(jugador, mapaRepository, enemigoRepository);
 
 		for (int i = 0; i < 25; i++) {
 			juego.pasarTurno();

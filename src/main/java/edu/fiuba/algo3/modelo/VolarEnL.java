@@ -32,7 +32,7 @@ public class VolarEnL implements Movedor {
 
 	}
 
-	public void ralentizar() {}
+	public void ralentizado() {}
 
     public Parcela mover(Enemigo enemigo) {
 		for (int i = 0; i < this.velocidad; i++) {

@@ -17,7 +17,7 @@ public class TrampaArenosa implements Defensa{
 
 	public TrampaArenosa jugarTurno(List<Enemigo> enemigos) {
 		for (Enemigo enemigo : enemigos) {
-			enemigo.ralentizar();
+			enemigo.ralentizado();
 		}
 
 		tiempoDeFuncionamiento--;
