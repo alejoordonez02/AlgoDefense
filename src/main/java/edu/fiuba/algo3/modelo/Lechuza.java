@@ -8,7 +8,7 @@ public class Lechuza extends Enemigo {
 	public Lechuza(Mapa mapa) {
 		this.vida = new Vida(5);
 		this.danio = 0;
-		this.creditos = new Credito(0);
+		this.creditos = new Credito(5);
 		this.mapa = mapa;
 		this.parcela = this.mapa.getInicial();
 		this.movedor = new VolarEnL(mapa, 5);
@@ -24,9 +24,14 @@ public class Lechuza extends Enemigo {
     }
 
 	public Credito atacado(int danio) {
+		Vida vidaAnterior = this.vida;
 		this.vida.restar(new Vida(danio));
 
-		if (this.vida.menorIgualQue(new Vida(5 / 2))) {
+		if (!this.estaVivo()) {
+			return this.creditos;
+		}
+
+		if (vidaAnterior.mayorQue(new Vida(5 / 2)) && this.vida.menorIgualQue(new Vida(5 / 2))) {
 			movedor = new VolarRecto(mapa, parcela, 5);
 		}
 

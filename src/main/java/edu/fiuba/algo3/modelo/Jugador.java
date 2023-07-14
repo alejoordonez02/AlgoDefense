@@ -9,10 +9,10 @@ public class Jugador {
     Credito creditos;
 	List<Defensa> torres;
 
-    public Jugador(String nombre) {
+    public Jugador(String nombre, Vida vida, Credito creditos) {
         this.nombre = nombre;
-        this.vida = new Vida(20);
-        this.creditos = new Credito(100);
+        this.vida = vida;
+        this.creditos = creditos;
 		this.torres = new ArrayList<Defensa>();
     }
 
@@ -27,6 +27,10 @@ public class Jugador {
     public Credito getCreditos() {
         return this.creditos;
     }
+
+	public boolean tieneTorres() {
+		return (!this.torres.isEmpty());
+	}
 
 	public void atacado(int danio) {
 		this.vida.restar(new Vida(danio));
@@ -54,7 +58,7 @@ public class Jugador {
     }
 
 	public void destruirTorre() {
-		if (!torres.isEmpty()) {
+		if (this.tieneTorres()) {
 			this.torres.remove(0);
 		}
 	}
@@ -64,10 +68,11 @@ public class Jugador {
         if (this.getClass().equals(o.getClass())) {
             Jugador c = (Jugador)o;
             return this.getNombre().equals(c.getNombre())
-                && this.getVida() == (c.getVida())
-                && this.getCreditos() == (c.getCreditos());
+                && this.getVida().equals(c.getVida())
+                && this.getCreditos().equals(c.getCreditos());
         }
-            return false;
+        
+		return false;
     }
 
 }

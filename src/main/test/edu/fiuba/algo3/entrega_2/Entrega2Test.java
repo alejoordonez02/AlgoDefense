@@ -108,7 +108,7 @@ public class Entrega2Test {
 		EnemyRepository enemigoRepository = new JsonEnemyRepository(enemigosPath);
 		MapRepository mapaRepository = new JsonMapRepository(mapaPath);
 
-		Jugador jugador = new Jugador("Juan");
+		Jugador jugador = new Jugador("Juan", new Vida(20), new Credito(100));
 
 		Juego juego = new Juego(jugador, mapaRepository, enemigoRepository);
 
@@ -120,7 +120,7 @@ public class Entrega2Test {
 		EnemyRepository enemigoRepository = new JsonEnemyRepository(enemigosPath);
 		MapRepository mapaRepository = new JsonMapRepository(mapaPath);
 
-		Jugador jugador = new Jugador("Juan");
+		Jugador jugador = new Jugador("Juan", new Vida(20), new Credito(100));
 
 		Juego juego = new Juego(jugador, mapaRepository, enemigoRepository);
 

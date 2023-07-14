@@ -29,18 +29,18 @@ public class Mapa {
         return this.parcelas[posicion.x()][posicion.y()];
     }
 
-	public void construirTorre(Jugador jugador, Posicion posicion, Torre torre) {
-		try {
-			this.parcelas[posicion.x()][posicion.y()].construirTorre(torre);
-		} catch (Exception e) {
-
-		}
+	public void construirTorre(Jugador jugador, Posicion posicion, Torre torre) throws Exception {
+		this.getParcela(posicion).construirTorre(torre);
 	}
 
-	public void construirTrampa(Jugador jugador, Posicion posicion, TrampaArenosa trampaArenosa) {
-		try {
+	public void construirTrampa(Jugador jugador, Posicion posicion, TrampaArenosa trampaArenosa) throws Exception {
+		Parcela parcela = this.getParcela(posicion);
+		if (!parcela.equals(pasarelaInicial) && !parcela.equals(pasarelaFinal)) {
 			this.parcelas[posicion.x()][posicion.y()].construirTrampa(trampaArenosa);
-		} catch (Exception e) {}
+		}
+		else {
+			throw new ParcelaInvalida("No se puede construir en el inicio o final.");
+		}
 	}
 
 	public void establecerEnemigos(List<Enemigo> enemigos) {
@@ -59,17 +59,17 @@ public class Mapa {
 	public boolean tieneEnemigos() {
 		int x = 0;
 		int y = 0;
-		boolean tieneEnemigos = false;
+		boolean hayEnemigos = false;
 
-		while (x < this.parcelas.length && !tieneEnemigos) {
-			while (y < this.parcelas[x].length && tieneEnemigos) {
-				tieneEnemigos = this.parcelas[x][y].tieneEnemigos();
+		while (x < this.parcelas.length && !hayEnemigos) {
+			while (y < this.parcelas[x].length && !hayEnemigos) {
+				hayEnemigos = this.tieneEnemigos(new Posicion(x,y));
 				y++;
 			}
 			x++;
 		}
 
-		return tieneEnemigos;
+		return hayEnemigos;
 	}
 
 	public void jugarTurno(Jugador jugador, int turno) {
@@ -92,9 +92,8 @@ public class Mapa {
 			int y = 0;
 
 			while (equals && x < this.getParcelas().length) {
-
 				while (equals && y < this.getParcelas()[0].length) {
-					equals = this.parcelas[x][y].equals(((Mapa) o).getParcelas()[x][y]);
+					equals = this.parcelas[x][y].equals(((Mapa) o).getParcela(new Posicion(x,y)));
 					y++;
 				}
 				x++;
@@ -105,5 +104,4 @@ public class Mapa {
 
 		return false;
 	}
-
 }

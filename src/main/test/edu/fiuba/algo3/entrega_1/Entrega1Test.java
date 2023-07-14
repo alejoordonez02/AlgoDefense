@@ -19,10 +19,10 @@ public class Entrega1Test {
 
     @Test
     public void test01JugadorEmpiezaConLaVidaYLosCreditosEsperados() {
-        Jugador jugador = new Jugador("Juan");
+        Jugador jugador = new Jugador("Juan", new Vida(20), new Credito(100));
+		Jugador jugadorEsperado = new Jugador("Juan", new Vida(20), new Credito(100));
 
-        assertEquals(new Vida(20), jugador.getVida());
-        assertEquals(new Credito(100), jugador.getCreditos());
+		assertEquals(jugadorEsperado, jugador);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class Entrega1Test {
 
     @Test
     public void test04JugadorConCreditosSuficientesConstruyeTorreBlancaYTorrePlateadaYNoSeLanzaExcepcion() {
-        Jugador jugador = new Jugador("Juan");
+        Jugador jugador = new Jugador("Juan", new Vida(20), new Credito(100));
 
         Torre torreBlanca = new TorreBlanca();
         Torre torrePlateada = new TorrePlateada();
@@ -247,7 +247,7 @@ public class Entrega1Test {
 
 	@Test
 	public void test11AlEliminarATodasLasUnidadesEnemigasElJugadorGanaElJuego() {
-		Jugador jugador = new Jugador("Juan");
+		Jugador jugador = new Jugador("Juan", new Vida(20), new Credito(100));
 		TorreBlanca torreBlanca = new TorreBlanca();
 		Parcela parcelas[][] = new Parcela[2][3];
 		
@@ -283,7 +283,7 @@ public class Entrega1Test {
 
 	@Test
 	public void test12JugadorNoEliminaTodasLasUnidadesPeroNoMuereYGanaElJuego() {
-		Jugador jugador = new Jugador("Juan");
+		Jugador jugador = new Jugador("Juan", new Vida(20), new Credito(100));
 		Parcela parcelas[][] = new Parcela[2][2];
 		
 		for (int x = 0; x < 2; x++) {
@@ -311,7 +311,7 @@ public class Entrega1Test {
 
 	@Test
 	public void test13LasUnidadesEnemigasMatanAlJugadorYPierdeElJuego() {
-		Jugador jugador = new Jugador("Juan");
+		Jugador jugador = new Jugador("Juan", new Vida(20), new Credito(100));
 		Parcela parcelas[][] = new Parcela[2][2];
 		
 		for (int x = 0; x < 2; x++) {
