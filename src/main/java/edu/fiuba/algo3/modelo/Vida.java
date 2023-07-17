@@ -8,7 +8,7 @@ public class Vida {
 	}
 
 	public int getVida() {
-		return vida;
+		return this.vida;
 	}
 
 	public void restar(Vida vida) {

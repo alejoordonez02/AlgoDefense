@@ -45,7 +45,7 @@ public class Torre implements Defensa {
 
     public Credito atacar(Mapa mapa) {
         if (this.operativa()) {
-            return atacar(this.rango.buscarEnemigo(mapa, this.posicion));
+            return this.atacar(this.rango.buscarEnemigo(mapa, this.posicion));
         }
 
         return new Credito(0);
@@ -56,7 +56,8 @@ public class Torre implements Defensa {
     }
 
     public void jugarTurno(Mapa mapa, Jugador jugador) {
-        jugador.cobrar(this.atacar(mapa));
+        Credito creditos = this.atacar(mapa);
+        jugador.cobrar(creditos);
         this.pasarTurno();
     }
 

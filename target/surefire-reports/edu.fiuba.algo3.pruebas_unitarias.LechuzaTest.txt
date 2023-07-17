@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: edu.fiuba.algo3.pruebas_unitarias.LechuzaTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.314 s <<< FAILURE! - in edu.fiuba.algo3.pruebas_unitarias.LechuzaTest
+test10LechuzaConMenosDeMitadDeVidaSeMueveALaPasarelaEsperada  Time elapsed: 0.222 s  <<< ERROR!
+java.lang.NullPointerException
+	at edu.fiuba.algo3/edu.fiuba.algo3.pruebas_unitarias.LechuzaTest.test10LechuzaConMenosDeMitadDeVidaSeMueveALaPasarelaEsperada(LechuzaTest.java:229)
+

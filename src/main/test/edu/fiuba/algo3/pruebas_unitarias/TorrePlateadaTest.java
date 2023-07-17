@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
 import edu.fiuba.algo3.modelo.*;
 
@@ -29,24 +32,23 @@ public class TorrePlateadaTest {
     @Test
     public void test03TorrePlateadaHaceElDanioEsperadoCuandoAtacaAUnEnemigo() {
         TorrePlateada torrePlateada = new TorrePlateada();
-        Pasarela pasarela = new Pasarela(new Posicion(0,0));
-        Arania arania = new Arania(pasarela);
+        Pasarela mockedPasarela = mock(Pasarela.class);
 
-        pasarela.agregarEnemigo(arania);
-        torrePlateada.atacar(pasarela);
+        torrePlateada.atacar(mockedPasarela);
 
-        assertEquals(new Vida(0), arania.getVida());
+        verify(mockedPasarela).atacada(2);
     }
 
     @Test
     public void test04AtacarAUnEnemigoConTorrePlateadaDevuelveElCreditoEsperado() {
         TorrePlateada torrePlateada = new TorrePlateada();
-        Pasarela pasarela = new Pasarela(new Posicion(0,0));
-        Arania arania = new Arania(pasarela);
-        pasarela.agregarEnemigo(arania);
-        Credito creditoEsperado = arania.getCreditos();
+        Pasarela mockedPasarela = mock(Pasarela.class);
+		
+        Credito creditoEsperado = new Credito(1);
 
-        assertEquals(creditoEsperado, torrePlateada.atacar(pasarela));
+        when(mockedPasarela.atacada(2)).thenReturn(creditoEsperado);
+
+        assertEquals(creditoEsperado, torrePlateada.atacar(mockedPasarela));
     }
 }
 

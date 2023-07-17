@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+import java.util.List;
+import java.util.ArrayList;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
@@ -96,73 +100,137 @@ public class LechuzaTest {
 
 	@Test
 	public void test09LechuzaSeMueveALaPasarelaEsperada() {
-		Pasarela mockedPasarelaInicial = mock(Pasarela.class);
-		Pasarela mockedPasarela1 = mock(Pasarela.class);
-		Pasarela mockedPasarela2 = mock(Pasarela.class);
-		Pasarela mockedPasarela3 = mock(Pasarela.class);
-		Pasarela mockedPasarela4 = mock(Pasarela.class);
-		Pasarela mockedPasarela5 = mock(Pasarela.class);
-		Pasarela mockedPasarela6 = mock(Pasarela.class);
-		Pasarela mockedPasarela7 = mock(Pasarela.class);
-		Pasarela mockedPasarelaFinal = mock(Pasarela.class);
 
-		Posicion mockedPosicionInicial = mock(Posicion.class);
-		Posicion mockedPosicion1 = mock(Posicion.class);
-		Posicion mockedPosicion2 = mock(Posicion.class);
-		Posicion mockedPosicion3 = mock(Posicion.class);
-		Posicion mockedPosicion4 = mock(Posicion.class);
-		Posicion mockedPosicion5 = mock(Posicion.class);
-		Posicion mockedPosicion6 = mock(Posicion.class);
-		Posicion mockedPosicion7 = mock(Posicion.class);
-		Posicion mockedPosicionFinal = mock(Posicion.class);
-		Posicion mockedPosicionDestino = mock(Posicion.class);
+		Pasarela[][] pasarelas = new Pasarela[15][15];
+		Posicion[][] posiciones = new Posicion[15][15];
 
-		when(mockedPasarelaInicial.getPosicion()).thenReturn(mockedPosicionInicial);
-		when(mockedPasarela1.getPosicion()).thenReturn(mockedPosicion1);
-		when(mockedPasarela2.getPosicion()).thenReturn(mockedPosicion2);
-		when(mockedPasarela3.getPosicion()).thenReturn(mockedPosicion3);
-		when(mockedPasarela4.getPosicion()).thenReturn(mockedPosicion4);
-		when(mockedPasarela5.getPosicion()).thenReturn(mockedPosicion5);
-		when(mockedPasarela6.getPosicion()).thenReturn(mockedPosicion6);
-		when(mockedPasarela7.getPosicion()).thenReturn(mockedPosicion7);
-		when(mockedPasarelaFinal.getPosicion()).thenReturn(mockedPosicionFinal);
+		for (int x = 0; x < 15; x++) {
 
-		when(mockedPosicionInicial.x()).thenReturn(0);
-		when(mockedPosicionInicial.y()).thenReturn(0);
-		when(mockedPosicion1.x()).thenReturn(0);
-		when(mockedPosicion1.y()).thenReturn(1);
-		when(mockedPosicion2.x()).thenReturn(0);
-		when(mockedPosicion2.y()).thenReturn(2);
-		when(mockedPosicion3.x()).thenReturn(1);
-		when(mockedPosicion3.y()).thenReturn(0);
-		when(mockedPosicion4.x()).thenReturn(1);
-		when(mockedPosicion4.y()).thenReturn(1);
-		when(mockedPosicionFinal.x()).thenReturn(1);
-		when(mockedPosicionFinal.y()).thenReturn(2);
-		when(mockedPosicion5.x()).thenReturn(2);
-		when(mockedPosicion5.y()).thenReturn(0);
-		when(mockedPosicion6.x()).thenReturn(2);
-		when(mockedPosicion6.y()).thenReturn(1);
-		when(mockedPosicion7.x()).thenReturn(2);
-		when(mockedPosicion7.y()).thenReturn(2);
-		when(mockedPosicionInicial.sumar(new Posicion(3, 2))).thenReturn(mockedPosicionDestino);
-		when(mockedPosicionDestino.x()).thenReturn(3);
-		when(mockedPosicionDestino.y()).thenReturn(2);
+			for (int y = 0; y < 15; y++) {
+
+				Posicion mockedPosicion = mock(Posicion.class);
+				when(mockedPosicion.x()).thenReturn(x);
+				when(mockedPosicion.y()).thenReturn(y);
+
+				posiciones[x][y] = mockedPosicion;
+			}
+			
+		}
+
+		for (int x = 0; x < 15; x++) {
+
+			for (int y = 0; y < 15; y++) {
+
+				Pasarela mockedPasarela = mock(Pasarela.class);
+				when(mockedPasarela.getPosicion()).thenReturn(posiciones[x][y]);
+
+				pasarelas[x][y] = (mockedPasarela);
+			}
+		}
+
+		when(posiciones[0][1].sumar(new Posicion(3, 2))).thenReturn(posiciones[3][3]);
+		when(posiciones[3][3].sumar(new Posicion(3,2))).thenReturn(posiciones[6][5]);
+		when(posiciones[6][5].sumar(new Posicion(3, 2))).thenReturn(posiciones[9][7]);
+		when(posiciones[9][7].sumar(new Posicion(3, 2))).thenReturn(posiciones[10][11]);
+		when(posiciones[10][11].sumar(new Posicion(3, 2))).thenReturn(posiciones[10][14]);
 
 		Mapa mockedMapa = mock(Mapa.class);
-		when(mockedMapa.getInicial()).thenReturn(mockedPasarelaInicial);
-		when(mockedMapa.getFinal()).thenReturn(mockedPasarelaFinal);
-		when(mockedMapa.getParcela(new Posicion(1,2))).thenReturn(mockedPasarelaFinal);
+		when(mockedMapa.getInicial()).thenReturn(pasarelas[0][1]);
+		when(mockedMapa.getFinal()).thenReturn(pasarelas[10][14]);
+
+		when(mockedMapa.getParcela(posiciones[3][3])).thenReturn(pasarelas[3][3]);
+		when(mockedMapa.getParcela(posiciones[6][5])).thenReturn(pasarelas[6][5]);
+		when(mockedMapa.getParcela(posiciones[9][7])).thenReturn(pasarelas[9][7]);
+		when(mockedMapa.getParcela(posiciones[10][11])).thenReturn(pasarelas[10][11]);
+		when(mockedMapa.getParcela(posiciones[10][14])).thenReturn(pasarelas[10][14]);
 
 		Lechuza lechuza = new Lechuza(mockedMapa);
 
 		lechuza.mover();
+		lechuza.mover();
+		lechuza.mover();
+		lechuza.mover();
+		lechuza.mover();
 
-		verify(mockedPasarelaFinal).agregarEnemigo(lechuza);
+		verify(pasarelas[3][3]).agregarEnemigo(lechuza);
+		verify(pasarelas[6][5]).agregarEnemigo(lechuza);
+		verify(pasarelas[9][7]).agregarEnemigo(lechuza);
+		verify(pasarelas[10][11]).agregarEnemigo(lechuza);
+		verify(pasarelas[10][14]).agregarEnemigo(lechuza);
 	}
 
 	@Test
 	public void test10LechuzaConMenosDeMitadDeVidaSeMueveALaPasarelaEsperada() {
+
+		Pasarela[][] pasarelas = new Pasarela[15][15];
+		Posicion[][] posiciones = new Posicion[16][16];
+
+		for (int x = 0; x < 15; x++) {
+
+			for (int y = 0; y < 15; y++) {
+
+				Posicion mockedPosicion = mock(Posicion.class);
+				when(mockedPosicion.x()).thenReturn(x);
+				when(mockedPosicion.y()).thenReturn(y);
+
+				posiciones[x][y] = mockedPosicion;
+			}
+			
+		}
+
+		for (int x = 0; x < 15; x++) {
+
+			for (int y = 0; y < 15; y++) {
+
+				// if (x < 15 && y < 15) {
+
+				when(posiciones[x][y].sumar(new Posicion(1, 0))).thenReturn(posiciones[x+1][y]);
+				when(posiciones[x][y].sumar(new Posicion(0, 1))).thenReturn(posiciones[x][y+1]);
+				when(posiciones[x][y].sumar(new Posicion(1, 1))).thenReturn(posiciones[x+1][y+1]);
+
+				// }
+
+				double distancia = sqrt(pow((10 - x), 2) + pow((14 - y), 2));
+
+				when(posiciones[x][y].distancia(posiciones[10][14])).thenReturn(distancia);
+			}
+		}
+
+		for (int x = 0; x < 15; x++) {
+
+			for (int y = 0; y < 15; y++) {
+
+				Pasarela mockedPasarela = mock(Pasarela.class);
+				when(mockedPasarela.getPosicion()).thenReturn(posiciones[x][y]);
+
+				pasarelas[x][y] = (mockedPasarela);
+			}
+		}
+
+		Mapa mockedMapa = mock(Mapa.class);
+		when(mockedMapa.getInicial()).thenReturn(pasarelas[0][1]);
+		when(mockedMapa.getFinal()).thenReturn(pasarelas[10][14]);
+
+		for (int x = 0; x < 15; x++) {
+
+			for (int y = 0; y < 15; y++) {
+
+				when(mockedMapa.getParcela(posiciones[x][y])).thenReturn(pasarelas[x][y]);
+
+			}
+		}
+
+		Lechuza lechuza = new Lechuza(mockedMapa);
+
+		lechuza.atacado(4);
+
+		lechuza.mover();
+		lechuza.mover();
+		lechuza.mover();
+
+		verify(pasarelas[3][3]).agregarEnemigo(lechuza);
+		verify(pasarelas[6][5]).agregarEnemigo(lechuza);
+		verify(pasarelas[10][14]).agregarEnemigo(lechuza);
 
 	}
 }
