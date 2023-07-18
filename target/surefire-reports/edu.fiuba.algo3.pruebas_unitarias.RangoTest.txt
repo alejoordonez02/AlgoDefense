@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: edu.fiuba.algo3.pruebas_unitarias.RangoTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s - in edu.fiuba.algo3.pruebas_unitarias.RangoTest
