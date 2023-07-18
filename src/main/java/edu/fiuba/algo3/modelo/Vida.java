@@ -19,10 +19,6 @@ public class Vida {
 		return (this.vida > vida.getVida());
 	}
 
-	public boolean menorIgualQue(Vida vida) {
-		return (this.vida <= vida.getVida());
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		return (this.getClass().equals(o.getClass())

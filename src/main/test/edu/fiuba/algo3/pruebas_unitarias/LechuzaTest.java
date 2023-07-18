@@ -122,7 +122,7 @@ public class LechuzaTest {
 				Pasarela mockedPasarela = mock(Pasarela.class);
 				when(mockedPasarela.getPosicion()).thenReturn(posiciones[x][y]);
 
-				pasarelas[x][y] = (mockedPasarela);
+				pasarelas[x][y] = mockedPasarela;
 			}
 		}
 
@@ -197,7 +197,7 @@ public class LechuzaTest {
 				Pasarela mockedPasarela = mock(Pasarela.class);
 				when(mockedPasarela.getPosicion()).thenReturn(posiciones[x][y]);
 
-				pasarelas[x][y] = (mockedPasarela);
+				pasarelas[x][y] = mockedPasarela;
 			}
 		}
 

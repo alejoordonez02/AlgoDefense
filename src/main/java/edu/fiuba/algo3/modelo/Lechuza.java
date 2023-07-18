@@ -34,7 +34,7 @@ public class Lechuza extends Enemigo {
 			return this.creditos;
 		}
 
-		if (vidaAnterior.mayorQue(new Vida(vidaInicial / 2)) && this.vida.menorIgualQue(new Vida(vidaInicial / 2))) {
+		if (vidaAnterior.mayorQue(new Vida(vidaInicial / 2)) && !(this.vida.mayorQue(new Vida(vidaInicial / 2)))) {
 			movedor = new VolarRecto(mapa, parcela, 5);
 		}
 
