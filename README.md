@@ -1,4 +1,4 @@
-![tp2](https://github.com/fiuba/algo3_proyecto_base_tp2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
+![tp2](https://github.com/EzequielLassalle/Tp2---Algo3/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/alejoordonez02/AlgoDefense/branch/main/graph/badge.svg)](https://codecov.io/gh/alejoordonez02/AlgoDefense)
 
 # TP2 Algoritmos 3: AlgoDefense
 
