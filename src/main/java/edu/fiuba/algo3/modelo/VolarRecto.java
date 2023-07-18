@@ -11,6 +11,10 @@ public class VolarRecto implements Movedor {
 		this.velocidad = velocidad;
 	}
 
+	public Parcela getParcela() {
+		return this.parcela;
+	}
+
 	public void ralentizado() {}
 
 	public Parcela obtenerCamino(Mapa mapa) {
@@ -21,23 +25,17 @@ public class VolarRecto implements Movedor {
 		Posicion diagonal = posicion.sumar(new Posicion(1,1));
 
 		if (abajo.x() > posicionFinal.x()) {
-			abajo = new Posicion(posicionFinal.x(), abajo.y() + abajo.x() - posicionFinal.x());
-		}
-		if (abajo .y() > posicionFinal.y()) {
-			abajo = new Posicion(abajo.x(), posicionFinal.y());
+			abajo = new Posicion(posicionFinal.x(), abajo.y());
 		}
 
-		if (derecha.x() > posicionFinal.x()) {
-			derecha = new Posicion(posicionFinal.x(), derecha.y() + derecha.x() - posicionFinal.x());
-		}
-		if (derecha .y() > posicionFinal.y()) {
+		if (derecha.y() > posicionFinal.y()) {
 			derecha = new Posicion(derecha.x(), posicionFinal.y());
 		}
 
 		if (diagonal.x() > posicionFinal.x()) {
-			diagonal = new Posicion(posicionFinal.x(), diagonal.y() + diagonal.x() - posicionFinal.x());
+			diagonal = new Posicion(posicionFinal.x(), diagonal.y());
 		}
-		if (diagonal .y() > posicionFinal.y()) {
+		if (diagonal.y() > posicionFinal.y()) {
 			diagonal = new Posicion(diagonal.x(), posicionFinal.y());
 		}
 
@@ -45,7 +43,7 @@ public class VolarRecto implements Movedor {
 		double distanciaDerecha = derecha.distancia(posicionFinal);
 		double distanciaDiagonal = diagonal.distancia(posicionFinal);
 
-		if (distanciaAbajo < distanciaDerecha && distanciaAbajo < distanciaDerecha) {
+		if (distanciaAbajo < distanciaDerecha && distanciaAbajo < distanciaDiagonal) {
 			return mapa.getParcela(abajo);
 		}
 		else if (distanciaDiagonal < distanciaAbajo && distanciaDiagonal < distanciaDerecha) {
@@ -58,7 +56,7 @@ public class VolarRecto implements Movedor {
 
     public Parcela mover(Enemigo enemigo) {
 		for (int i = 0; i < velocidad; i++) {
-			parcela = this.obtenerCamino(mapa);
+			this.parcela = this.obtenerCamino(mapa);
 		}
 
 		parcela.agregarEnemigo(enemigo);

@@ -20,11 +20,6 @@ public class Posicion {
         return this.y;
     }
 
-    public void setPosicion(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
     public double distancia(Posicion posicion) {
         return sqrt(pow((posicion.x() - this.x()), 2) + pow((posicion.y() - this.y()), 2));
     }

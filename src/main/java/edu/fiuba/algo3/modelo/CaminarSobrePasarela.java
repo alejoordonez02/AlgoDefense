@@ -5,6 +5,10 @@ public class CaminarSobrePasarela implements Movedor {
     int velocidad;
     boolean ralentizado;
 
+	public Parcela getParcela() {
+		return this.pasarela;
+	}
+
     public CaminarSobrePasarela(Pasarela pasarela, int velocidad) {
         this.pasarela = pasarela;
         this.velocidad = velocidad;

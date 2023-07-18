@@ -5,7 +5,7 @@ public class Topo extends Enemigo {
 	Pasarela pasarela;
 	
 	public Topo(Parcela parcela) {
-		this.vida = new Vida(0);
+		this.vida = new Vida(1);
 		this.danio = 2;
 		this.creditos = new Credito(0);
 		this.movimientos = 0;
@@ -22,19 +22,20 @@ public class Topo extends Enemigo {
 		if (turno % 2 != 0) {
 			this.danio = 5;
 		}
+		
 		jugador.atacado(danio);
 	}
 
 	@Override
 	public void mover() {
-		if (movimientos == 6) {
+		pasarela = (Pasarela) movedor.mover(this);
+		this.movimientos++;
+		
+		if (this.movimientos == 5) {
 			movedor = new CaminarSobrePasarela(pasarela, 2);
 		}
-		if (movimientos == 11) {
+		if (this.movimientos == 10) {
 			movedor = new CaminarSobrePasarela(pasarela, 3);
 		}
-
-		pasarela = (Pasarela) movedor.mover(this);
-		movimientos++;
 	}
 }

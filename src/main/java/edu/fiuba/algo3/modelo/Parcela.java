@@ -85,13 +85,19 @@ public abstract class Parcela {
         return new Credito(0);
     }
 
-    // habría que iterar el camino al revés para no quitar a los enemigos que se acaban de mover
     public void moverEnemigos() {
         if (this.tieneEnemigos()) {
+			List<Enemigo> enemigosNoMovidos = new ArrayList<Enemigo>();
             for (Enemigo enemigo : this.enemigos) {
 				enemigo.mover();
+
+				if (enemigo.getParcela().equals(this)) {
+					enemigosNoMovidos.add(enemigo);
+				}
             }
+
             this.enemigos.removeAll(enemigos);
+			this.enemigos = enemigosNoMovidos;
         }
     }
 
@@ -102,7 +108,5 @@ public abstract class Parcela {
 		return (this.getClass().equals(o.getClass())
 			 && this.posicion.equals(((Parcela) o).getPosicion()));
 	}
-
-    // public void abstract construirTrampaArenosa(TrampaArenosa trampaArenosa) throws Exception;
 
 }

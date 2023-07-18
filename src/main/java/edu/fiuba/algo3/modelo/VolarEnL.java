@@ -10,6 +10,10 @@ public class VolarEnL implements Movedor {
 		this.parcela = mapa.getInicial();
 		this.velocidad = velocidad;
 	}
+
+	public Parcela getParcela() {
+		return this.parcela;
+	}
 	
 	private Parcela determinarDestino(Mapa mapa, int velocidad) {
 		Parcela parcelaInicial = this.parcela;

@@ -20,14 +20,16 @@ public class HormigaTest {
 	
 	@Test
 	public void test01HormigaEstaVivaCuandoSeCrea() {
-		Hormiga hormiga = new Hormiga(new Pasarela(new Posicion(0, 0)));
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Hormiga hormiga = new Hormiga(mockedPasarela);
 
 		assertTrue(hormiga.estaVivo());
 	}
 
 	@Test
 	public void test02HormigaRecibeElDanioCorrectoAlSerAtacado() {
-		Hormiga hormiga = new Hormiga(new Pasarela(new Posicion(0, 0)));
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Hormiga hormiga = new Hormiga(mockedPasarela);
 		Vida vidaEsperada = new Vida(0);
 
 		hormiga.atacado(1);
@@ -37,7 +39,8 @@ public class HormigaTest {
 
 	@Test
 	public void test03HormigaEstaMuertaCuandoRecibe1DeDanio() {
-		Hormiga hormiga = new Hormiga(new Pasarela(new Posicion(0, 0)));
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Hormiga hormiga = new Hormiga(mockedPasarela);
 		
 		hormiga.atacado(1);
 	
@@ -46,7 +49,8 @@ public class HormigaTest {
 
 	@Test
 	public void test04HormigaEstaMuertaCuandoRecibeMasDe1DeDanio() {
-		Hormiga hormiga = new Hormiga(new Pasarela(new Posicion(0, 0)));
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Hormiga hormiga = new Hormiga(mockedPasarela);
 		
 		hormiga.atacado(2);
 		
@@ -55,37 +59,45 @@ public class HormigaTest {
 	
 	@Test
 	public void test05HormigaMuereYRetornaElCreditoEsperado() {
-		Hormiga hormiga = new Hormiga(new Pasarela(new Posicion(0, 0)));
-		Credito creditoEsperado = new Credito(1);
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Hormiga hormiga = new Hormiga(mockedPasarela);
 
 		Credito creditoObtenido = hormiga.atacado(1);
+		Credito creditoEsperado = new Credito(1);
 
 		assertEquals(creditoEsperado, creditoObtenido);
 	}
 	
 	@Test
 	public void test06HormigaNoMuereYRetornaElCreditoEsperado() {
-		Hormiga hormiga = new Hormiga(new Pasarela(new Posicion(0, 0)));
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Hormiga hormiga = new Hormiga(mockedPasarela);
+
+		Credito creditoObtenido = hormiga.atacado(0);
 		Credito creditoEsperado = new Credito(0);
 
-		assertEquals(creditoEsperado, hormiga.atacado(0));
+		assertEquals(creditoEsperado, creditoObtenido);
 	}
 
 	@Test
 	public void test07Mueren10HormigasYLa11Retorna2Creditos() {
+		Pasarela mockedPasarela = mock(Pasarela.class);
 		for (int i = 0; i <= 10; i++) {
-			Hormiga hormiga = new Hormiga(new Pasarela(new Posicion(0, 0)));
+			Hormiga hormiga = new Hormiga(mockedPasarela);
 			hormiga.atacado(1);
 		}
-		Hormiga hormiga = new Hormiga(new Pasarela(new Posicion(0, 0)));
+		Hormiga hormiga = new Hormiga(mockedPasarela);
+
+		Credito creditoObtenido = hormiga.atacado(1);
 		Credito creditoEsperado = new Credito(2);
 
-		assertEquals(creditoEsperado, hormiga.atacado(1));
+		assertEquals(creditoEsperado, creditoObtenido);
 	}
 
 	@Test
 	public void test08HormigaAtacaUnaVezAlJugador() {
-		Hormiga hormiga = new Hormiga(new Pasarela(new Posicion(0, 0)));
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Hormiga hormiga = new Hormiga(mockedPasarela);
 		Jugador mockedJugador = mock(Jugador.class);
 
 		hormiga.atacar(mockedJugador, 1);

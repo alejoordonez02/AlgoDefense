@@ -6,6 +6,10 @@ public abstract class Enemigo {
     Credito creditos;
     Movedor movedor;
 
+	public Parcela getParcela() {
+		return movedor.getParcela();
+	}
+
     public Vida getVida() {
         return this.vida;
     }

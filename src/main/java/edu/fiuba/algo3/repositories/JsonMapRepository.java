@@ -55,7 +55,7 @@ public class JsonMapRepository implements MapRepository {
 			if (posY > pasarelas.length - 1) {
 				posY = pasarelas.length - 1;
 			}
-			p.setPosicion(posX, posY);
+			p = new Posicion(posX, posY);
 
             if(pasarelas[posX][posY] && !(p.equals(posicion))) {
 				if (anterior == null) {

@@ -22,8 +22,13 @@ public class Tierra extends Parcela {
 	}
 
     public void construirTorre(Torre torre) throws Exception {
-        this.torre = torre;
-        this.torre.setPosicion(this.posicion);
+		if (torre != null) {
+			this.torre = torre;
+			this.torre.setPosicion(this.posicion);
+		}
+		else {
+			throw new ParcelaInvalida("Esta parcela está ocupada");
+		}
     }
 
 	public void construirTrampa(TrampaArenosa trampaArenosa) throws Exception {

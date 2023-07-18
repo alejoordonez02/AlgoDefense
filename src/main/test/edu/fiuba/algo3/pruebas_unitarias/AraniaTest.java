@@ -14,24 +14,37 @@ public class AraniaTest {
 
 	@Test
 	public void test01AraniaEstaVivaCuandoSeCrea() {
-		Arania arania = new Arania(new Pasarela(new Posicion(0, 0)));
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Arania arania = new Arania(mockedPasarela);
 
 		assertTrue(arania.estaVivo());
 	}
 	
 	@Test
 	public void test02AraniaRecibeElDanioCorrectoAlSerAtacado() {
-		Arania arania = new Arania(new Pasarela(new Posicion(0, 0)));
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Arania arania = new Arania(mockedPasarela);
 		Vida vidaEsperada = new Vida(1);
 		
 		arania.atacado(1);
 
 		assertEquals(vidaEsperada, arania.getVida());
 	}
+
+	@Test
+	public void test03AraniaSigueVivaCuandoRecibeMenosDe2DeDanio() {
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Arania arania = new Arania(mockedPasarela);
+		
+		arania.atacado(1);
+	
+		assertTrue(arania.estaVivo());
+	}
 	
 	@Test
-	public void test03AraniaEstaMuertaCuandoRecibe2DeDanio() {
-		Arania arania = new Arania(new Pasarela(new Posicion(0, 0)));
+	public void test04AraniaEstaMuertaCuandoRecibe2DeDanio() {
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Arania arania = new Arania(mockedPasarela);
 		
 		arania.atacado(2);
 	
@@ -39,7 +52,7 @@ public class AraniaTest {
 	}
 	
 	@Test
-	public void test04AraniaEstaMuertaCuandoRecibeMasDe2DeDanio() {
+	public void test05AraniaEstaMuertaCuandoRecibeMasDe2DeDanio() {
 		Arania arania = new Arania(new Pasarela(new Posicion(0, 0)));
 		
 		arania.atacado(3);
@@ -48,24 +61,31 @@ public class AraniaTest {
 	}
 
 	@Test
-	public void test05AraniaMuereYRetornaElCreditoEsperado() {
-		Arania arania = new Arania(new Pasarela(new Posicion(0, 0)));
+	public void test06AraniaMuereYRetornaElCreditoEsperado() {
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Arania arania = new Arania(mockedPasarela);
+
+		Credito creditos = arania.atacado(2);
 		Credito creditoEsperado = arania.getCreditos();
 
-		assertEquals(creditoEsperado, arania.atacado(2));
+		assertEquals(creditoEsperado, creditos);
 	}
 
 	@Test
-	public void test06AraniaNoMuereYRetornaElCreditoEsperado() {
-		Arania arania = new Arania(new Pasarela(new Posicion(0, 0)));
+	public void test07AraniaNoMuereYRetornaElCreditoEsperado() {
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Arania arania = new Arania(mockedPasarela);
+		
+		Credito creditos = arania.atacado(1);
 		Credito creditoEsperado = new Credito(0);
 
-		assertEquals(creditoEsperado, arania.atacado(1));
+		assertEquals(creditoEsperado, creditos);
 	}
 
 	@Test
-	public void test07AraniaAtacaUnaVezAlJugador() {
-		Arania arania = new Arania(new Pasarela(new Posicion(0, 0)));
+	public void test08AraniaAtacaUnaVezAlJugador() {
+		Pasarela mockedPasarela = mock(Pasarela.class);
+		Arania arania = new Arania(mockedPasarela);
 		Jugador mockedJugador = mock(Jugador.class);
 
 		arania.atacar(mockedJugador, 1);
@@ -74,7 +94,7 @@ public class AraniaTest {
 	}
 
 	@Test
-	public void test08AraniaSeMueveALaPasarelaEsperada() {
+	public void test09AraniaSeMueveALaPasarelaEsperada() {
 		Pasarela mockedPasarelaInicial = mock(Pasarela.class);
 		Pasarela mockedPasarela1 = mock(Pasarela.class);
 		Pasarela mockedPasarela2 = mock(Pasarela.class);
@@ -92,7 +112,7 @@ public class AraniaTest {
 	}
 
 	@Test
-	public void test09AraniaRalentizadaSeMueveALaPasarelaEsperada() {
+	public void test10AraniaRalentizadaSeMueveALaPasarelaEsperada() {
 		Pasarela mockedPasarelaInicial = mock(Pasarela.class);
 		Pasarela mockedPasarela1 = mock(Pasarela.class);
 		Pasarela mockedPasarela2 = mock(Pasarela.class);

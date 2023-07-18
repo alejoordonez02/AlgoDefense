@@ -23,7 +23,6 @@ public class Lechuza extends Enemigo {
 	@Override
 	public void mover() {
         this.parcela = movedor.mover(this);
-		System.out.println(this.parcela.getPosicion().x() + ", " + this.parcela.getPosicion().y());
     }
 
 	public Credito atacado(int danio) {

@@ -124,7 +124,7 @@ public class Entrega2Test {
 
 		Juego juego = new Juego(jugador, mapaRepository, enemigoRepository);
 
-		for (int i = 0; i < 25; i++) {
+		for (int i = 0; i < 30; i++) {
 			juego.pasarTurno();
 		}
 

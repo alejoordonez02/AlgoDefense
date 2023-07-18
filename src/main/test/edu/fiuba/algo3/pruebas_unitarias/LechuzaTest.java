@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
-import java.util.List;
-import java.util.ArrayList;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
@@ -165,9 +163,9 @@ public class LechuzaTest {
 		Pasarela[][] pasarelas = new Pasarela[15][15];
 		Posicion[][] posiciones = new Posicion[16][16];
 
-		for (int x = 0; x < 15; x++) {
+		for (int x = 0; x < 16; x++) {
 
-			for (int y = 0; y < 15; y++) {
+			for (int y = 0; y < 16; y++) {
 
 				Posicion mockedPosicion = mock(Posicion.class);
 				when(mockedPosicion.x()).thenReturn(x);
@@ -182,13 +180,9 @@ public class LechuzaTest {
 
 			for (int y = 0; y < 15; y++) {
 
-				// if (x < 15 && y < 15) {
-
 				when(posiciones[x][y].sumar(new Posicion(1, 0))).thenReturn(posiciones[x+1][y]);
 				when(posiciones[x][y].sumar(new Posicion(0, 1))).thenReturn(posiciones[x][y+1]);
 				when(posiciones[x][y].sumar(new Posicion(1, 1))).thenReturn(posiciones[x+1][y+1]);
-
-				// }
 
 				double distancia = sqrt(pow((10 - x), 2) + pow((14 - y), 2));
 
@@ -219,6 +213,7 @@ public class LechuzaTest {
 
 			}
 		}
+		when(mockedMapa.getParcela(new Posicion(10,14))).thenReturn(pasarelas[10][14]);
 
 		Lechuza lechuza = new Lechuza(mockedMapa);
 
@@ -228,8 +223,8 @@ public class LechuzaTest {
 		lechuza.mover();
 		lechuza.mover();
 
-		verify(pasarelas[3][3]).agregarEnemigo(lechuza);
-		verify(pasarelas[6][5]).agregarEnemigo(lechuza);
+		verify(pasarelas[5][6]).agregarEnemigo(lechuza);
+		verify(pasarelas[10][11]).agregarEnemigo(lechuza);
 		verify(pasarelas[10][14]).agregarEnemigo(lechuza);
 
 	}
