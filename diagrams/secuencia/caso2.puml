@@ -1,0 +1,36 @@
+' pasarela jugar turno (mapa, jugador)
+' trampaArenosa jugar turno(enemigos)
+' enemigos ralentícense
+' movedor ralentizame
+
+@startuml
+
+participant "__:Pasarela__" as pasarela
+participant "__:TrampaArenosa__" as trampaArenosa
+participant "Enemigo" as enemigo
+
+[-> pasarela: jugarTurno(mapa, jugador)
+activate pasarela
+
+pasarela -> trampaArenosa: jugarTurno(enemigos)
+activate trampaArenosa
+
+loop enemigo in enemigos
+trampaArenosa -> enemigo: ralentizado()
+activate enemigo
+enemigo -> enemigo: movedor.ralentizado()
+activate enemigo
+deactivate enemigo
+deactivate enemigo
+end
+
+trampaArenosa -> trampaArenosa: tiempoDeFuncionamiento--
+activate trampaArenosa
+deactivate trampaArenosa
+
+trampaArenosa --> pasarela: trampaArenosa
+deactivate trampaArenosa
+
+deactivate pasarela
+
+@enduml

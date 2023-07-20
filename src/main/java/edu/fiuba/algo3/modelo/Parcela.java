@@ -94,12 +94,12 @@ public abstract class Parcela {
 				if (enemigo.getParcela().equals(this)) {
 					enemigosNoMovidos.add(enemigo);
 				}
-            }
+			}
 
-            this.enemigos.removeAll(enemigos);
+			this.enemigos.removeAll(enemigos);
 			this.enemigos = enemigosNoMovidos;
-        }
-    }
+		}
+	}
 
 	public abstract void jugarTurno(Mapa mapa, Jugador jugador);
 

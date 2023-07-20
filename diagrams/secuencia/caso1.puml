@@ -1,0 +1,69 @@
+@startuml
+
+' actor usuario
+
+participant "__:TorreBlanca__" as torreBlanca
+' usuario -> torreBlanca: atacar(mapa)
+[-> torreBlanca: atacar(mapa)
+
+activate torreBlanca
+participant "__:Rango__" as rango
+torreBlanca -> rango: buscarEnemigo(mapa, posicion)
+activate rango
+
+loop posicion in alcance
+
+participant "__mapa:Mapa__" as mapa
+rango -> mapa: posicionValida(posicion)
+activate mapa
+mapa --> rango: posicionValida
+
+participant "__:Parcela__" as parcela
+rango -> mapa: tieneEnemigos(posicion)
+mapa -> parcela: tieneEnemigos()
+activate parcela
+
+parcela --> mapa: tieneEnemigos
+deactivate parcela
+
+mapa --> rango: tieneEnemigos
+
+
+    alt posicionValida && tieneEnemigos
+    rango -> mapa: getParcela(posicion)
+    mapa --> rango: parcela
+    deactivate mapa
+
+    end
+end
+
+rango --> torreBlanca: parcela
+deactivate rango
+
+torreBlanca -> parcela: atacada(danio)
+activate parcela
+
+participant "__:Hormiga__" as enemigo
+parcela -> enemigo: atacado(danio)
+activate enemigo
+
+enemigo -> enemigo: vida.restar(danio)
+
+enemigo --> parcela: credito
+deactivate enemigo
+
+parcela -> parcela: quitar(enemigo)
+note left
+Un ataque de TorreBlanca alcanza
+para derrotar a una hormiga
+end note
+' parcela -> enemigo !!: <<delete>>
+
+parcela --> torreBlanca: credito
+deactivate parcela
+
+' torreBlanca --> usuario: credito
+[<-- torreBlanca: credito
+deactivate torreBlanca
+
+@enduml
