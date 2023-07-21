@@ -1,0 +1,16 @@
+@startuml
+
+folder "Vistas" as vistas {
+}
+
+folder "Juego" {
+    folder "Modelo" as modelo {
+    }
+    folder "Repositories" as repositories {
+    }
+}
+
+vistas -> modelo
+modelo -> repositories
+
+@enduml

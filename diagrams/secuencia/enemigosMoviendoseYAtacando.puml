@@ -1,0 +1,50 @@
+@startuml
+
+participant "__:Mapa__" as mapa
+participant "Parcela" as parcela
+participant "Enemigo" as enemigo
+participant "Movedor" as movedor
+participant "pasarelaFinal\n:Pasarela" as pasarelaFinal
+
+[-> mapa: jugarTurno(jugador, turno)
+activate mapa
+
+loop parcela in parcelas
+
+    mapa -> parcela: jugarTurno(this, jugador)
+    activate parcela
+
+    loop enemigo in enemigos
+
+        parcela -> enemigo: mover()
+        activate enemigo
+        enemigo -> movedor: mover()
+        activate movedor
+        movedor --> enemigo: parcela
+        deactivate movedor
+        deactivate enemigo
+
+        parcela -> parcela: enemigos.removeAll()
+        activate parcela
+        deactivate parcela
+
+    end
+    deactivate parcela
+
+end
+
+mapa -> pasarelaFinal: atacar(jugador, turno)
+
+loop enemigo in enemigos
+
+    pasarelaFinal -> enemigo: atacar(jugador, turno)
+    activate pasarelaFinal
+    activate enemigo
+    deactivate pasarelaFinal
+    deactivate enemigo
+
+end
+
+deactivate mapa
+
+@enduml

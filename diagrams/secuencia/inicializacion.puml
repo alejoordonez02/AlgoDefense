@@ -1,0 +1,29 @@
+@startuml
+
+actor usuario
+
+
+Create "__:Juego__" as juego
+usuario --> juego: <<create>>\nnew Juego(jugador, mapaParser, enemigoParser)
+
+participant "mapaParser\n:MapRepository" as mapaParser
+
+juego -> mapaParser: parsear()
+activate juego
+activate mapaParser
+mapaParser --> juego: mapa
+deactivate mapaParser
+
+juego -> juego: this.mapa = mapa
+activate juego
+deactivate juego
+
+juego -> juego: this.jugador = jugador
+activate juego
+deactivate juego
+
+juego -> juego: this.turno = 1
+activate juego
+deactivate juego
+
+@enduml
