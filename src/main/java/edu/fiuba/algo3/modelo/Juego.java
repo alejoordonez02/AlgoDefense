@@ -17,6 +17,10 @@ public class Juego {
         this.turno = 1;
     }
 
+    public int getCantidadCreditos() {
+        return jugador.getCantidadCreditos();
+    }
+
 	public Mapa getMapa() {
 		return mapa;
 	}

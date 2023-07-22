@@ -7,25 +7,25 @@ public class Credito {
 		this.credito = credito;
 	}
 
-	public int getCredito() {
+	public int getCantidad() {
 		return credito;
 	}
 
 	public void sumar(Credito credito) {
-		this.credito += credito.getCredito();
+		this.credito += credito.getCantidad();
 	}
 
 	public void restar(Credito credito) {
-		this.credito -= credito.getCredito();
+		this.credito -= credito.getCantidad();
 	}
 
 	public boolean mayorIgualQue(Credito credito) {
-		return (this.credito >= credito.getCredito());
+		return (this.credito >= credito.getCantidad());
 	}
 
 	@Override
 	public boolean equals(Object o) {
 		return (this.getClass().equals(o.getClass())
-			 && this.credito == ((Credito) o).getCredito());
+			 && this.credito == ((Credito) o).getCantidad());
 	}
 }

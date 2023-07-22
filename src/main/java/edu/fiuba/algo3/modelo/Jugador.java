@@ -28,6 +28,10 @@ public class Jugador {
         return this.creditos;
     }
 
+    public int getCantidadCreditos() {
+        return this.creditos.getCantidad();
+    }
+
 	public boolean tieneTorres() {
 		return (!this.torres.isEmpty());
 	}

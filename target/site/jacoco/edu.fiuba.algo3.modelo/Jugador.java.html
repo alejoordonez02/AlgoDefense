@@ -28,51 +28,55 @@ public class Jugador {
 <span class="fc" id="L28">        return this.creditos;</span>
     }
 
+    public int getCantidadCreditos() {
+<span class="nc" id="L32">        return this.creditos.getCantidad();</span>
+    }
+
 	public boolean tieneTorres() {
-<span class="fc bfc" id="L32" title="All 2 branches covered.">		return (!this.torres.isEmpty());</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">		return (!this.torres.isEmpty());</span>
 	}
 
 	public void atacado(int danio) {
-<span class="fc" id="L36">		this.vida.restar(new Vida(danio));</span>
-<span class="fc" id="L37">	}</span>
+<span class="fc" id="L40">		this.vida.restar(new Vida(danio));</span>
+<span class="fc" id="L41">	}</span>
 
 	public boolean estaVivo() {
-<span class="fc" id="L40">		return this.vida.mayorQue(new Vida(0));</span>
+<span class="fc" id="L44">		return this.vida.mayorQue(new Vida(0));</span>
 	}
 
     public void cobrar(Credito creditos) {
-<span class="fc" id="L44">        this.creditos.sumar(creditos);</span>
-<span class="fc" id="L45">    }</span>
-
-    public void pagar(Credito creditos) {
-<span class="fc" id="L48">        this.creditos.restar(creditos);</span>
+<span class="fc" id="L48">        this.creditos.sumar(creditos);</span>
 <span class="fc" id="L49">    }</span>
 
+    public void pagar(Credito creditos) {
+<span class="fc" id="L52">        this.creditos.restar(creditos);</span>
+<span class="fc" id="L53">    }</span>
+
     public void construir(Defensa defensa) throws Exception {
-<span class="fc bfc" id="L52" title="All 2 branches covered.">        if (this.creditos.mayorIgualQue(defensa.getCosto())) {</span>
-<span class="fc" id="L53">            this.pagar(defensa.getCosto());</span>
-<span class="fc" id="L54">			torres.add(defensa);</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        if (this.creditos.mayorIgualQue(defensa.getCosto())) {</span>
+<span class="fc" id="L57">            this.pagar(defensa.getCosto());</span>
+<span class="fc" id="L58">			torres.add(defensa);</span>
         } else {
-<span class="fc" id="L56">            throw new CreditosInsuficientes(&quot;Creditos insuficientes&quot;);</span>
+<span class="fc" id="L60">            throw new CreditosInsuficientes(&quot;Creditos insuficientes&quot;);</span>
         }
-<span class="fc" id="L58">    }</span>
+<span class="fc" id="L62">    }</span>
 
 	public void destruirTorre() {
-<span class="fc bfc" id="L61" title="All 2 branches covered.">		if (this.tieneTorres()) {</span>
-<span class="fc" id="L62">			this.torres.remove(0);</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">		if (this.tieneTorres()) {</span>
+<span class="fc" id="L66">			this.torres.remove(0);</span>
 		}
-<span class="fc" id="L64">	}</span>
+<span class="fc" id="L68">	}</span>
 
     @Override
     public boolean equals(Object o){
-<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if (this.getClass().equals(o.getClass())) {</span>
-<span class="fc" id="L69">            Jugador c = (Jugador)o;</span>
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">            return this.getNombre().equals(c.getNombre())</span>
-<span class="pc bpc" id="L71" title="1 of 2 branches missed.">                &amp;&amp; this.getVida().equals(c.getVida())</span>
-<span class="pc bpc" id="L72" title="1 of 2 branches missed.">                &amp;&amp; this.getCreditos().equals(c.getCreditos());</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        if (this.getClass().equals(o.getClass())) {</span>
+<span class="fc" id="L73">            Jugador c = (Jugador)o;</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">            return this.getNombre().equals(c.getNombre())</span>
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">                &amp;&amp; this.getVida().equals(c.getVida())</span>
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">                &amp;&amp; this.getCreditos().equals(c.getCreditos());</span>
         }
         
-<span class="nc" id="L75">		return false;</span>
+<span class="nc" id="L79">		return false;</span>
     }
 
 }

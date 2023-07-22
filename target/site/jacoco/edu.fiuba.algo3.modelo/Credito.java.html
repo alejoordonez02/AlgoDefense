@@ -7,26 +7,26 @@ public class Credito {
 <span class="fc" id="L7">		this.credito = credito;</span>
 <span class="fc" id="L8">	}</span>
 
-	public int getCredito() {
+	public int getCantidad() {
 <span class="fc" id="L11">		return credito;</span>
 	}
 
 	public void sumar(Credito credito) {
-<span class="fc" id="L15">		this.credito += credito.getCredito();</span>
+<span class="fc" id="L15">		this.credito += credito.getCantidad();</span>
 <span class="fc" id="L16">	}</span>
 
 	public void restar(Credito credito) {
-<span class="fc" id="L19">		this.credito -= credito.getCredito();</span>
+<span class="fc" id="L19">		this.credito -= credito.getCantidad();</span>
 <span class="fc" id="L20">	}</span>
 
 	public boolean mayorIgualQue(Credito credito) {
-<span class="fc bfc" id="L23" title="All 2 branches covered.">		return (this.credito &gt;= credito.getCredito());</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">		return (this.credito &gt;= credito.getCantidad());</span>
 	}
 
 	@Override
 	public boolean equals(Object o) {
 <span class="pc bpc" id="L28" title="1 of 2 branches missed.">		return (this.getClass().equals(o.getClass())</span>
-<span class="fc bfc" id="L29" title="All 2 branches covered.">			 &amp;&amp; this.credito == ((Credito) o).getCredito());</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">			 &amp;&amp; this.credito == ((Credito) o).getCantidad());</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
