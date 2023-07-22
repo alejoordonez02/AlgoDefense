@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TP2 - AlgoDefense</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="tp2---algodefense">TP2 - AlgoDefense</h1>
+<h2 id="algoritmos-y-programación-3">Algoritmos y Programación 3</h2>
+<h2 id="grupo11">Grupo11</h2>
+<ul>
+<li><strong>108397 - Alejo Ordoñez</strong> - <a href="https://github.com/alejoordonez02">alejoordonez02</a></li>
+<li><strong>109007 - Fernando Yu</strong> - <a href="https://github.com/FernandoYu">fernandoyu</a></li>
+<li><strong>105414 - Gonzalo Olmos</strong> - <a href="https://github.com/gonzalo912">gonzalo912</a></li>
+</ul>
+<h2 id="supuestos">Supuestos</h2>
+<ul>
+<li>Cuando muere una lechuza retorna 5 créditos</li>
+</ul>
+<h2 id="diagramas-de-clases">Diagramas de clases</h2>
+<h3 id="juego-jugador-y-mapa">Juego Jugador y Mapa</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/modelo/JuegoJugadorYMapa.png" alt="JuegoJugadorYMapa"></p>
+<h3 id="defensas">Defensas</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/modelo/Defensas.png" alt="Defensas"></p>
+<h3 id="defensas-y-parcelas">Defensas y Parcelas</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/modelo/DefensasYParcelas.png" alt="Defensas y Parcelas"></p>
+<h3 id="herencia-enemigos">Herencia Enemigos</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/modelo/HerenciaEnemigos.png" alt="Herencia Enemigos"></p>
+<h3 id="movedor-con-strategy">Movedor con Strategy</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/modelo/MovedorConStrategy.png" alt="Movedor con Strategy"></p>
+<h2 id="diagramas-de-secuencia">Diagramas de secuencia</h2>
+<h3 id="inicialización">Inicialización</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/secuencia/inicializacion.png" alt="Inicialización"></p>
+<h3 id="torre-usando-rango-para-atacar">Torre usando Rango para atacar</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/secuencia/caso1.png" alt="Torre usando Rango para atacar"></p>
+<h3 id="trampa-arenosa-ralentizando-enemigos">Trampa Arenosa ralentizando enemigos</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/secuencia/caso2.png" alt="Trampa Arenosa ralentizando enemigos"></p>
+<h3 id="enemigos-moviéndose-y-atacando">Enemigos moviéndose y atacando</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/secuencia/enemigosMoviendoseYAtacando.png" alt="Enemigos moviéndose y atacando"></p>
+<h2 id="diagrama-de-paquetes">Diagrama de paquetes</h2>
+<h3 id="paquetes">Paquetes</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/paquetes/paquetes.png" alt="Paquetes"></p>
+<h2 id="diagramas-de-estado">Diagramas de estado</h2>
+<h2 id="detalles-de-implementación">Detalles de implementación</h2>
+<p>Para la implementación fuimos cuidadosos con los pilares de la programación orientada a objetos. Además aplicamos algunos de sus principios, como &quot;Tell Don't Ask&quot;, Ley de Demeter, Programación contra Interfaces, entre otras.
+También hicimos uso del patrón de diseño &quot;Strategy&quot; para la implementación de la movilidad de los enemigos. Esto nos permitió no repetir código y lograr una solución mucho más robusta y de fácil extensión.</p>
+<h2 id="excepciones">Excepciones</h2>
+<ul>
+<li>ParcelaInvalida: se lanza cuando se quiere construir una defensa en un terreno en el cuál no se puede edificar.</li>
+<li>CreditosInsuficientes: salta cuando los créditos del jugador no alcanzan para construir una defensa determinada.</li>
+<li>JSONVacio: se arroja cada vez que se quiere parsear un JSON que está vacío</li>
+<li>FormatoJSONINvalido: si el formato del JSON que se intenta parsear no es el correcto se arroja esta excepción</li>
+</ul>
+
+        
+        
+    </body>
+    </html>

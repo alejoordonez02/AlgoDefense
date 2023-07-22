@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TP2 - AlgoDefense</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="tp2---algodefense">TP2 - AlgoDefense</h1>
+<h2 id="algoritmos-y-programación-3">Algoritmos y Programación 3</h2>
+<h2 id="grupo11">Grupo11</h2>
+<ul>
+<li><strong>108397 - Alejo Ordoñez</strong> - <a href="https://github.com/alejoordonez02">alejoordonez02</a></li>
+<li><strong>109007 - Fernando Yu</strong> - <a href="https://github.com/FernandoYu">fernandoyu</a></li>
+<li><strong>105414 - Gonzalo Olmos</strong> - <a href="https://github.com/gonzalo912">gonzalo912</a></li>
+<li><strong>105801 - Lassalle Ezequiel</strong> - <a href="https://github.com/EzequielLassalle">LassalleEzequiel</a></li>
+</ul>
+<h2 id="descripción-del-juego">Descripción del juego</h2>
+<p>El objetivo de este trabajo es el completo desarrollo de un Tower Defense, incluyendo el modelo de clases, sonidos e interfaz gráfica; acompañado por pruebas unitarias e integrales y documentación de diseño; utilizando el lenguaje Java, con un diseño orientado a objetos y trabajando con las técnicas de TDD e Integración Continua.
+AlgoDefense es un Tower Defense pero no en tiempo real, sino por turnos. Es un juego de estrategia y se basa en la construcción de defensas que impidan que los enemigos lleguen hasta el jugador.</p>
+<h2 id=""></h2>
+<p>El plantel de enemigos se encuentra conformado por hormigas, arañas, topos y lechuzas, todos con habilidades únicas que requerirán diferentes estrategias para ser derrotados.
+El jugador comienza con 20 puntos de vida y 100 créditos que le permitirán construir defensas, que irán retornando más créditos a medida que vayan eliminando enemigos según corresponda su unidad. A medida que los enemigos vayan llegando a la meta se le irán descontando puntos de vida al jugador y éste pierde la partida si llega a 0.
+Las defensas que el jugador podrá utilizar para defenderse de las unidades enemigas son la Torre Blanca, de rápida construcción pero menos potente que la Torre Plateada, que a pesar de ser más cara y de tardar más en construirse es más fuerte. También se pueden construir Trampas Arenosas que ralentizan el avance de los enemigos cuando caen en ellas.
+Como ya mencionamos el juego es por turnos, en cada uno de ellos las defensas atacaran según sus capacidades y el jugador elige si  quiero construir más o pasar.
+La partida comienza con los enemigos apareciendo en el extremo inicial del mapa. Si el jugador logra sobrevivir cuando se hayan desfilado todos los enemigos, habrá ganado la partida.</p>
+<h2 id="herramientas-de-desarrollo">Herramientas de desarrollo</h2>
+<p>Para el desarrollo se usaron JDK, JavaFX, JUnit: framework de pruebas unitarias para Java, y Git para versionar el código y trabajar en conjunto.
+Además utilizamos formas de desarrollo en grupo como aprendizaje cooperativo, evaluación grupal y &quot;pair programming&quot;.</p>
+<h2 id="metodología-de-desarrollo">Metodología de desarrollo</h2>
+<p>La realización de este trabajo consistió en 6 entregas semanales, en cada una de las cuáles recibimos una valoración sobre nuestro progreso por parte de nuestro corrector y consejos para seguir trabajando.</p>
+<h1 id="semana-1">Semana 1</h1>
+<ul>
+<li>Planteo del modelo tentativo con diagramas de clases.</li>
+<li>Creación del repositorio de código.</li>
+<li>Configuración del servidor de integración continua.</li>
+<li>Commits de los integrantes.</li>
+</ul>
+<h1 id="semana-2">Semana 2</h1>
+<p>Implementación de la primera parte del modelo con sus respectivas pruebas unitarias e integrales sin interfaz gráfica.</p>
+<h1 id="semana-3">Semana 3</h1>
+<p>Implementación de la lectura de los archivos JSON con la configuración del juego.</p>
+<h1 id="semana-4">Semana 4</h1>
+<ul>
+<li>Extensión del modelo y finalización del mismo, con todas sus pruebas.</li>
+<li>Implementación de la interfaz gráfica inicial.</li>
+</ul>
+<h1 id="semana-5">Semana 5</h1>
+<p>Implementación de la totalidad de la interfaz gráfica.</p>
+<h1 id="semana-6">Semana 6</h1>
+<p>Entrega final con el trabajo completo funcionando, con interfaz gráfica y sonidos.</p>
+<h2 id="desarrollo">Desarrollo</h2>
+<!-- ## Supuestos -->
+<h2 id="diagramas-de-clases">Diagramas de clases</h2>
+<h3 id="juego-jugador-y-mapa">Juego Jugador y Mapa</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/modelo/JuegoJugadorYMapa.png" alt="JuegoJugadorYMapa"></p>
+<h3 id="defensas">Defensas</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/modelo/Defensas.png" alt="Defensas"></p>
+<h3 id="defensas-y-parcelas">Defensas y Parcelas</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/modelo/DefensasYParcelas.png" alt="Defensas y Parcelas"></p>
+<h3 id="herencia-enemigos">Herencia Enemigos</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/modelo/HerenciaEnemigos.png" alt="Herencia Enemigos"></p>
+<h3 id="movedor-con-strategy">Movedor con Strategy</h3>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/modelo/MovedorConStrategy.png" alt="Movedor con Strategy"></p>
+<!-- Diagramas de secuencia -->
+<!-- Diagrama de paquetes -->
+<!-- Diagramas de estado -->
+<h2 id="detalles-de-implementación">Detalles de implementación</h2>
+<p>Para la implementación fuimos cuidadosos con los pilares de la programación orientada a objetos. Además aplicamos algunos de sus principios, como &quot;Tell Don't Ask&quot;, Ley de Demeter, Programación contra Interfaces, entre otras.
+También hicimos uso del patrón de diseño &quot;Strategy&quot; para la implementación de la movilidad de los enemigos. Esto nos permitió no repetir código y lograr una solución mucho más robusta y de fácil extensión.</p>
+<h2 id="excepciones">Excepciones</h2>
+<ul>
+<li>ParcelaInvalida: se lanza cuando se quiere construir una defensa en un terreno en el cuál no se puede edificar.</li>
+<li>CreditosInsuficientes: salta cuando los créditos del jugador no alcanzan para construir una defensa determinada.</li>
+<li>JSONVacio: se arroja cada vez que se quiere parsear un JSON que está vacío</li>
+<li>FormatoJSONINvalido: si el formato del JSON que se intenta parsear no es el correcto se arroja esta excepción</li>
+</ul>
+
+        
+        
+    </body>
+    </html>

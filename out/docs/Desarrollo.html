@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Desarrollo</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="desarrollo">Desarrollo</h1>
+<p>Este documento presenta una guía para los desarrolladores del proyecto.</p>
+<h2 id="configuración-del-ambiente">Configuración del ambiente</h2>
+<p>Existen distintas maneras de configurar el ambiente de desarrollo:</p>
+<ul>
+<li><a href="./Nativo.html">Nativo</a></li>
+<li><a href="./Docker.html">Docker</a></li>
+</ul>
+<h2 id="diagramas">Diagramas</h2>
+<p><a href="https://plantuml.com/">Plantuml</a> soporta un mecanísmo que facilita la generación y posterior mantenimiento de los diagramas de clase, secuencia, estado y paquetes. Para mayor información referir a la <a href="./PlantUML.html">guía de PlantUML</a>.</p>
+<h2 id="empaquetado">Empaquetado</h2>
+<p>Cuando se genera un <strong>tag</strong> que comienza con <code>v</code> (ejemplo <code>v0.0.1</code>) automáticamente se produce un <a href="https://github.com/fiuba/algo3_proyecto_base_tp2/releases">release</a> con la aplicación empaquetada. Para el nombre de la versión se recomienda utilizar <a href="https://semver.org/lang/es/">versionado semántico</a>, por ejemplo:</p>
+<pre><code class="language-bash">$ git tag v0.0.1   <span class="hljs-comment"># Genera el tag sobre el commit actual</span>
+$ git push --tags  <span class="hljs-comment"># Pushea el tag al repo, iniciando el release automático</span>
+</code></pre>
+<p>Para más información sobre cómo generar tags ver la <a href="https://git-scm.com/book/es/v2/Fundamentos-de-Git-Etiquetado">documentación de git</a>.</p>
+<h2 id="distribución">Distribución</h2>
+<p>El archivo <code>.jar</code> generado en el release contiene la aplicación empaquetada y puede distribuirse. Luego puede ejecutarse en Windows, Mac o Linux con:</p>
+<pre><code class="language-bash">$ java -jar &lt;archivo.jar&gt;
+</code></pre>
+<h2 id="seguridad">Seguridad</h2>
+<p>Al pushear el código al repositorio este es analizado con <a href="https://codeql.github.com/docs/">CodeQL</a>. Si se encuentra algún error o vulnerabilidad se mostrará en la pestaña Security -&gt; <a href="https://github.com/fiuba/algo3_proyecto_base_tp2/security/code-scanning">Code scanning alerts</a>. Luego de que dicho error sea arreglado la alerta se resuelve de forma automática, para más información consultar la <a href="https://docs.github.com/en/code-security/secure-coding/automatically-scanning-your-code-for-vulnerabilities-and-errors">documentación de github</a>.</p>
+
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </body>
+    </html>

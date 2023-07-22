@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Diagramas UML</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="diagramas-uml">Diagramas UML</h1>
+<p><strong>Recomendamos la utilización de PlantUML por las siguientes razones</strong>:</p>
+<ul>
+<li>Se pueden versionar los distintos diagramas.</li>
+<li>Existen herramientas que lo interpretan y no requiere la instalación de un software. Ver <a href="#editor-online">aquí</a>.</li>
+<li>Permite la utilización de <code>include</code> y <em>variables</em>, lo cual facilita la actualización de los diagramas.</li>
+</ul>
+<h2 id="herramientas">Herramientas</h2>
+<h3 id="plantuml">Plantuml</h3>
+<p>Para trabajar localmente con <a href="https://plantuml.com/">Plantuml</a> necesitará instalar la aplicación java. Las instrucciones las encontrarán <a href="https://plantuml.com/starting">aquí</a>.</p>
+<h3 id="script-de-traducción">Script de traducción</h3>
+<p>Utilizando el script <code>render_diagrams.sh</code> se pueden generar los archivos <code>*.png</code> asociados a cada uno de los diagramas cuyo archivo es <code>*.plantuml</code>.</p>
+<p>Este script inspecciona la carpeta <code>diagrams/</code>.</p>
+<p>Forma de ejecución:</p>
+<pre><code class="language-bash">$ scripts/render_diagrams.sh 
+</code></pre>
+<p><strong>Nota 1:</strong></p>
+<p>El script requiere que la herramienta <a href="#plantuml">plantuml</a> esté instalada.</p>
+<p><strong>Nota 2:</strong></p>
+<p>No contamos con un script para sistemas operativos Windows. Cualquier colaboración es aceptada. Para más información revisar <a href="../docs/Desarrollo.html">guía de desarrollo</a>.</p>
+<h3 id="editor-online">Editor online</h3>
+<p><strong>Nota:</strong>
+Es útil para pequeños ensayos de notación.</p>
+<ul>
+<li><a href="https://plantuml-editor.kkeisuke.com/">Plantuml Editor</a></li>
+<li><a href="https://www.planttext.com/">Plant Text</a></li>
+</ul>
+<h3 id="ide-como-editor">IDE como editor</h3>
+<p>Existen múltiples plugins para interpretar estos archivos</p>
+<table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th style="text-align:center">Version</th>
+<th>Plugin</th>
+<th style="text-align:center">Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://code.visualstudio.com/Download">VSCode</a></td>
+<td style="text-align:center">v1.58.0</td>
+<td><a href="https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml">Plantuml extension</a></td>
+<td style="text-align:center">v2.15.1</td>
+</tr>
+<tr>
+<td><a href="https://www.jetbrains.com/idea/">Idea</a></td>
+<td style="text-align:center">2020.3</td>
+<td><a href="https://plugins.jetbrains.com/plugin/7017-plantuml-integration">Plantuml plugin</a></td>
+<td style="text-align:center">v2.15.2/v5.5.1</td>
+</tr>
+<tr>
+<td><a href="https://www.gnu.org/software/emacs/">Emacs</a></td>
+<td style="text-align:center">?</td>
+<td><a href="https://plantuml.com/emacs">Plugin</a></td>
+<td style="text-align:center">?</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ventajas">Ventajas</h2>
+<p><a href="https://plantuml.com/">Plantuml</a> nos permite utilizar inclusión de archivos y utilización de variables!</p>
+<p>Esto les permitiría definir sus clases (una única vez) y utilizarlas en la definición de sus relaciones.</p>
+<p>Aquí pueden encontrar un ejemplo <a href="../diagrams/">ejemplo</a></p>
+<p><strong>Sugerencia:</strong></p>
+<p>Les recomendamos implementar esta herramienta para mitigar los errores de inconsistencia en los diagramas uml.</p>
+<h2 id="paquetes">Paquetes</h2>
+<p><img src="file:////home/alejo/code/AlgoDefense/diagrams/packages/paquete_modelo_dependencias.png" alt="modelo_paquete"></p>
+
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </body>
+    </html>
