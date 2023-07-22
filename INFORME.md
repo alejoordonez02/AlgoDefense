@@ -41,6 +41,5 @@ También hicimos uso del patrón de diseño "Strategy" para la implementación d
 - CreditosInsuficientes: salta cuando los créditos del jugador no alcanzan para construir una defensa determinada.
 - JSONVacio: se arroja cada vez que se quiere parsear un JSON que está vacío
 - FormatoJSONINvalido: si el formato del JSON que se intenta parsear no es el correcto se arroja esta excepción
-prueba :)
 
 
