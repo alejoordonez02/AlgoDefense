@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.071" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.064" tests="7" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter /home/alejo/code/AlgoDefense/target/surefire 2023-07-22T18-01-23_139-jvmRun1 surefire1520400706321198069tmp surefire_04513741077195616812tmp"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter /home/alejo/code/AlgoDefense/target/surefire 2023-07-22T18-12-36_279-jvmRun1 surefire6276103417698393485tmp surefire_015372093412785264917tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/alejo/code/AlgoDefense/target/test-classes:/home/alejo/.m2/repository/junit/junit/4.10/junit-4.10.jar:/home/alejo/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar:/home/alejo/.m2/repository/org/openjfx/javafx-controls/15.0.1/javafx-controls-15.0.1.jar:/home/alejo/.m2/repository/org/openjfx/javafx-graphics/15.0.1/javafx-graphics-15.0.1.jar:/home/alejo/.m2/repository/org/openjfx/javafx-base/15.0.1/javafx-base-15.0.1.jar:/home/alejo/.m2/repository/org/junit/jupiter/junit-jupiter/5.4.0/junit-jupiter-5.4.0.jar:/home/alejo/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.4.0/junit-jupiter-api-5.4.0.jar:/home/alejo/.m2/repository/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar:/home/alejo/.m2/repository/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar:/home/alejo/.m2/repository/org/junit/platform/junit-platform-commons/1.4.0/junit-platform-commons-1.4.0.jar:/home/alejo/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.4.0/junit-jupiter-params-5.4.0.jar:/home/alejo/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.4.0/junit-jupiter-engine-5.4.0.jar:/home/alejo/.m2/repository/org/junit/platform/junit-platform-engine/1.4.0/junit-platform-engine-1.4.0.jar:/home/alejo/.m2/repository/org/mockito/mockito-core/3.3.0/mockito-core-3.3.0.jar:/home/alejo/.m2/repository/net/bytebuddy/byte-buddy/1.10.5/byte-buddy-1.10.5.jar:/home/alejo/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.5/byte-buddy-agent-1.10.5.jar:/home/alejo/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar:/home/alejo/.m2/repository/com/tngtech/archunit/archunit/0.21.0/archunit-0.21.0.jar:/home/alejo/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/home/alejo/.m2/repository/org/slf4j/slf4j-simple/1.7.30/slf4j-simple-1.7.30.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -58,11 +58,11 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="test16LosEnemigosParseadosDelJSONDeEnemigosSonLosEperados" classname="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.034"/>
+  <testcase name="test16LosEnemigosParseadosDelJSONDeEnemigosSonLosEperados" classname="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.033"/>
   <testcase name="test19JugadorJuegaYGanaUnaPartida" classname="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.005"/>
-  <testcase name="test18ElJuegoCreadoAPartirDeAmbosJSONEsElEsperado" classname="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.001"/>
-  <testcase name="test20JugadorJuegaYPierdeUnaPartida" classname="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.016"/>
+  <testcase name="test18ElJuegoCreadoAPartirDeAmbosJSONEsElEsperado" classname="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.002"/>
+  <testcase name="test20JugadorJuegaYPierdeUnaPartida" classname="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.012"/>
   <testcase name="test17ElMapaParseadoDelJSONDelMapaEsElEsperado" classname="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.001"/>
-  <testcase name="test15ElFormatoDelJSONDelMapaEsValido" classname="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.003"/>
-  <testcase name="test14ElFormatoDelJSONDeEnemigosEsValido" classname="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.001"/>
+  <testcase name="test15ElFormatoDelJSONDelMapaEsValido" classname="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.002"/>
+  <testcase name="test14ElFormatoDelJSONDeEnemigosEsValido" classname="edu.fiuba.algo3.entrega_2.Entrega2Test" time="0.002"/>
 </testsuite>
