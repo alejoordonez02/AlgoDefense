@@ -17,8 +17,9 @@ public class VistaJuego extends BorderPane {
         Juego juego = new Juego(jugador, mapaParser, enemigoParser);
 
         VistaDefensas vistaDefensas = new VistaDefensas();
-        VistaMapa vistaMapa = new VistaMapa(juego.getMapa());
-        VistaJugador vistaJugador = new VistaJugador(nombre);
+        VistaInformacionEnemigos vistaInformacionEnemigos = new VistaInformacionEnemigos();
+        VistaMapa vistaMapa = new VistaMapa(vistaInformacionEnemigos, juego.getMapa());
+        VistaInformacion vistaInformacion = new VistaInformacion(vistaInformacionEnemigos, jugador);
 
         this.setLeft(vistaDefensas);
         this.setCenter(vistaMapa);

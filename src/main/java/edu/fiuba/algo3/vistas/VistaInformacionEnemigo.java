@@ -10,17 +10,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 
-public class VistaEnemigos extends HBox {
+public class VistaInformacionEnemigos extends HBox {
+    Label labelCantidadEnemigos;
     List<Enemigo> enemigos;
 
     public VistaEnemigos(List<Enemigo> enemigos) throws Exception {
         this.enemigos = enemigos;
 
-        actualizarEnemigos(enemigos);
-    }
-
-    public void actualizarEnemigos(List<Enemigo> enemigos) throws Exception {
-        this.enemigos = enemigos;
         int cantidad = enemigos.size();
 
         Image imagenEnemigo = null;
@@ -36,9 +32,9 @@ public class VistaEnemigos extends HBox {
         }
 
         ImageView vistaImagenEnemigo = new ImageView(imagenEnemigo);
-        Label labelCantidadEnemigos = new Label();
+        this.labelCantidadEnemigos = new Label();
 
-        labelCantidadEnemigos.setText("×" + cantidad);
+        this.labelCantidadEnemigos.setText("×" + cantidad);
 
         // Font fuenteTexto = Font.loadFont("/src/main/java/edu/fiuba/algo3/vistas/fuentes/texto.ttf", 11);
 
@@ -48,6 +44,11 @@ public class VistaEnemigos extends HBox {
         this.getChildren().add(labelCantidadEnemigos);
     }
 
+    public void actualizar(List<Enemigo> enemigos) {
+        int cantidad = enemigos.size();
+
+        this.labelCantidadEnemigos.setText("×" + cantidad);
+    }
 
 }
 

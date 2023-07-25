@@ -14,7 +14,7 @@ public class ControladorBotonJugar implements EventHandler<ActionEvent> {
     }
 
     @Override
-    public void handle(ActionEvent actionEvent) throws NombreInvalido {
+    public void handle(ActionEvent actionEvent) {
         if (nombre.length() < 6) {
             throw new NombreInvalido("El nombre debe tener más de 6 caracteres");
         } else {
