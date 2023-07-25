@@ -29,6 +29,14 @@ public class Mapa {
         return this.parcelas[posicion.x()][posicion.y()];
     }
 
+	public int getAlto() {
+		return this.parcelas.length;
+	}
+
+	public int getAncho() {
+		return this.parcelas[0].length;
+	}
+
 	public void construirTorre(Jugador jugador, Posicion posicion, Torre torre) throws Exception {
 
 		try {

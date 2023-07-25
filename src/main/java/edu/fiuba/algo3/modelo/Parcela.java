@@ -33,6 +33,10 @@ public abstract class Parcela {
 		return enemigos.get(0);
 	}
 
+	public List<Enemigo> getEnemigos() {
+		return this.enemigos;
+	}
+
 	public TrampaArenosa getTrampa() {
 		return null;
 	}
