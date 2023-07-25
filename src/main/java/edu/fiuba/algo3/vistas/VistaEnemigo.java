@@ -8,12 +8,14 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 
 public class VistaEnemigo extends StackPane {
     ImageView vistaImagenEnemigo;
 
     public VistaEnemigo(FileInputStream linkImagen, int cantidad) throws Exception {
+        this.setPadding(new Insets(0, 0, 0, 0));
 
         Image imagen = new Image(linkImagen);
 
