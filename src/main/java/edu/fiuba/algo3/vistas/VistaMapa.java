@@ -12,6 +12,9 @@ public class VistaMapa extends GridPane {
     Mapa mapa;
 
     public VistaMapa(VistaInformacionEnemigos vistaInformacionEnemigos, Mapa mapa) throws Exception {
+        this.setMaxWidth(900);
+        this.setMaxHeight(900);
+
         this.setGridLinesVisible(true);
         this.setHgap(0);
         this.setVgap(0);
@@ -43,8 +46,6 @@ public class VistaMapa extends GridPane {
                 this.vistasParcelas[x][y] = vistaParcela;
             }
         }
-
-
     }
 
     public void actualizar() {

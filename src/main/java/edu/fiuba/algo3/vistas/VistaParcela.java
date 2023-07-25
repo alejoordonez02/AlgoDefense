@@ -16,6 +16,8 @@ public class VistaParcela extends StackPane {
     Parcela parcela;
 
     public VistaParcela(FileInputStream linkVistaParcela, VistaInformacionEnemigos vistaInformacionEnemigos, Parcela parcela) throws Exception {
+        this.setMaxWidth(60);
+        this.setMaxHeight(60);
         this.setPadding(new Insets(0, 0, 0, 0));
 
         this.vistaInformacionEnemigos = vistaInformacionEnemigos;

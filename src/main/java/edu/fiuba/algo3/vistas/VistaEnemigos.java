@@ -18,6 +18,9 @@ public class VistaEnemigos extends GridPane {
 	VistaInformacionEnemigos vistaInformacionEnemigos;
 
     public VistaEnemigos(VistaInformacionEnemigos vistaInformacionEnemigos, List<Enemigo> enemigos) throws Exception {
+        this.setMaxWidth(60);
+        this.setMaxHeight(60);
+        this.setGridLinesVisible(true);
         this.setHgap(0);
         this.setVgap(0);
         this.setPadding(new Insets(0, 0, 0, 0));
