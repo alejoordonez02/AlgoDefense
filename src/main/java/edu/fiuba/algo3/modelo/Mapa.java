@@ -29,6 +29,10 @@ public class Mapa {
         return this.parcelas[posicion.x()][posicion.y()];
     }
 
+	public List<Enemigo> getEnemigos(Posicion posicion) {
+		return this.getParcela(posicion).getEnemigos();
+	}
+
 	public int getAlto() {
 		return this.parcelas.length;
 	}

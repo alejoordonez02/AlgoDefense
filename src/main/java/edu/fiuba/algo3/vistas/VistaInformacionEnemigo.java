@@ -10,33 +10,19 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 
-public class VistaInformacionEnemigos extends HBox {
+public class VistaInformacionEnemigo extends HBox {
+	ImageView vistaImagenEnemigo;
     Label labelCantidadEnemigos;
-    List<Enemigo> enemigos;
 
-    public VistaEnemigos(List<Enemigo> enemigos) throws Exception {
-        this.enemigos = enemigos;
+    public VistaInformacionEnemigo(FileInputStream linkImagen) throws Exception {
+        Image imagenEnemigo = new Image(linkImagen);
 
-        int cantidad = enemigos.size();
-
-        Image imagenEnemigo = null;
-
-        if (enemigos.get(0).getClass().equals(Hormiga.class)) {
-            imagenEnemigo = new Image(new FileInputStream("/src/main/java/edu/fiuba/algo3/vistas/imagenes/hormiga.png"));
-        } else if (enemigos.get(0).getClass().equals(Arania.class)) {
-            imagenEnemigo = new Image(new FileInputStream("/src/main/java/edu/fiuba/algo3/vistas/imagenes/arania.png"));
-        } else if (enemigos.get(0).getClass().equals(Topo.class)) {
-            imagenEnemigo = new Image(new FileInputStream("/src/main/java/edu/fiuba/algo3/vistas/imagenes/topo.png"));
-        } else if (enemigos.get(0).getClass().equals(Lechuza.class)) {
-            imagenEnemigo = new Image(new FileInputStream("/src/main/java/edu/fiuba/algo3/vistas/imagenes/lechuza.png"));
-        }
-
-        ImageView vistaImagenEnemigo = new ImageView(imagenEnemigo);
+        this.vistaImagenEnemigo = new ImageView(imagenEnemigo);
         this.labelCantidadEnemigos = new Label();
 
-        this.labelCantidadEnemigos.setText("×" + cantidad);
+		this.limpiar();
 
-        // Font fuenteTexto = Font.loadFont("/src/main/java/edu/fiuba/algo3/vistas/fuentes/texto.ttf", 11);
+        // Font fuenteTexto = Font.loadFont("src/main/java/edu/fiuba/algo3/vistas/fuentes/texto.ttf", 11);
 
         // labelCantidadEnemigos.setFont(fuenteTexto);
 
@@ -44,11 +30,16 @@ public class VistaInformacionEnemigos extends HBox {
         this.getChildren().add(labelCantidadEnemigos);
     }
 
-    public void actualizar(List<Enemigo> enemigos) {
-        int cantidad = enemigos.size();
-
+    public void actualizar(int cantidad) {
         this.labelCantidadEnemigos.setText("×" + cantidad);
+		this.vistaImagenEnemigo.setOpacity(1);
+		this.labelCantidadEnemigos.setOpacity(1);
     }
+
+	public void limpiar() {
+		this.vistaImagenEnemigo.setOpacity(0);
+		this.labelCantidadEnemigos.setOpacity(0);
+	}
 
 }
 

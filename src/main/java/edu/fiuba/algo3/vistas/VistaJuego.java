@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class VistaJuego extends BorderPane {
 
-    public VistaJuego(Stage stage, String nombre) {
+    public VistaJuego(String nombre) throws Exception {
         Jugador jugador = new Jugador(nombre, new Vida(20), new Credito(100));
         JsonMapRepository mapaParser = new JsonMapRepository("src/main/java/edu/fiuba/algo3/json/mapa.json");
         JsonEnemyRepository enemigoParser = new JsonEnemyRepository("src/main/java/edu/fiuba/algo3/json/enemigos.json");
@@ -23,9 +23,7 @@ public class VistaJuego extends BorderPane {
 
         this.setLeft(vistaDefensas);
         this.setCenter(vistaMapa);
-        this.setBottom(vistaJugador);
+        this.setBottom(vistaInformacion);
 
-        stage.setHeight(1080);
-        stage.setWidth(1280);
     }
 }

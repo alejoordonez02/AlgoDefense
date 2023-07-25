@@ -8,7 +8,7 @@ public class VistaMapa extends GridPane {
     VistaParcela[][] vistasParcelas;
     Mapa mapa;
 
-    public VistaMapa(VistaInformacionEnemigos vistaInformacionEnemigos, Mapa mapa) {
+    public VistaMapa(VistaInformacionEnemigos vistaInformacionEnemigos, Mapa mapa) throws Exception {
         this.mapa = mapa;
 
         int alto = mapa.getAlto();
@@ -18,14 +18,15 @@ public class VistaMapa extends GridPane {
 
         for (int x = 0; x < alto; x++) {
             for (int y = 0; y < ancho; y++) {
-                VistaParcela vistaParcela = new VistaParcela(vistaInformacionEnemigos, mapa.getParcela(new Posicion(x, y)));
+                VistaParcela vistaParcela = new VistaParcela(vistaInformacionEnemigos, mapa.getParcela(new Posicion(x,y)));
                 this.add(vistaParcela, y, x);
                 this.vistasParcelas[x][y] = vistaParcela;
             }
         }
+		
     }
 
-    private void actualizar() {
+    public void actualizar() {
 
         for (int x = 0; x < mapa.getAlto(); x++) {
             for (int y = 0; y < mapa.getAncho(); y++) {
