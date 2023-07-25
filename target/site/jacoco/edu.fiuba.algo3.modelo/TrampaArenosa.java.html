@@ -12,22 +12,42 @@ public class TrampaArenosa implements Defensa{
 <span class="fc" id="L12">	}</span>
 
 	public Credito getCosto() {
-<span class="nc" id="L15">		return this.costo;</span>
+<span class="fc" id="L15">		return this.costo;</span>
 	}
+
+	public int getTiempoDeFuncionamiento() {
+<span class="fc" id="L19">		return this.tiempoDeFuncionamiento;</span>
+	}
+
+	public void setTiempoDeFuncionamiento(int tiempoDeFuncionamiento) {
+<span class="nc" id="L23">		this.tiempoDeFuncionamiento = tiempoDeFuncionamiento;</span>
+<span class="nc" id="L24">	}</span>
 
 	public TrampaArenosa jugarTurno(List&lt;Enemigo&gt; enemigos) {
-<span class="fc bfc" id="L19" title="All 2 branches covered.">		for (Enemigo enemigo : enemigos) {</span>
-<span class="fc" id="L20">			enemigo.ralentizado();</span>
-<span class="fc" id="L21">		}</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">		for (Enemigo enemigo : enemigos) {</span>
+<span class="fc" id="L28">			enemigo.ralentizado();</span>
+<span class="fc" id="L29">		}</span>
 
-<span class="fc" id="L23">		tiempoDeFuncionamiento--;</span>
+<span class="fc" id="L31">		tiempoDeFuncionamiento--;</span>
 		
-<span class="fc bfc" id="L25" title="All 2 branches covered.">		if (tiempoDeFuncionamiento == 0) {</span>
-<span class="fc" id="L26">			return null;</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">		if (tiempoDeFuncionamiento == 0) {</span>
+<span class="fc" id="L34">			return null;</span>
 		}
 
-<span class="fc" id="L29">		return this;</span>
+<span class="fc" id="L37">		return this;</span>
 	}
+
+    @Override
+    public boolean equals(Object o){
+
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        if (this.getClass().equals(o.getClass())) {</span>
+<span class="fc" id="L44">            TrampaArenosa c = (TrampaArenosa) o;</span>
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">            return this.getCosto() == (c.getCosto())</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">                &amp;&amp; this.getTiempoDeFuncionamiento() == c.getTiempoDeFuncionamiento();</span>
+        }
+
+<span class="nc" id="L49">            return false;</span>
+    }
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

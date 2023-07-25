@@ -21,7 +21,6 @@ public class BotonEmpezarEventHandler implements EventHandler<ActionEvent> {
 
     VidaYCreditosHandler handler;
 
-
     public BotonEmpezarEventHandler(Button boton, VistaMapa mapa,Juego unJuego, VidaYCreditosHandler unHandler){
         this.mapa = mapa;
         this.boton = boton;
@@ -32,7 +31,6 @@ public class BotonEmpezarEventHandler implements EventHandler<ActionEvent> {
 
         //ESTO DEBERIA IR EN UNA VISTA SEPARADA CON ESTE METODO SETFONDOBOTON
         this.setFondoBoton("file:src/main/java/edu/fiuba/algo3/vistas/images/start.png");
-
 
     }
 

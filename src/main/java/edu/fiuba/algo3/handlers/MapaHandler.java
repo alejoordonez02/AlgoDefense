@@ -20,7 +20,6 @@ public class MapaHandler {
         this.mapa = juego.getMapa();
     }
 
-
     public void construccion(String defensa, Posicion pos) throws Exception {
         if (defensa == "Plateada") {
             mapa.construirTorre(juego.getJugador(), pos, new TorrePlateada());
@@ -49,16 +48,28 @@ public class MapaHandler {
                 vistaUnidad = new VistaUnidad("file:src/main/java/edu/fiuba/algo3/vistas/images/vida.png");
             }
         } else if(parcela.hayTorre()){
-            if(parcela.getTorre().equals(new TorreBlanca())) {
+
+            TorreBlanca torreBlanca = new TorreBlanca();
+            TorrePlateada torrePlateada = new TorrePlateada();
+
+            torreBlanca.setPosicion(pos);
+            torrePlateada.setPosicion(pos);
+
+            if((parcela.getTorre()).equals(torreBlanca)) {
                 System.out.println("TORRE BLANCA");
                 vistaUnidad = new VistaUnidad("file:src/main/java/edu/fiuba/algo3/vistas/images/vida.png");
-            }else if(parcela.getTorre().equals(new TorrePlateada())){
+
+            } else if ((parcela.getTorre()).equals(torrePlateada)) {
                 System.out.println("TORRE PLATEADA");
                 vistaUnidad = new VistaUnidad("file:src/main/java/edu/fiuba/algo3/vistas/images/credito.png");
             }
 
         } else if(parcela.hayTrampa()){
-            if(parcela.getTrampa().equals(new TrampaArenosa())){
+
+            TrampaArenosa trampaArenosa = new TrampaArenosa();
+            trampaArenosa.setTiempoDeFuncionamiento(parcela.getTrampa().getTiempoDeFuncionamiento());
+
+            if(parcela.getTrampa().equals(trampaArenosa)){
                 vistaUnidad = new VistaUnidad("file:src/main/java/edu/fiuba/algo3/vistas/images/trampaarenosa.jpg");
             }
         }

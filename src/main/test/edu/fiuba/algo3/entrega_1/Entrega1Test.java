@@ -335,4 +335,47 @@ public class Entrega1Test {
 
 		assertTrue(!(jugador.estaVivo()));
 	}
+
+	// @Test
+	// public void test14Construir6TorresBlancasArrojaExcepcionSiNoSeGanaronCreditos() {
+	// 	Jugador jugador = new Jugador("Juan", new Vida(20), new Credito(100));
+	// 	Parcela parcelas[][] = new Parcela[2][2];
+		
+	// 	for (int x = 0; x < 2; x++) {
+	// 		for (int y = 0; y < 2; y++) {
+	// 			parcelas[x][y] = new Pasarela(new Posicion(x, y));
+	// 		}
+	// 	}
+		
+	// 	Posicion posicion = new Posicion(1, 0);
+
+	// 	parcelas[1][0] = new Tierra(posicion);
+
+	// 	Mapa mapa = new Mapa(parcelas, (Pasarela) parcelas[0][0], (Pasarela) parcelas[1][1]);
+
+	// 	TorrePlateada torrePlateada = new TorrePlateada();
+
+	// 	try {
+	// 		mapa.construirTorre(jugador, posicion, torrePlateada);
+	// 	} catch (Exception e) {}
+
+	// 	try {
+	// 		mapa.construirTorre(jugador, posicion, torrePlateada);
+	// 	} catch (Exception e) {}
+
+	// 	try {
+	// 		mapa.construirTorre(jugador, posicion, torrePlateada);
+	// 	} catch (Exception e) {}
+
+	// 	try {
+	// 		mapa.construirTorre(jugador, posicion, torrePlateada);
+	// 	} catch (Exception e) {}
+
+	// 	try {
+	// 		mapa.construirTorre(jugador, posicion, torrePlateada);
+	// 	} catch (Exception e) {}
+
+
+	// 	assertThrows(CreditosInsuficientes.class, () -> mapa.construirTorre(jugador, posicion, torrePlateada));
+	// }
 }

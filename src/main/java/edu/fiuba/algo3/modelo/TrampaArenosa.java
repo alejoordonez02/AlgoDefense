@@ -15,6 +15,14 @@ public class TrampaArenosa implements Defensa{
 		return this.costo;
 	}
 
+	public int getTiempoDeFuncionamiento() {
+		return this.tiempoDeFuncionamiento;
+	}
+
+	public void setTiempoDeFuncionamiento(int tiempoDeFuncionamiento) {
+		this.tiempoDeFuncionamiento = tiempoDeFuncionamiento;
+	}
+
 	public TrampaArenosa jugarTurno(List<Enemigo> enemigos) {
 		for (Enemigo enemigo : enemigos) {
 			enemigo.ralentizado();
@@ -28,5 +36,17 @@ public class TrampaArenosa implements Defensa{
 
 		return this;
 	}
+
+    @Override
+    public boolean equals(Object o){
+
+        if (this.getClass().equals(o.getClass())) {
+            TrampaArenosa c = (TrampaArenosa) o;
+            return this.getCosto() == (c.getCosto())
+                && this.getTiempoDeFuncionamiento() == c.getTiempoDeFuncionamiento();
+        }
+
+            return false;
+    }
 
 }

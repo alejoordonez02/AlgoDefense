@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JugarDeNuevoEventHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp2</a> &gt; <a href="index.source.html" class="el_package">edu.fiuba.algo3.handlers</a> &gt; <span class="el_source">JugarDeNuevoEventHandler.java</span></div><h1>JugarDeNuevoEventHandler.java</h1><pre class="source lang-java linenums">package edu.fiuba.algo3.handlers;
+
+import edu.fiuba.algo3.modelo.FormatoJSONInvalido;
+import edu.fiuba.algo3.vistas.App;
+import edu.fiuba.algo3.vistas.PantallaJuego;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+public class JugarDeNuevoEventHandler implements EventHandler&lt;ActionEvent&gt;{
+
+    private Stage buttonStage;
+    private Stage gameStage;
+<span class="nc" id="L17">    public JugarDeNuevoEventHandler(Stage stage){</span>
+<span class="nc" id="L18">        this.buttonStage = stage;</span>
+<span class="nc" id="L19">    }</span>
+
+    @Override
+    public void handle(ActionEvent event) {/*
+        buttonStage.close();
+        PantallaJuego pantallaJuego = null;
+        try {
+            pantallaJuego = null;
+        } catch (IOException | FormatoJSONInvalido e) {
+            throw new RuntimeException(e);
+        }
+
+
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(pantallaJuego, 600, 750));
+        newStage.show();*/
+
+<span class="nc" id="L36">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

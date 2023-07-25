@@ -20,7 +20,6 @@ import java.util.Optional;
 
 public class VistaMapa extends Pane{
 
-
     private static class Casillero extends StackPane {
 
         private Rectangle bg;
@@ -122,7 +121,6 @@ public class VistaMapa extends Pane{
         }
     }
 
-
     public void update(){
         this.crearMapa();
         for(int x = 0; x < GRID_SIZE_IN_CELLS; x++){
@@ -151,5 +149,3 @@ public class VistaMapa extends Pane{
     }
 
 }
-    
- 

@@ -30,17 +30,42 @@ public class Mapa {
     }
 
 	public void construirTorre(Jugador jugador, Posicion posicion, Torre torre) throws Exception {
-		this.getParcela(posicion).construirTorre(torre);
+
+		try {
+			jugador.construir(torre);
+			this.getParcela(posicion).construirTorre(torre);
+
+		}
+		catch (CreditosInsuficientes e) {
+			throw e;
+		}
+		catch (ParcelaInvalida e) {
+			throw e;
+		}
 	}
 
 	public void construirTrampa(Jugador jugador, Posicion posicion, TrampaArenosa trampaArenosa) throws Exception {
-		Parcela parcela = this.getParcela(posicion);
-		if (!parcela.equals(pasarelaInicial) && !parcela.equals(pasarelaFinal)) {
-			this.parcelas[posicion.x()][posicion.y()].construirTrampa(trampaArenosa);
+
+		try {
+			jugador.construir(trampaArenosa);
+			Parcela parcela = this.getParcela(posicion);
+
+			if (!parcela.equals(pasarelaInicial) && !parcela.equals(pasarelaFinal)) {
+				this.parcelas[posicion.x()][posicion.y()].construirTrampa(trampaArenosa);
+			}
+			else {
+				throw new ParcelaInvalida("No se puede construir en el inicio o final.");
+			}
+
 		}
-		else {
-			throw new ParcelaInvalida("No se puede construir en el inicio o final.");
+		catch (CreditosInsuficientes e) {
+			throw e;
 		}
+		catch (ParcelaInvalida e) {
+			throw e;
+		}
+
+
 	}
 
 	public void establecerEnemigos(List<Enemigo> enemigos) {
