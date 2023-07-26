@@ -16,10 +16,16 @@ public class VistaJuego extends BorderPane {
     VistaInformacion vistaInformacion;
     int turno;
 
+    private static final int VIDA_INICIAL = 20;
+
+    private static final int CREDITOS_INICIALES = 100;
+
     public VistaJuego(String nombre) throws Exception {
-        Jugador jugador = new Jugador(nombre, new Vida(20), new Credito(100));
+
+        Jugador jugador = new Jugador(nombre, new Vida(VIDA_INICIAL), new Credito(CREDITOS_INICIALES));
         JsonMapRepository mapaParser = new JsonMapRepository("src/main/java/edu/fiuba/algo3/json/mapa.json");
         JsonEnemyRepository enemigoParser = new JsonEnemyRepository("src/main/java/edu/fiuba/algo3/json/enemigos.json");
+
 
         VistaInformacionEnemigos vistaInformacionEnemigos = new VistaInformacionEnemigos();
 
