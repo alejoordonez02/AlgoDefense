@@ -15,11 +15,12 @@ public class VistaJuego extends BorderPane {
         JsonMapRepository mapaParser = new JsonMapRepository("src/main/java/edu/fiuba/algo3/json/mapa.json");
         JsonEnemyRepository enemigoParser = new JsonEnemyRepository("src/main/java/edu/fiuba/algo3/json/enemigos.json");
         Juego juego = new Juego(jugador, mapaParser, enemigoParser);
+        Mapa mapa = juego.getMapa();
 
         VistaDefensas vistaDefensas = new VistaDefensas();
         VistaInformacionEnemigos vistaInformacionEnemigos = new VistaInformacionEnemigos();
-        VistaMapa vistaMapa = new VistaMapa(vistaInformacionEnemigos, juego.getMapa());
-        VistaInformacion vistaInformacion = new VistaInformacion(vistaInformacionEnemigos, jugador);
+        VistaMapa vistaMapa = new VistaMapa(vistaInformacionEnemigos, mapa);
+        VistaInformacion vistaInformacion = new VistaInformacion(vistaInformacionEnemigos, jugador, mapa);
 
         this.setLeft(vistaDefensas);
         this.setCenter(vistaMapa);

@@ -40,13 +40,13 @@ public class VistaMapa extends GridPane {
         }
     }
 
-    public void actualizar() {
+    public void actualizar(Jugador jugador, int turno) {
+        this.mapa.jugarTurno(jugador, turno);
 
         for (int x = 0; x < mapa.getAlto(); x++) {
             for (int y = 0; y < mapa.getAncho(); y++) {
                 this.vistasParcelas[x][y].actualizar();
             }
         }
-
     }
 }

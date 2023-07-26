@@ -27,7 +27,6 @@ public class VistaParcela extends StackPane {
 
 		this.getChildren().add(vistaImagenParcela);
 		this.getChildren().add(vistaEnemigos);
-
 	}
 
 	public void actualizar() {
