@@ -1,30 +1,51 @@
 package edu.fiuba.algo3.vistas;
 
+import edu.fiuba.algo3.controladores.*;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.repositories.JsonEnemyRepository;
 import edu.fiuba.algo3.repositories.JsonMapRepository;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class VistaJuego extends BorderPane {
+    Juego juego;
+    VistaMapa vistaMapa;
+    VistaInformacion vistaInformacion;
+    int turno;
 
     public VistaJuego(String nombre) throws Exception {
         Jugador jugador = new Jugador(nombre, new Vida(20), new Credito(100));
         JsonMapRepository mapaParser = new JsonMapRepository("src/main/java/edu/fiuba/algo3/json/mapa.json");
         JsonEnemyRepository enemigoParser = new JsonEnemyRepository("src/main/java/edu/fiuba/algo3/json/enemigos.json");
-        Juego juego = new Juego(jugador, mapaParser, enemigoParser);
-        Mapa mapa = juego.getMapa();
 
-        VistaDefensas vistaDefensas = new VistaDefensas();
         VistaInformacionEnemigos vistaInformacionEnemigos = new VistaInformacionEnemigos();
-        VistaMapa vistaMapa = new VistaMapa(vistaInformacionEnemigos, mapa);
-        VistaInformacion vistaInformacion = new VistaInformacion(vistaInformacionEnemigos, jugador, mapa);
+
+        this.juego = new Juego(jugador, mapaParser, enemigoParser);
+        this.vistaMapa = new VistaMapa(vistaInformacionEnemigos, juego.getMapa());
+        this.vistaInformacion = new VistaInformacion(vistaInformacionEnemigos, vistaMapa, juego);
+        this.turno = 1;
+
+        // que sea vistaConstruir y tener vistaConstruccion, con tamaño distinto al de una torre construida en la vistaMapa
+        VistaDefensas vistaDefensas = new VistaDefensas();
+        // 
+
+        Button botonPasarTurno = new Button();
+        ControladorBotonPasarTurno controladorBotonPasarTurno = new ControladorBotonPasarTurno(this);
+        botonPasarTurno.setOnAction(controladorBotonPasarTurno);
 
         this.setLeft(vistaDefensas);
         this.setCenter(vistaMapa);
         this.setBottom(vistaInformacion);
+        this.setRight(botonPasarTurno);
+    }
 
+    public void actualizar() throws Exception {
+        this.juego.pasarTurno();
+        this.vistaMapa.actualizar(this.juego.getJugador(), this.turno);
+        this.vistaInformacion.actualizar();
+        this.turno++;
     }
 }

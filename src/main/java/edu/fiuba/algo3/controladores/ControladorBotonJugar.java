@@ -25,8 +25,6 @@ public class ControladorBotonJugar implements EventHandler<ActionEvent> {
 		String nombre = textFieldNombre.getText();
 
 		if (nombre.length() < 6) {
-			System.out.println(nombre.length());
-			System.out.println(nombre);
             labelNombreIncorrecto.setText("El nombre ingresado debe tener más de 6 caracteres");
         } else {
 			try {

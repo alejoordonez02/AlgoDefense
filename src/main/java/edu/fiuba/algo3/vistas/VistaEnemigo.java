@@ -25,10 +25,11 @@ public class VistaEnemigo extends StackPane {
 
     public void actualizar(int cantidad) {
 
-        if (cantidad == 0) {
-            this.vistaImagenEnemigo.setOpacity(1);
-        } else {
+        if (cantidad > 0) {
+            System.out.println(cantidad);
             this.vistaImagenEnemigo.setOpacity(0);
+        } else {
+            this.vistaImagenEnemigo.setOpacity(1);
         }
     }
 

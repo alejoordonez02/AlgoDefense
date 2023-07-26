@@ -12,12 +12,11 @@ import java.io.FileInputStream;
 
 public class VistaParcela extends StackPane {
 	VistaEnemigos vistaEnemigos;
-	VistaInformacionEnemigos vistaInformacionEnemigos;
     Parcela parcela;
 
     public VistaParcela(FileInputStream linkVistaParcela, VistaInformacionEnemigos vistaInformacionEnemigos, Parcela parcela) throws Exception {
-        this.vistaInformacionEnemigos = vistaInformacionEnemigos;
 		this.parcela = parcela;
+		this.vistaEnemigos = new VistaEnemigos(vistaInformacionEnemigos, parcela.getEnemigos());
 
 		Image imagenParcela = new Image(linkVistaParcela);
 		ImageView vistaImagenParcela = new ImageView(imagenParcela);

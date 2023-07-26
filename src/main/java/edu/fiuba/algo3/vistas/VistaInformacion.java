@@ -13,7 +13,9 @@ public class VistaInformacion extends HBox {
 	VistaInformacionEnemigos vistaInformacionEnemigos;
 	Button botonPasarTurno;
 
-    public VistaInformacion(VistaInformacionEnemigos vistaInformacionEnemigos, Jugador jugador, Mapa mapa) throws Exception {
+    public VistaInformacion(VistaInformacionEnemigos vistaInformacionEnemigos, VistaMapa vistaMapa, Juego juego) throws Exception {
+		Jugador jugador = juego.getJugador();
+
         this.vistaInformacionJugador = new VistaInformacionJugador(jugador);
 		this.vistaInformacionEnemigos = vistaInformacionEnemigos;
 		this.botonPasarTurno = new Button();
@@ -28,4 +30,8 @@ public class VistaInformacion extends HBox {
 		this.getChildren().add(vistaInformacionEnemigos);
 		this.getChildren().add(botonPasarTurno);
     }
+
+	public void actualizar() {
+		
+	}
 }
