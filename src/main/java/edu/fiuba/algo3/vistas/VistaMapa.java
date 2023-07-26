@@ -12,14 +12,6 @@ public class VistaMapa extends GridPane {
     Mapa mapa;
 
     public VistaMapa(VistaInformacionEnemigos vistaInformacionEnemigos, Mapa mapa) throws Exception {
-        this.setMaxWidth(900);
-        this.setMaxHeight(900);
-
-        this.setGridLinesVisible(true);
-        this.setHgap(0);
-        this.setVgap(0);
-        this.setPadding(new Insets(0, 0, 0, 0));
-
         this.mapa = mapa;
 
         int alto = mapa.getAlto();

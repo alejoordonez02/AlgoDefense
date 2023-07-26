@@ -15,10 +15,6 @@ public class VistaEnemigo extends StackPane {
     ImageView vistaImagenEnemigo;
 
     public VistaEnemigo(FileInputStream linkImagen, int cantidad) throws Exception {
-        this.setMaxWidth(30);
-        this.setMaxHeight(30);
-        this.setPadding(new Insets(0, 0, 0, 0));
-
         Image imagen = new Image(linkImagen);
 
         this.vistaImagenEnemigo = new ImageView(imagen);

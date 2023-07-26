@@ -18,13 +18,6 @@ public class VistaEnemigos extends GridPane {
 	VistaInformacionEnemigos vistaInformacionEnemigos;
 
     public VistaEnemigos(VistaInformacionEnemigos vistaInformacionEnemigos, List<Enemigo> enemigos) throws Exception {
-        this.setMaxWidth(60);
-        this.setMaxHeight(60);
-        this.setGridLinesVisible(true);
-        this.setHgap(0);
-        this.setVgap(0);
-        this.setPadding(new Insets(0, 0, 0, 0));
-
 		this.vistaInformacionEnemigos = vistaInformacionEnemigos;
 
         FileInputStream linkImagenHormiga = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/hormiga.png");
@@ -36,6 +29,11 @@ public class VistaEnemigos extends GridPane {
         this.vistaAranias = new VistaEnemigo(linkImagenArania, cantidadAranias);
         this.vistaTopos = new VistaEnemigo(linkImagenTopo, cantidadTopos);
         this.vistaLechuzas = new VistaEnemigo(linkImagenLechuza, cantidadLechuzas);
+
+        vistaHormigas.setPrefHeight(30);
+        vistaAranias.setPrefHeight(30);
+        vistaTopos.setPrefHeight(30);
+        vistaLechuzas.setPrefHeight(30);
 
         this.add(vistaHormigas, 0, 0);
         this.add(vistaAranias, 0, 1);
