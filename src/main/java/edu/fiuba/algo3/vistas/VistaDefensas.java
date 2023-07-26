@@ -11,6 +11,8 @@ public class VistaDefensas extends VBox {
     
 	public VistaDefensas() throws Exception {
 		this.getChildren().add(new ImageView(new Image(new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/torreBlanca.png"))));
+		this.getChildren().add(new ImageView(new Image(new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/torrePlateada.png"))));
+		this.getChildren().add(new ImageView(new Image(new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/trampaArenosa.png"))));
 
 	}
 
