@@ -22,7 +22,7 @@ public class ControladorBotonJugar implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-		String nombre = textFieldNombre.getText();
+		String nombre = textFieldNombre.getText().trim();
 
 		if (nombre.length() < 6) {
             labelNombreIncorrecto.setText("El nombre ingresado debe tener más de 6 caracteres");
