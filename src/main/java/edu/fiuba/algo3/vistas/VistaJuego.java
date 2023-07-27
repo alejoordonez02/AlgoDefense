@@ -14,38 +14,34 @@ public class VistaJuego extends BorderPane {
     Juego juego;
     VistaMapa vistaMapa;
     VistaInformacion vistaInformacion;
-    int turno;
 
     public VistaJuego(String nombre) throws Exception {
         Jugador jugador = new Jugador(nombre, new Vida(20), new Credito(100));
         JsonMapRepository mapaParser = new JsonMapRepository("src/main/java/edu/fiuba/algo3/json/mapa.json");
         JsonEnemyRepository enemigoParser = new JsonEnemyRepository("src/main/java/edu/fiuba/algo3/json/enemigos.json");
+        this.juego = new Juego(jugador, mapaParser, enemigoParser);
 
         VistaInformacionEnemigos vistaInformacionEnemigos = new VistaInformacionEnemigos();
 
-        this.juego = new Juego(jugador, mapaParser, enemigoParser);
+        Button botonPasarTurno = new Button();
+        botonPasarTurno.setText("controladorBotonPasarTurno");
+        ControladorBotonPasarTurno controladorBotonPasarTurno = new ControladorBotonPasarTurno(this, juego);
+        botonPasarTurno.setOnAction(controladorBotonPasarTurno);
+
         this.vistaMapa = new VistaMapa(vistaInformacionEnemigos, juego.getMapa());
-        this.vistaInformacion = new VistaInformacion(vistaInformacionEnemigos, vistaMapa, juego);
-        this.turno = 1;
+        this.vistaInformacion = new VistaInformacion(vistaInformacionEnemigos, vistaMapa, botonPasarTurno, juego);
 
         // que sea vistaConstruir y tener vistaConstruccion, con tamaño distinto al de una torre construida en la vistaMapa
         VistaDefensas vistaDefensas = new VistaDefensas();
         // 
 
-        Button botonPasarTurno = new Button();
-        ControladorBotonPasarTurno controladorBotonPasarTurno = new ControladorBotonPasarTurno(this);
-        botonPasarTurno.setOnAction(controladorBotonPasarTurno);
-
         this.setLeft(vistaDefensas);
         this.setCenter(vistaMapa);
         this.setBottom(vistaInformacion);
-        this.setRight(botonPasarTurno);
     }
 
     public void actualizar() throws Exception {
-        this.juego.pasarTurno();
-        this.vistaMapa.actualizar(this.juego.getJugador(), this.turno);
+        this.vistaMapa.actualizar();
         this.vistaInformacion.actualizar();
-        this.turno++;
     }
 }

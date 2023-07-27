@@ -29,10 +29,11 @@ public class ControladorBotonJugar implements EventHandler<ActionEvent> {
         } else {
 			try {
 				VistaJuego vistaJuego = new VistaJuego(nombre);
-				Scene escenaJuego = new Scene(vistaJuego, 1280, 1080);
+				Scene escenaJuego = new Scene(vistaJuego, 900, 900);
 				stage.setScene(escenaJuego);
 			}
 			catch(Exception e) {
+				System.out.println("Excecption catched");
 				System.out.println(e);
 				System.out.println(e.toString());
 				System.out.println(e.getMessage());

@@ -11,6 +11,7 @@ public class VistaInformacionJugador extends VBox {
 	VistaInformacionEnemigo vistaInformacionCredito;
 
 	public VistaInformacionJugador(Jugador jugador) throws Exception {
+		this.setPrefWidth(150);
 		this.jugador = jugador;
 
 		FileInputStream linkImagenVida = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/vida.png");
@@ -18,6 +19,9 @@ public class VistaInformacionJugador extends VBox {
 
 		this.vistaInformacionVida = new VistaInformacionEnemigo(linkImagenVida);
 		this.vistaInformacionCredito = new VistaInformacionEnemigo(linkImagenCredito);
+
+		this.getChildren().add(vistaInformacionVida);
+		this.getChildren().add(vistaInformacionCredito);
 
 		this.actualizar();
 	}

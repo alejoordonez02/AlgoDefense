@@ -12,6 +12,7 @@ public class VistaMapa extends GridPane {
     Mapa mapa;
 
     public VistaMapa(VistaInformacionEnemigos vistaInformacionEnemigos, Mapa mapa) throws Exception {
+		this.setGridLinesVisible(true);
         this.mapa = mapa;
 
         int alto = mapa.getAlto();
@@ -40,8 +41,7 @@ public class VistaMapa extends GridPane {
         }
     }
 
-    public void actualizar(Jugador jugador, int turno) {
-        this.mapa.jugarTurno(jugador, turno);
+    public void actualizar() {
 
         for (int x = 0; x < mapa.getAlto(); x++) {
             for (int y = 0; y < mapa.getAncho(); y++) {

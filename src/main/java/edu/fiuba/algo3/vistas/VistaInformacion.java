@@ -13,12 +13,12 @@ public class VistaInformacion extends HBox {
 	VistaInformacionEnemigos vistaInformacionEnemigos;
 	Button botonPasarTurno;
 
-    public VistaInformacion(VistaInformacionEnemigos vistaInformacionEnemigos, VistaMapa vistaMapa, Juego juego) throws Exception {
+    public VistaInformacion(VistaInformacionEnemigos vistaInformacionEnemigos, VistaMapa vistaMapa, Button botonPasarTurno, Juego juego) throws Exception {
 		Jugador jugador = juego.getJugador();
 
         this.vistaInformacionJugador = new VistaInformacionJugador(jugador);
 		this.vistaInformacionEnemigos = vistaInformacionEnemigos;
-		this.botonPasarTurno = new Button();
+		this.botonPasarTurno = botonPasarTurno;
 
 		// //(idea xd)
 		// controladorBotonPasarTurno = new ControladorBotonPasarTurno(vistaMapa.actualizar(jugador, mapa));
@@ -32,6 +32,6 @@ public class VistaInformacion extends HBox {
     }
 
 	public void actualizar() {
-		
+		vistaInformacionJugador.actualizar();
 	}
 }

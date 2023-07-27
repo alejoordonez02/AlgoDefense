@@ -25,15 +25,10 @@ public class VistaEnemigos extends GridPane {
         FileInputStream linkImagenTopo = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/topo.png");
         FileInputStream linkImagenLechuza = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/lechuza.png");
 
-        this.vistaHormigas = new VistaEnemigo(linkImagenHormiga, cantidadHormigas);
-        this.vistaAranias = new VistaEnemigo(linkImagenArania, cantidadAranias);
-        this.vistaTopos = new VistaEnemigo(linkImagenTopo, cantidadTopos);
-        this.vistaLechuzas = new VistaEnemigo(linkImagenLechuza, cantidadLechuzas);
-
-        vistaHormigas.setPrefHeight(30);
-        vistaAranias.setPrefHeight(30);
-        vistaTopos.setPrefHeight(30);
-        vistaLechuzas.setPrefHeight(30);
+        this.vistaHormigas = new VistaEnemigo(linkImagenHormiga);
+        this.vistaAranias = new VistaEnemigo(linkImagenArania);
+        this.vistaTopos = new VistaEnemigo(linkImagenTopo);
+        this.vistaLechuzas = new VistaEnemigo(linkImagenLechuza);
 
         this.add(vistaHormigas, 0, 0);
         this.add(vistaAranias, 0, 1);
@@ -44,6 +39,7 @@ public class VistaEnemigos extends GridPane {
 	public void actualizar(List<Enemigo> enemigos) {
 		actualizarCantidadEnemigos(enemigos);
 
+		//this.vistaHormigas.setVisible(false);
 		this.vistaHormigas.actualizar(cantidadHormigas);
 		this.vistaAranias.actualizar(cantidadAranias);
 		this.vistaTopos.actualizar(cantidadTopos);

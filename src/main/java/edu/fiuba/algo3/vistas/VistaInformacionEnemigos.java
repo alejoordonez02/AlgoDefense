@@ -12,6 +12,7 @@ public class VistaInformacionEnemigos extends HBox {
 	VistaInformacionEnemigo vistaInformacionLechuza;
 
 	public VistaInformacionEnemigos() throws Exception {
+		this.setPrefWidth(600);
 		FileInputStream linkImagenHormiga = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/hormiga.png");
         FileInputStream linkImagenArania = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/arania.png");
         FileInputStream linkImagenTopo = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/topo.png");
