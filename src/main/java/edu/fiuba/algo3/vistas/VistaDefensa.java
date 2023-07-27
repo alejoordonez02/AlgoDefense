@@ -10,7 +10,7 @@ public class VistaDefensa extends ImageView {
 		super(new Image(linkImagenTorre, 50, 50, false, true));
 		this.setOpacity(0.5);
 
-		// this.actualizar(false);
+		this.actualizar(false);
 	}
 
 	public void actualizar(boolean hayDefensa) {

@@ -20,16 +20,10 @@ public class VistaEnemigo extends StackPane {
         this.vistaImagenEnemigo = new ImageView(imagen);
         this.getChildren().add(vistaImagenEnemigo);
 
-        // this.actualizar(0);
+        this.actualizar(0);
     }
 
     public void actualizar(int cantidad) {
-        // if (cantidad > 0) {
-		// 	System.out.println("123123");
-		// 	System.out.println("cantidad: " + cantidad);
-		// 	// this.vistaImagenEnemigo.setImage(new Image("file:src/main/java/edu/fiuba/algo3/vistas/imagenes/credito.png", 20, 20, false, false));
-		// 	// this.vistaImagenEnemigo.setFitWidth(200);
-        // }
     	this.vistaImagenEnemigo.setVisible(cantidad > 0);
     }
 
