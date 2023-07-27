@@ -4,10 +4,9 @@ import edu.fiuba.algo3.controladores.*;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.repositories.JsonEnemyRepository;
 import edu.fiuba.algo3.repositories.JsonMapRepository;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.*;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class VistaJuego extends BorderPane {
@@ -26,6 +25,11 @@ public class VistaJuego extends BorderPane {
         JsonEnemyRepository enemigoParser = new JsonEnemyRepository("src/main/java/edu/fiuba/algo3/json/enemigos.json");
         this.juego = new Juego(jugador, mapaParser, enemigoParser);
 
+        Border borde = new Border(new BorderStroke(Color.BLACK,
+                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
+
+        ControladorBotonConstruccion controladorBotonConstruccion = new ControladorBotonConstruccion();
+        ControladorConstrucciones controladorConstrucciones = new ControladorConstrucciones(controladorBotonConstruccion, juego, jugador);
 
         VistaInformacionEnemigos vistaInformacionEnemigos = new VistaInformacionEnemigos();
 
@@ -34,13 +38,17 @@ public class VistaJuego extends BorderPane {
         ControladorBotonPasarTurno controladorBotonPasarTurno = new ControladorBotonPasarTurno(this, juego);
         botonPasarTurno.setOnAction(controladorBotonPasarTurno);
 
-        this.vistaMapa = new VistaMapa(vistaInformacionEnemigos, juego.getMapa());
+        this.vistaMapa = new VistaMapa(vistaInformacionEnemigos, juego.getMapa(), controladorConstrucciones);
         this.vistaInformacion = new VistaInformacion(vistaInformacionEnemigos, vistaMapa, botonPasarTurno, juego);
 
         // que sea vistaConstruir y tener vistaConstruccion, con tamaño distinto al de una torre construida en la vistaMapa
-        VistaDefensas vistaDefensas = new VistaDefensas();
-        // 
 
+        VistaDefensas vistaDefensas = new VistaDefensas(controladorBotonConstruccion);
+        //
+
+        vistaDefensas.setBorder(borde);
+        vistaMapa.setBorder(borde);
+        vistaInformacion.setBorder(borde);
         this.setLeft(vistaDefensas);
         this.setCenter(vistaMapa);
         this.setBottom(vistaInformacion);

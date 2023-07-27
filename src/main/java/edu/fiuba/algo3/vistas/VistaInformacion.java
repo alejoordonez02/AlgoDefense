@@ -16,6 +16,8 @@ public class VistaInformacion extends HBox {
     public VistaInformacion(VistaInformacionEnemigos vistaInformacionEnemigos, VistaMapa vistaMapa, Button botonPasarTurno, Juego juego) throws Exception {
 		Jugador jugador = juego.getJugador();
 
+		this.setPrefSize(900, 200);
+
         this.vistaInformacionJugador = new VistaInformacionJugador(jugador);
 		this.vistaInformacionEnemigos = vistaInformacionEnemigos;
 		this.botonPasarTurno = botonPasarTurno;

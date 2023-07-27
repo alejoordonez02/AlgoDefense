@@ -2,6 +2,8 @@ package edu.fiuba.algo3.controladores;
 
 import edu.fiuba.algo3.vistas.*;
 
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
@@ -29,7 +31,7 @@ public class ControladorBotonJugar implements EventHandler<ActionEvent> {
         } else {
 			try {
 				VistaJuego vistaJuego = new VistaJuego(nombre);
-				Scene escenaJuego = new Scene(vistaJuego, 900, 900);
+				Scene escenaJuego = new Scene(vistaJuego, 900, 1080);
 				stage.setScene(escenaJuego);
 			}
 			catch(Exception e) {
