@@ -40,7 +40,6 @@ public class VistaMapa extends GridPane {
                 this.add(vistaParcela, y, x);
 
                 final int[] coordenadas = {x, y};
-
                 vistaParcela.setOnMouseClicked(event -> {
                     Posicion pos = new Posicion(coordenadas[0], coordenadas[1]);
                     try {
@@ -53,10 +52,10 @@ public class VistaMapa extends GridPane {
                 this.vistasParcelas[x][y] = vistaParcela;
             }
         }
+
     }
 
     public void actualizar() {
-
         for (int x = 0; x < mapa.getAlto(); x++) {
             for (int y = 0; y < mapa.getAncho(); y++) {
                 this.vistasParcelas[x][y].actualizar();

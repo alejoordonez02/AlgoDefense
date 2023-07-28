@@ -16,6 +16,9 @@ public class ControladorBotonJugar implements EventHandler<ActionEvent> {
     TextField textFieldNombre;
 	Label labelNombreIncorrecto;
 
+	private static final int SCENE_HEIGHT = 900;
+	private static final int SCENE_WIDTH = 900;
+
     public ControladorBotonJugar(Stage stage, TextField textFieldNombre, Label labelNombreIncorrecto) {
         this.stage = stage;
         this.textFieldNombre = textFieldNombre;
@@ -31,7 +34,7 @@ public class ControladorBotonJugar implements EventHandler<ActionEvent> {
         } else {
 			try {
 				VistaJuego vistaJuego = new VistaJuego(nombre);
-				Scene escenaJuego = new Scene(vistaJuego, 900, 1080);
+				Scene escenaJuego = new Scene(vistaJuego, SCENE_WIDTH, SCENE_HEIGHT);
 				stage.setScene(escenaJuego);
 			}
 			catch(Exception e) {

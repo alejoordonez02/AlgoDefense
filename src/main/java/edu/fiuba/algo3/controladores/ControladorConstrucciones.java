@@ -17,10 +17,9 @@ public class ControladorConstrucciones {
     private Jugador jugador;
     public ControladorConstrucciones(ControladorBotonConstruccion controladorBotonConstruccion,
                                      Juego juego, Jugador jugador){
+
         this.handler = controladorBotonConstruccion;
-
         this.juego = juego;
-
         this.jugador = jugador;
     }
 
@@ -31,8 +30,4 @@ public class ControladorConstrucciones {
         }
     }
 
-
-    public Defensa getDefensa(){
-        return this.defensa;
-    }
 }

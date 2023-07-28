@@ -23,13 +23,15 @@ public class VistaParcela extends StackPane {
 	VistaEnemigos vistaEnemigos;
     Parcela parcela;
 
+	private static final int CELL_SIZE = 50;
+
     public VistaParcela(FileInputStream linkVistaParcela, VistaInformacionEnemigos vistaInformacionEnemigos, Parcela parcela) throws Exception {
 		this.setBorder(new Border(new BorderStroke(Color.BLACK,
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		this.parcela = parcela;
 		this.vistaEnemigos = new VistaEnemigos(vistaInformacionEnemigos, parcela.getEnemigos());
 
-		Image imagenParcela = new Image(linkVistaParcela, 50, 50, false, true);
+		Image imagenParcela = new Image(linkVistaParcela, CELL_SIZE, CELL_SIZE, false, true);
 		ImageView vistaImagenParcela = new ImageView(imagenParcela);
 
 		this.vistaImagenTorreBlanca = new VistaDefensa(new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/torreBlanca.png"));

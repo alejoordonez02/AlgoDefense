@@ -28,13 +28,15 @@ public class VistaJuego extends BorderPane {
         Border borde = new Border(new BorderStroke(Color.BLACK,
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 
+        // boton construccion crea la defensa a colocar, se guarda como atributo para que
+        // el controlador de construcciones lo use despues.
+
         ControladorBotonConstruccion controladorBotonConstruccion = new ControladorBotonConstruccion();
         ControladorConstrucciones controladorConstrucciones = new ControladorConstrucciones(controladorBotonConstruccion, juego, jugador);
 
         VistaInformacionEnemigos vistaInformacionEnemigos = new VistaInformacionEnemigos();
 
-        Button botonPasarTurno = new Button();
-        botonPasarTurno.setText("controladorBotonPasarTurno");
+        VistaBotonPasarTurno botonPasarTurno = new VistaBotonPasarTurno();
         ControladorBotonPasarTurno controladorBotonPasarTurno = new ControladorBotonPasarTurno(this, juego);
         botonPasarTurno.setOnAction(controladorBotonPasarTurno);
 
@@ -47,7 +49,7 @@ public class VistaJuego extends BorderPane {
         //
 
         vistaDefensas.setBorder(borde);
-        vistaMapa.setBorder(borde);
+        //vistaMapa.setBorder(borde);
         vistaInformacion.setBorder(borde);
         this.setLeft(vistaDefensas);
         this.setCenter(vistaMapa);
