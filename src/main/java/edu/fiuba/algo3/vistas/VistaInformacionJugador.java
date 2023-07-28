@@ -1,24 +1,22 @@
 package edu.fiuba.algo3.vistas;
 
-import java.io.FileInputStream;
-
-import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.controladores.*;
 import javafx.scene.layout.VBox;
 
 public class VistaInformacionJugador extends VBox {
-	Jugador jugador;
+	ControladorJugador controladorJugador;
 	VistaInformacionEnemigo vistaInformacionVida;
 	VistaInformacionEnemigo vistaInformacionCredito;
 
-	public VistaInformacionJugador(Jugador jugador) throws Exception {
+	public VistaInformacionJugador(ControladorJugador controladorJugador) {
 		this.setPrefWidth(150);
-		this.jugador = jugador;
+		this.controladorJugador = controladorJugador;
 
-		FileInputStream linkImagenVida = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/vida.png");
-		FileInputStream linkImagenCredito = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/credito.png");
+		String pathImagenVida = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/vida.png";
+		String pathImagenCredito = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/credito.png";
 
-		this.vistaInformacionVida = new VistaInformacionEnemigo(linkImagenVida);
-		this.vistaInformacionCredito = new VistaInformacionEnemigo(linkImagenCredito);
+		this.vistaInformacionVida = new VistaInformacionEnemigo(pathImagenVida);
+		this.vistaInformacionCredito = new VistaInformacionEnemigo(pathImagenCredito);
 
 		this.getChildren().add(vistaInformacionVida);
 		this.getChildren().add(vistaInformacionCredito);
@@ -27,8 +25,8 @@ public class VistaInformacionJugador extends VBox {
 	}
 
 	public void actualizar() {
-		this.vistaInformacionVida.actualizar(this.jugador.getVida().getVida());
-		this.vistaInformacionCredito.actualizar(this.jugador.getCreditos().getCantidad());
+		this.vistaInformacionVida.actualizar(this.controladorJugador.getVida());
+		this.vistaInformacionCredito.actualizar(this.controladorJugador.getCreditos());
 	}
 
 }

@@ -54,6 +54,7 @@ public class Jugador {
 
     public void construirTorre(Torre torre, Parcela parcela) throws Exception {
         if (this.creditos.mayorIgualQue(torre.getCosto())) {
+			parcela.construirTorre(torre);
             this.pagar(torre.getCosto());
 			parcelasConTorre.add(parcela);
         } else {
@@ -61,8 +62,9 @@ public class Jugador {
         }
     }
     
-	public void construirTrampa(TrampaArenosa trampaArenosa) throws Exception {
+	public void construirTrampa(TrampaArenosa trampaArenosa, Parcela parcela) throws Exception {
         if (this.creditos.mayorIgualQue(trampaArenosa.getCosto())) {
+			parcela.construirTrampa(trampaArenosa);
             this.pagar(trampaArenosa.getCosto());
         } else {
             throw new CreditosInsuficientes("Creditos insuficientes");

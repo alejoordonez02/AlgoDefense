@@ -4,10 +4,12 @@ import java.util.List;
 
 public class TrampaArenosa implements Defensa{
 	Credito costo;
+	int ralentizacion;
 	int tiempoDeFuncionamiento;
 	
 	public TrampaArenosa() {
 		this.costo = new Credito(25);
+		this.ralentizacion = 50;
 		this.tiempoDeFuncionamiento = 3;
 	}
 
@@ -15,17 +17,17 @@ public class TrampaArenosa implements Defensa{
 		return this.costo;
 	}
 
+	public int getRalentizacion() {
+		return this.ralentizacion;
+	}
+
 	public int getTiempoDeFuncionamiento() {
 		return this.tiempoDeFuncionamiento;
 	}
 
-	public void setTiempoDeFuncionamiento(int tiempoDeFuncionamiento) {
-		this.tiempoDeFuncionamiento = tiempoDeFuncionamiento;
-	}
-
 	public TrampaArenosa jugarTurno(List<Enemigo> enemigos) {
 		for (Enemigo enemigo : enemigos) {
-			enemigo.ralentizado();
+			enemigo.ralentizado(this.ralentizacion);
 		}
 		
 		tiempoDeFuncionamiento--;
@@ -42,7 +44,8 @@ public class TrampaArenosa implements Defensa{
 
         if (this.getClass().equals(o.getClass())) {
             TrampaArenosa c = (TrampaArenosa) o;
-            return this.getCosto() == (c.getCosto())
+            return this.getCosto().equals(c.getCosto())
+				&& this.getRalentizacion() == (c.getRalentizacion())
                 && this.getTiempoDeFuncionamiento() == c.getTiempoDeFuncionamiento();
         }
 

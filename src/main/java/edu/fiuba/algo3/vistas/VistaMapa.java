@@ -1,10 +1,10 @@
 package edu.fiuba.algo3.vistas;
 
-import java.io.FileInputStream;
-import java.util.Arrays;
-
-import edu.fiuba.algo3.controladores.ControladorConstrucciones;
-import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.controladores.ControladorDefensas;
+import edu.fiuba.algo3.controladores.ControladorMapa;
+import edu.fiuba.algo3.controladores.ControladorParcela;
+import edu.fiuba.algo3.controladores.ControladorVistaParcela;
+import edu.fiuba.algo3.modelo.Posicion;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -12,61 +12,48 @@ import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 
 public class VistaMapa extends GridPane {
     VistaParcela[][] vistasParcelas;
-    Mapa mapa;
+    ControladorMapa controladorMapa;
 
-    public VistaMapa(VistaInformacionEnemigos vistaInformacionEnemigos, Mapa mapa,
-                     ControladorConstrucciones handler) throws Exception {
+    public VistaMapa(VistaInformacionEnemigos vistaInformacionEnemigos, ControladorMapa controladorMapa,
+                     ControladorDefensas controladorDefensas) {
 		this.setGridLinesVisible(true);
-        this.mapa = mapa;
+        this.controladorMapa = controladorMapa;
 
-        int alto = mapa.getAlto();
-        int ancho = mapa.getAncho();
+        int alto = controladorMapa.getMapaAlto();
+        int ancho = controladorMapa.getMapaAncho();
 
         this.vistasParcelas = new VistaParcela[alto][ancho];
 
         for (int x = 0; x < alto; x++) {
             for (int y = 0; y < ancho; y++) {
 
-                FileInputStream linkImagenParcela = null;
-                Parcela parcela = mapa.getParcela(new Posicion(x, y));
+                String pathImagen = this.controladorMapa.crearVistaParcela(x, y, vistaInformacionEnemigos, controladorDefensas);
 
-                if (parcela.getClass().equals(Pasarela.class)) {
-                    linkImagenParcela = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/pasarela.png");
-                } else if (parcela.getClass().equals(Tierra.class)) {
-                    linkImagenParcela = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/tierra.png");
-                } else if (parcela.getClass().equals(Roca.class)) {
-                    linkImagenParcela = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/roca.png");
-                }
+				ControladorParcela controladorParcela = new ControladorParcela(controladorMapa.getParcela(x,y));
 
-                VistaParcela vistaParcela = new VistaParcela(linkImagenParcela, vistaInformacionEnemigos, parcela);
-                this.add(vistaParcela, y, x);
+				VistaParcela vistaParcela = new VistaParcela(pathImagen, vistaInformacionEnemigos, controladorParcela);
+				
+				Posicion posicion = new Posicion(x,y);
+				ControladorVistaParcela controladorVistaParcela = new ControladorVistaParcela(controladorDefensas, vistaParcela, posicion);
 
-                final Posicion posicion = new Posicion(x,y);
-                vistaParcela.setOnMouseClicked(event -> {
-                    try {
-                        handler.construir(vistaParcela, this.mapa, posicion);
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                });
+				vistaParcela.setOnMouseClicked(controladorVistaParcela);
 
 				vistaParcela.setOnMouseEntered(event -> {
 					vistaParcela.setBorder(new Border(new BorderStroke(Color.RED,
-                													   BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+																		BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 					vistaParcela.actualizarVistaInformacionEnemigos();
 				});
 
 				vistaParcela.setOnMouseExited(event -> {
 					vistaParcela.setBorder(new Border(new BorderStroke(Color.BLACK,
-                													   BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+																		BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 					vistaInformacionEnemigos.limpiar();
 				});
 
+				this.add(vistaParcela, y, x);
                 this.vistasParcelas[x][y] = vistaParcela;
             }
         }
@@ -74,8 +61,8 @@ public class VistaMapa extends GridPane {
     }
 
     public void actualizar() {
-        for (int x = 0; x < mapa.getAlto(); x++) {
-            for (int y = 0; y < mapa.getAncho(); y++) {
+        for (int x = 0; x < controladorMapa.getMapaAlto(); x++) {
+            for (int y = 0; y < controladorMapa.getMapaAncho(); y++) {
                 this.vistasParcelas[x][y].actualizar();
             }
         }

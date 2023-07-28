@@ -5,27 +5,26 @@ import edu.fiuba.algo3.modelo.TorreBlanca;
 import edu.fiuba.algo3.modelo.TorrePlateada;
 import edu.fiuba.algo3.modelo.TrampaArenosa;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
+// import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseDragEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.ToggleGroup;
+// import javafx.scene.input.MouseButton;
+// import javafx.scene.input.MouseDragEvent;
+// import javafx.scene.input.MouseEvent;
 
-import java.util.Objects;
-
-public class ControladorBotonConstruccion implements EventHandler<ActionEvent> {
+public class ControladorBotonDefensas implements EventHandler<ActionEvent> {
     Defensa defensa;
-    ToggleButton boton;
+	ToggleGroup grupoDefensas;
 
-    public ControladorBotonConstruccion(){
+    public ControladorBotonDefensas(ToggleGroup grupoDefensas){
+		this.grupoDefensas = grupoDefensas;
 		this.defensa = null;
     }
 
     @Override
     public void handle(ActionEvent event) {
-        this.boton = (ToggleButton) event.getSource();
+        ToggleButton boton = (ToggleButton) event.getSource();
 
         String id = boton.getId();
 		
@@ -42,12 +41,12 @@ public class ControladorBotonConstruccion implements EventHandler<ActionEvent> {
         }
     }
 
+	public void deseleccionar() {
+		this.grupoDefensas.selectToggle(null);
+		this.defensa = null;
+	}
+
     public Defensa getDefensa(){
         return defensa;
     }
-
-    public ToggleButton getBoton(){
-        return boton;
-    }
-
 }

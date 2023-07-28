@@ -1,12 +1,8 @@
 package edu.fiuba.algo3.vistas;
 
-import java.io.FileNotFoundException;
-
-import edu.fiuba.algo3.SystemInfo;
+// import edu.fiuba.algo3.SystemInfo;
 import javafx.application.Application;
 import javafx.scene.Scene;
-// import javafx.scene.control.Label;
-// import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -14,22 +10,17 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
-    private static final int BIENVENIDA_ANCHO = 128 * consts.UNIT_SIZE;
-    private static final int BIENVENIDA_ALTO = 96 * consts.UNIT_SIZE;
+    private static final int BIENVENIDA_ANCHO = 128 * Constantes.UNIT_SIZE;
+    private static final int BIENVENIDA_ALTO = 96 * Constantes.UNIT_SIZE;
 
     @Override
     public void start(Stage stage) {
-		try {
-			VistaInicio vistaInicio = new VistaInicio(stage);
-			Scene escenaInicio = new Scene(vistaInicio, BIENVENIDA_ANCHO, BIENVENIDA_ALTO);
-	
-			stage.setTitle("AlgoDefense");
-			stage.setScene(escenaInicio);
-			stage.show();
-		}
-		catch(FileNotFoundException e) {
-			// Ventana error
-		}
+		VistaInicio vistaInicio = new VistaInicio(stage);
+		Scene escenaInicio = new Scene(vistaInicio, BIENVENIDA_ANCHO, BIENVENIDA_ALTO);
+
+		stage.setTitle("AlgoDefense");
+		stage.setScene(escenaInicio);
+		stage.show();
     }
 
     public static void main(String[] args) {

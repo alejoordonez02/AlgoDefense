@@ -2,8 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 public class CaminarSobrePasarela implements Movedor {
     Pasarela pasarela;
-    int velocidad;
-    boolean ralentizado;
+    int velocidadOriginal;
+	int velocidadActual;
 
 	public Parcela getParcela() {
 		return this.pasarela;
@@ -11,23 +11,18 @@ public class CaminarSobrePasarela implements Movedor {
 
     public CaminarSobrePasarela(Pasarela pasarela, int velocidad) {
         this.pasarela = pasarela;
-        this.velocidad = velocidad;
-        this.ralentizado = false;
+        this.velocidadOriginal = velocidad;
+		this.velocidadActual = velocidad;
     }
 
-	public void ralentizado() {
-		this.ralentizado = true;
+	public void ralentizado(int ralentizacion) {
+		this.velocidadActual = (this.velocidadActual * ralentizacion / 100);
 	}
 
     public Parcela mover(Enemigo enemigo) {
-		int velocidadActual = this.velocidad;
 		Pasarela pasarelaActual = this.pasarela;
 
-		if (ralentizado) {
-			velocidadActual /= 2;
-		}
-
-        for (int i = 0; i < velocidadActual; i++) {
+        for (int i = 0; i < this.velocidadActual; i++) {
             pasarelaActual = (Pasarela) pasarelaActual.getSiguiente();
         }
 
@@ -36,7 +31,7 @@ public class CaminarSobrePasarela implements Movedor {
 			this.pasarela = pasarelaActual;
 		}
 
-		this.ralentizado = false;
+		this.velocidadActual = this.velocidadOriginal;
 
 		return this.pasarela;
     }

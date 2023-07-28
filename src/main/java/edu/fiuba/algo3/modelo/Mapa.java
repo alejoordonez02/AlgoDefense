@@ -45,7 +45,6 @@ public class Mapa {
 
 		try {
 			Parcela parcela = this.getParcela(posicion);
-			parcela.construirTorre(torre);
 			jugador.construirTorre(torre, parcela);
 		}
 		catch (Exception e) {
@@ -59,8 +58,7 @@ public class Mapa {
 			Parcela parcela = this.getParcela(posicion);
 			
 			if (!parcela.equals(pasarelaInicial) && !parcela.equals(pasarelaFinal)) {
-				this.parcelas[posicion.x()][posicion.y()].construirTrampa(trampaArenosa);
-				jugador.construirTrampa(trampaArenosa);
+				jugador.construirTrampa(trampaArenosa, parcela);
 			}
 			else {
 				throw new ParcelaInvalida("No se puede construir en el inicio o final.");

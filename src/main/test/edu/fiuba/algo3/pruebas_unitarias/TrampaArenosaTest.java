@@ -34,6 +34,7 @@ public class TrampaArenosaTest {
 	public void test03TrampaArenosaRalentizaALosEnemigosQueLaPisan() {
 		TrampaArenosa trampaArenosa = new TrampaArenosa();
 		List<Enemigo> enemigos = new ArrayList<Enemigo>();
+		int ralentizacion = trampaArenosa.getRalentizacion();
 
 		Hormiga mockedHormiga = mock(Hormiga.class);
 		Arania mockedArania = mock(Arania.class);
@@ -45,8 +46,8 @@ public class TrampaArenosaTest {
 
 		trampaArenosa.jugarTurno(enemigos);
 
-		verify(mockedHormiga).ralentizado();
-		verify(mockedArania).ralentizado();
-		verify(mockedTopo).ralentizado();
+		verify(mockedHormiga).ralentizado(ralentizacion);
+		verify(mockedArania).ralentizado(ralentizacion);
+		verify(mockedTopo).ralentizado(ralentizacion);
 	}
 }

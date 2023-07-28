@@ -2,8 +2,6 @@ package edu.fiuba.algo3.controladores;
 
 import edu.fiuba.algo3.vistas.*;
 
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
@@ -16,8 +14,8 @@ public class ControladorBotonJugar implements EventHandler<ActionEvent> {
     TextField textFieldNombre;
 	Label labelNombreIncorrecto;
 
-	private static final int SCENE_HEIGHT = 180 * consts.UNIT_SIZE;
-	private static final int SCENE_WIDTH = 180 * consts.UNIT_SIZE;
+	static final int SCENE_HEIGHT = 180 * Constantes.UNIT_SIZE;
+	static final int SCENE_WIDTH = 180 * Constantes.UNIT_SIZE;
 
     public ControladorBotonJugar(Stage stage, TextField textFieldNombre, Label labelNombreIncorrecto) {
         this.stage = stage;

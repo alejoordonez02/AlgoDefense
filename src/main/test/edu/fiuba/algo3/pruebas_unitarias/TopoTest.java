@@ -156,10 +156,8 @@ public class TopoTest {
 		when(mockedPasarela2.getSiguiente()).thenReturn(mockedPasarelaFinal);
 		when(mockedPasarelaFinal.getSiguiente()).thenReturn(mockedPasarelaFinal);
 
-		topo.ralentizado();
-		topo.mover();
-
-		verify(mockedPasarelaInicial).agregarEnemigo(topo);
+		topo.ralentizado(50);
+		assertEquals(mockedPasarelaInicial, topo.getParcela());
 	}
 
 	@Test
@@ -179,7 +177,7 @@ public class TopoTest {
 		topo.mover();
 		topo.mover();
 		topo.mover();
-		topo.ralentizado();
+		topo.ralentizado(50);
 		topo.mover();
 
 		verify(pasarelas.get(6)).agregarEnemigo(topo);
@@ -207,7 +205,7 @@ public class TopoTest {
 		topo.mover();
 		topo.mover();
 		topo.mover();
-		topo.ralentizado();
+		topo.ralentizado(50);
 		topo.mover();
 
 		verify(pasarelas.get(16)).agregarEnemigo(topo);

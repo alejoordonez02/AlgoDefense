@@ -33,7 +33,7 @@ public class VolarEnL implements Movedor {
 		return mapa.getParcela(posicionDestino);
 	}
 
-	public void ralentizado() {}
+	public void ralentizado(int ralentizacion) {}
 
     public Parcela mover(Enemigo enemigo) {
 		parcela = this.determinarDestino(this.mapa, velocidad);

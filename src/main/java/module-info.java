@@ -1,6 +1,6 @@
 module edu.fiuba.algo3 {
     requires transitive javafx.graphics;
-    requires javafx.controls;
+    requires transitive javafx.controls;
     exports edu.fiuba.algo3;
     exports edu.fiuba.algo3.controladores;
     exports edu.fiuba.algo3.vistas;

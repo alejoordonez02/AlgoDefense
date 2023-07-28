@@ -68,7 +68,7 @@ public class CaminarSobrePasarelaTest {
 		when(mockedPasarela2.getSiguiente()).thenReturn(mockedPasarelaFinal);
 		when(mockedPasarelaFinal.getSiguiente()).thenReturn(mockedPasarelaFinal);
 
-		movimiento.ralentizado();
+		movimiento.ralentizado(50);
 
 		assertEquals(mockedPasarela1, movimiento.mover(mockedEnemigo));
 	}

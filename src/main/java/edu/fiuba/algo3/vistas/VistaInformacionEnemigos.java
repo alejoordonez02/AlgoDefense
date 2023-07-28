@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.vistas;
 
-import java.io.FileInputStream;
-
 import javafx.scene.layout.HBox;
 
 public class VistaInformacionEnemigos extends HBox {
@@ -11,17 +9,17 @@ public class VistaInformacionEnemigos extends HBox {
 	VistaInformacionEnemigo vistaInformacionTopo;
 	VistaInformacionEnemigo vistaInformacionLechuza;
 
-	public VistaInformacionEnemigos() throws Exception {
+	public VistaInformacionEnemigos() {
 		this.setPrefWidth(600);
-		FileInputStream linkImagenHormiga = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/hormiga.png");
-        FileInputStream linkImagenArania = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/arania.png");
-        FileInputStream linkImagenTopo = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/topo.png");
-        FileInputStream linkImagenLechuza = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/lechuza.png");
+		String pathImagenHormiga = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/hormiga.png";
+        String pathImagenArania = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/arania.png";
+        String pathImagenTopo = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/topo.png";
+        String pathImagenLechuza = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/lechuza.png";
 		
-		this.vistaInformacionHormiga = new VistaInformacionEnemigo(linkImagenHormiga);
-		this.vistaInformacionArania = new VistaInformacionEnemigo(linkImagenArania);
-		this.vistaInformacionTopo = new VistaInformacionEnemigo(linkImagenTopo);
-		this.vistaInformacionLechuza = new VistaInformacionEnemigo(linkImagenLechuza);
+		this.vistaInformacionHormiga = new VistaInformacionEnemigo(pathImagenHormiga);
+		this.vistaInformacionArania = new VistaInformacionEnemigo(pathImagenArania);
+		this.vistaInformacionTopo = new VistaInformacionEnemigo(pathImagenTopo);
+		this.vistaInformacionLechuza = new VistaInformacionEnemigo(pathImagenLechuza);
 
 		this.getChildren().add(vistaInformacionHormiga);
 		this.getChildren().add(vistaInformacionArania);

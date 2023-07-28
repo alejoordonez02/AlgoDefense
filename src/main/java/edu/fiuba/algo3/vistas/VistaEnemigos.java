@@ -1,12 +1,14 @@
 package edu.fiuba.algo3.vistas;
 
-import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.controladores.ControladorEnemigos;
 import javafx.scene.layout.GridPane;
-import java.io.FileInputStream;
-import javafx.geometry.Insets;
-import java.util.List;
 
 public class VistaEnemigos extends GridPane {
+	final int HORMIGA = 0;
+	final int ARANIA = 1;
+	final int TOPO = 2;
+	final int LECHUZA = 3;
+
 	VistaEnemigo vistaHormigas;
     VistaEnemigo vistaAranias;
     VistaEnemigo vistaTopos;
@@ -17,18 +19,18 @@ public class VistaEnemigos extends GridPane {
     int cantidadLechuzas;
 	VistaInformacionEnemigos vistaInformacionEnemigos;
 
-    public VistaEnemigos(VistaInformacionEnemigos vistaInformacionEnemigos, List<Enemigo> enemigos) throws Exception {
+    public VistaEnemigos(VistaInformacionEnemigos vistaInformacionEnemigos) {
 		this.vistaInformacionEnemigos = vistaInformacionEnemigos;
 
-        FileInputStream linkImagenHormiga = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/hormiga.png");
-        FileInputStream linkImagenArania = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/arania.png");
-        FileInputStream linkImagenTopo = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/topo.png");
-        FileInputStream linkImagenLechuza = new FileInputStream("src/main/java/edu/fiuba/algo3/vistas/imagenes/lechuza.png");
+        String pathImagenHormiga = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/hormiga.png";
+        String pathImagenArania = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/arania.png";
+        String pathImagenTopo = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/topo.png";
+        String pathImagenLechuza = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/lechuza.png";
 
-        this.vistaHormigas = new VistaEnemigo(linkImagenHormiga);
-        this.vistaAranias = new VistaEnemigo(linkImagenArania);
-        this.vistaTopos = new VistaEnemigo(linkImagenTopo);
-        this.vistaLechuzas = new VistaEnemigo(linkImagenLechuza);
+        this.vistaHormigas = new VistaEnemigo(pathImagenHormiga);
+        this.vistaAranias = new VistaEnemigo(pathImagenArania);
+        this.vistaTopos = new VistaEnemigo(pathImagenTopo);
+        this.vistaLechuzas = new VistaEnemigo(pathImagenLechuza);
 
         this.add(vistaHormigas, 0, 0);
         this.add(vistaAranias, 0, 1);
@@ -36,10 +38,9 @@ public class VistaEnemigos extends GridPane {
         this.add(vistaLechuzas, 1, 1);
     }
 
-	public void actualizar(List<Enemigo> enemigos) {
-		actualizarCantidadEnemigos(enemigos);
+	public void actualizar(ControladorEnemigos controladorEnemigos) {
+		this.actualizarCantidadEnemigos(controladorEnemigos);
 
-		//this.vistaHormigas.setVisible(false);
 		this.vistaHormigas.actualizar(cantidadHormigas);
 		this.vistaAranias.actualizar(cantidadAranias);
 		this.vistaTopos.actualizar(cantidadTopos);
@@ -47,24 +48,13 @@ public class VistaEnemigos extends GridPane {
 	}
 
 
-	private void actualizarCantidadEnemigos(List<Enemigo> enemigos) {
+	private void actualizarCantidadEnemigos(ControladorEnemigos controladorEnemigos) {
+		int[] cantidadEnemigos = controladorEnemigos.getCantidadEnemigos();
 
-		this.cantidadHormigas = 0;
-        this.cantidadAranias = 0;
-        this.cantidadTopos = 0;
-        this.cantidadLechuzas = 0;
-
-        for (Enemigo enemigo : enemigos) {
-            if (enemigo.getClass().equals(Hormiga.class)) {
-                cantidadHormigas++;
-            } else if (enemigo.getClass().equals(Arania.class)) {
-                cantidadAranias++;
-            } else if (enemigo.getClass().equals(Topo.class)) {
-                cantidadTopos++;
-            } else if (enemigo.getClass().equals(Lechuza.class)) {
-                cantidadLechuzas++;
-            }
-        }
+		this.cantidadHormigas = cantidadEnemigos[HORMIGA];
+        this.cantidadAranias = cantidadEnemigos[ARANIA];
+        this.cantidadTopos = cantidadEnemigos[TOPO];
+        this.cantidadLechuzas = cantidadEnemigos[LECHUZA];
 	}
 
 	public void actualizarVistaInformacionEnemigos() {

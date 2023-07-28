@@ -15,7 +15,7 @@ public class VolarRecto implements Movedor {
 		return this.parcela;
 	}
 
-	public void ralentizado() {}
+	public void ralentizado(int ralentizacion) {}
 
 	public Parcela obtenerCamino(Mapa mapa) {
 		Posicion posicion = parcela.getPosicion();

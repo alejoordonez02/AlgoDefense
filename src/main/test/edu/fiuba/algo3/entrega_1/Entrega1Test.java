@@ -52,10 +52,11 @@ public class Entrega1Test {
         Torre torreBlanca = new TorreBlanca();
         Torre torrePlateada = new TorrePlateada();
 
-		Tierra tierra = new Tierra(new Posicion(0,0));
+		Tierra tierra1 = new Tierra(new Posicion(0,0));
+		Tierra tierra2 = new Tierra(new Posicion(0,0));
 
-        assertDoesNotThrow(() -> jugador.construirTorre(torreBlanca, tierra));
-        assertDoesNotThrow(() -> jugador.construirTorre(torrePlateada, tierra));
+        assertDoesNotThrow(() -> jugador.construirTorre(torreBlanca, tierra1));
+        assertDoesNotThrow(() -> jugador.construirTorre(torrePlateada, tierra2));
     }
 
     @Test

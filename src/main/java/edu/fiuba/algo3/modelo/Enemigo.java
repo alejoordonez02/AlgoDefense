@@ -36,8 +36,8 @@ public abstract class Enemigo {
         return this.vida.mayorQue(new Vida(0));
     }
 
-	public void ralentizado() {
-		movedor.ralentizado();
+	public void ralentizado(int ralentizacion) {
+		movedor.ralentizado(ralentizacion);
 	}
 
 	public void mover() {

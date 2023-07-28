@@ -28,7 +28,7 @@ public class Pasarela extends Parcela {
     }
 
 	public void construirTrampa(TrampaArenosa trampaArenosa) throws Exception {
-		if (this.trampaArenosa == null) {
+		if (!hayTrampa()) {
 			this.trampaArenosa = trampaArenosa;
 		}
 		else {
@@ -41,7 +41,7 @@ public class Pasarela extends Parcela {
 	}
 
 	public void jugarTurno(Mapa mapa, Jugador jugador) {
-		if (trampaArenosa != null) {
+		if (hayTrampa()) {
 			this.trampaArenosa = this.trampaArenosa.jugarTurno(enemigos);
 		}
 		

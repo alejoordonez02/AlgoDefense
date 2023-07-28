@@ -124,7 +124,7 @@ public class AraniaTest {
 		when(mockedPasarela2.getSiguiente()).thenReturn(mockedPasarelaFinal);
 		when(mockedPasarelaFinal.getSiguiente()).thenReturn(mockedPasarelaFinal);
 
-		arania.ralentizado();
+		arania.ralentizado(50);
 		arania.mover();
 
 		verify(mockedPasarela1).agregarEnemigo(arania);

@@ -136,10 +136,10 @@ public class HormigaTest {
 		when(mockedPasarela2.getSiguiente()).thenReturn(mockedPasarelaFinal);
 		when(mockedPasarelaFinal.getSiguiente()).thenReturn(mockedPasarelaFinal);
 
-		hormiga.ralentizado();
+		hormiga.ralentizado(50);
 		hormiga.mover();
 
-		verify(mockedPasarelaInicial).agregarEnemigo(hormiga);
+		assertEquals(mockedPasarelaInicial, hormiga.getParcela());
 	}
 
 }

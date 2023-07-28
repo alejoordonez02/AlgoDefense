@@ -22,7 +22,7 @@ public class Tierra extends Parcela {
 	}
 
     public void construirTorre(Torre torre) throws Exception {
-		if (this.torre == null) {
+		if (!hayTorre()) {
 			this.torre = torre;
 			this.torre.setPosicion(this.posicion);
 		}
@@ -43,7 +43,7 @@ public class Tierra extends Parcela {
 		
 		this.moverEnemigos();
 
-		if (torre != null) {
+		if (hayTorre()) {
 			this.torre.jugarTurno(mapa, jugador);
 		}
 	}

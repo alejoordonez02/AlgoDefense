@@ -114,7 +114,7 @@ public class MapaTest {
 
 		try{
 			mapa.construirTorre(mockedJugador, mockedPosicion, mockedTorre);
-			verify(mockedTierra).construirTorre(mockedTorre);
+			verify(mockedJugador).construirTorre(mockedTorre, mockedTierra);
 		} catch(Exception e) {}
 	}
 
@@ -135,7 +135,7 @@ public class MapaTest {
 
 		try{
 			mapa.construirTrampa(mockedJugador, mockedPosicion, mockedTrampa);
-			verify(mockedPasarela).construirTrampa(mockedTrampa);
+			verify(mockedJugador).construirTrampa(mockedTrampa, mockedPasarela);
 		} catch(Exception e) {}
 	}
 

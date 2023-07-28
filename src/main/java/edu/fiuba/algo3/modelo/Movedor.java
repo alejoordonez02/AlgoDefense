@@ -6,6 +6,6 @@ public interface Movedor {
 
     public Parcela mover(Enemigo enemigo);
 
-	public void ralentizado();
+	public void ralentizado(int ralentizacion);
 
 }

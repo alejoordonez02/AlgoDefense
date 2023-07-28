@@ -1,23 +1,16 @@
 package edu.fiuba.algo3.vistas;
 
-import edu.fiuba.algo3.modelo.*;
-import javafx.scene.text.Font;
 import javafx.scene.layout.StackPane;
-import java.util.List;
-import java.io.FileInputStream;
-import java.util.ArrayList;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.geometry.Insets;
-import javafx.scene.control.Label;
 
 public class VistaEnemigo extends StackPane {
     ImageView vistaImagenEnemigo;
 
-    private static final int IMG_SIZE = 5 * consts.UNIT_SIZE;
+    private static final int IMG_SIZE = 5 * Constantes.UNIT_SIZE;
 
-    public VistaEnemigo(FileInputStream linkImagen) throws Exception {
-        Image imagen = new Image(linkImagen, IMG_SIZE, IMG_SIZE, false, true);
+    public VistaEnemigo(String pathImagen) {
+        Image imagen = new Image(pathImagen, IMG_SIZE, IMG_SIZE, false, true);
 
         this.vistaImagenEnemigo = new ImageView(imagen);
         this.getChildren().add(vistaImagenEnemigo);
