@@ -7,13 +7,13 @@ public class Jugador {
     String nombre;
     Vida vida;
     Credito creditos;
-	List<Defensa> torres;
+	List<Parcela> parcelasConTorre;
 
     public Jugador(String nombre, Vida vida, Credito creditos) {
         this.nombre = nombre;
         this.vida = vida;
         this.creditos = creditos;
-		this.torres = new ArrayList<Defensa>();
+		this.parcelasConTorre = new ArrayList<Parcela>();
     }
 
     public String getNombre() {
@@ -33,7 +33,7 @@ public class Jugador {
     }
 
 	public boolean tieneTorres() {
-		return (!this.torres.isEmpty());
+		return (!this.parcelasConTorre.isEmpty());
 	}
 
 	public void atacado(int danio) {
@@ -52,18 +52,27 @@ public class Jugador {
         this.creditos.restar(creditos);
     }
 
-    public void construir(Defensa defensa) throws Exception {
-        if (this.creditos.mayorIgualQue(defensa.getCosto())) {
-            this.pagar(defensa.getCosto());
-			torres.add(defensa);
+    public void construirTorre(Torre torre, Parcela parcela) throws Exception {
+        if (this.creditos.mayorIgualQue(torre.getCosto())) {
+            this.pagar(torre.getCosto());
+			parcelasConTorre.add(parcela);
+        } else {
+            throw new CreditosInsuficientes("Creditos insuficientes");
+        }
+    }
+    
+	public void construirTrampa(TrampaArenosa trampaArenosa) throws Exception {
+        if (this.creditos.mayorIgualQue(trampaArenosa.getCosto())) {
+            this.pagar(trampaArenosa.getCosto());
         } else {
             throw new CreditosInsuficientes("Creditos insuficientes");
         }
     }
 
-	public void destruirTorre() {
+	public void destruirDefensa() {
 		if (this.tieneTorres()) {
-			this.torres.remove(0);
+			this.parcelasConTorre.get(0).destruirDefensa();
+			this.parcelasConTorre.remove(0);
 		}
 	}
 

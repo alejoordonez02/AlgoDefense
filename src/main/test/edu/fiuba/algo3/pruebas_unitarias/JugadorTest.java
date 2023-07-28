@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import edu.fiuba.algo3.modelo.*;
 
@@ -64,9 +66,13 @@ public class JugadorTest {
 	@Test
 	public void test06JugadorConstruyeUnaTorreBlancaYTieneElCreditoEsperado() {
 		Jugador jugador = new Jugador("Juan", new Vida(20), new Credito(100));
+		TorreBlanca mockedTorreBlanca = mock(TorreBlanca.class);
+		Tierra mockedTierra = mock(Tierra.class);
+		
+		when(mockedTorreBlanca.getCosto()).thenReturn(new Credito(10));
 
 		try {
-			jugador.construir(new TorreBlanca());
+			jugador.construirTorre(mockedTorreBlanca, mockedTierra);
 		} catch(Exception e) {}
 		Jugador jugadorEsperado = new Jugador("Juan", new Vida(20), new Credito(90));
 		
@@ -77,22 +83,32 @@ public class JugadorTest {
 	@Test
 	public void test07JugadorConstruyeSinCreditosYLanzaUnaExcepcion() {
 		Jugador jugador = new Jugador("Juan", new Vida(20), new Credito(0));
+		TorreBlanca mockedTorreBlanca = mock(TorreBlanca.class);
+		Tierra mockedTierra = mock(Tierra.class);
+
+		when(mockedTorreBlanca.getCosto()).thenReturn(new Credito(10));
 		
-		assertThrows(CreditosInsuficientes.class, () -> jugador.construir(new TorreBlanca()));
+		assertThrows(CreditosInsuficientes.class, () -> jugador.construirTorre(mockedTorreBlanca, mockedTierra));
 	}
 
 	@Test
 	public void test08JugadorDestruyeUnaTorrePorVez() {
 		Jugador jugador = new Jugador("Juan", new Vida(20), new Credito(100));
+		TorreBlanca mockedTorreBlanca = mock(TorreBlanca.class);
+		TorrePlateada mockedTorrePlateada = mock(TorrePlateada.class);
+		Tierra mockedTierra = mock(Tierra.class);
+		
+		when(mockedTorreBlanca.getCosto()).thenReturn(new Credito(10));
+		when(mockedTorrePlateada.getCosto()).thenReturn(new Credito(20));
 
 		try {
-			jugador.construir(new TorreBlanca());
-			jugador.construir(new TorrePlateada());
+			jugador.construirTorre(mockedTorreBlanca, mockedTierra);
+			jugador.construirTorre(mockedTorrePlateada, mockedTierra);
 		} catch(Exception e) {}
 
-		jugador.destruirTorre();
+		jugador.destruirDefensa();
 		assertTrue(jugador.tieneTorres());
-		jugador.destruirTorre();
+		jugador.destruirDefensa();
 		assertFalse(jugador.tieneTorres());
 	}
 }

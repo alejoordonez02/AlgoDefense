@@ -24,8 +24,8 @@ public class TrampaArenosaTest {
 		TrampaArenosa trampaArenosa = new TrampaArenosa();
 		List<Enemigo> enemigos = new ArrayList<Enemigo>();
 
-		trampaArenosa.jugarTurno(enemigos);
-		trampaArenosa.jugarTurno(enemigos);
+		assertEquals(trampaArenosa, trampaArenosa.jugarTurno(enemigos));
+		assertEquals(trampaArenosa, trampaArenosa.jugarTurno(enemigos));
 
 		assertEquals(null, trampaArenosa.jugarTurno(enemigos));
 	}

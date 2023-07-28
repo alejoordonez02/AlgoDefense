@@ -16,19 +16,19 @@ import javafx.scene.input.MouseEvent;
 import java.util.Objects;
 
 public class ControladorBotonConstruccion implements EventHandler<ActionEvent> {
+    Defensa defensa;
+    ToggleButton boton;
 
-    public Defensa defensa;
-
-    public ToggleButton boton;
     public ControladorBotonConstruccion(){
-
+		this.defensa = null;
     }
 
     @Override
     public void handle(ActionEvent event) {
         this.boton = (ToggleButton) event.getSource();
-        Defensa d = null;
+
         String id = boton.getId();
+		
         if(boton.isSelected()){
             if(id.equals("TorreBlanca")){
                 this.defensa = new TorreBlanca();

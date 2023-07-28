@@ -5,7 +5,7 @@ public class Tierra extends Parcela {
 
     public Tierra(Posicion posicion) {
         super(posicion);
-		torre = null;
+		this.torre = null;
     }
 
 	@Override
@@ -22,14 +22,18 @@ public class Tierra extends Parcela {
 	}
 
     public void construirTorre(Torre torre) throws Exception {
-		if (torre != null) {
+		if (this.torre == null) {
 			this.torre = torre;
 			this.torre.setPosicion(this.posicion);
 		}
 		else {
-			throw new ParcelaInvalida("Esta parcela está ocupada");
+			throw new ParcelaInvalida("Esta parcela ya contiene una torre");
 		}
     }
+
+	public void destruirDefensa() {
+		this.torre = null;
+	}
 
 	public void construirTrampa(TrampaArenosa trampaArenosa) throws Exception {
         throw new ParcelaInvalida("No se puede construir en Tierra");

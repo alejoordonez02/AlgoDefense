@@ -31,13 +31,20 @@ public class Pasarela extends Parcela {
 		if (this.trampaArenosa == null) {
 			this.trampaArenosa = trampaArenosa;
 		}
+		else {
+			throw new ParcelaInvalida("Esta parcela ya contiene una trampa");
+		}
+	}
+
+	public void destruirDefensa() {
+		this.trampaArenosa = null;
 	}
 
 	public void jugarTurno(Mapa mapa, Jugador jugador) {
 		if (trampaArenosa != null) {
 			this.trampaArenosa = this.trampaArenosa.jugarTurno(enemigos);
 		}
-
+		
 		this.moverEnemigos();
 	}
 

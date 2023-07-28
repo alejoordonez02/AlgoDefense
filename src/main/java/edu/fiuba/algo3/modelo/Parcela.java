@@ -57,6 +57,8 @@ public abstract class Parcela {
 
 	public abstract void construirTrampa(TrampaArenosa trampaArenosa) throws Exception;
 
+	public void destruirDefensa() {}
+
     public boolean tieneEnemigos() {
         return !(this.enemigos.isEmpty());
     }
@@ -92,14 +94,15 @@ public abstract class Parcela {
     public void moverEnemigos() {
         if (this.tieneEnemigos()) {
 			List<Enemigo> enemigosNoMovidos = new ArrayList<Enemigo>();
+
             for (Enemigo enemigo : this.enemigos) {
 				enemigo.mover();
-
+				
 				if (enemigo.getParcela().equals(this)) {
 					enemigosNoMovidos.add(enemigo);
 				}
 			}
-
+			
 			this.enemigos.removeAll(enemigos);
 			this.enemigos = enemigosNoMovidos;
 		}

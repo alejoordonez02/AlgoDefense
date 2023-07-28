@@ -17,7 +17,7 @@ public class Lechuza extends Enemigo {
 	}
 
 	public void atacar(Jugador jugador, int turno) {
-		jugador.destruirTorre();
+		jugador.destruirDefensa();
 	}
 
 	@Override

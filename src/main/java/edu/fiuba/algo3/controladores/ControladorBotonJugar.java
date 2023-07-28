@@ -30,7 +30,7 @@ public class ControladorBotonJugar implements EventHandler<ActionEvent> {
 		String nombre = textFieldNombre.getText().trim();
 
 		if (nombre.length() < 6) {
-            labelNombreIncorrecto.setText("El nombre ingresado debe tener más de 6 caracteres");
+            labelNombreIncorrecto.setText("El nombre ingresado debe tener mas de 6 caracteres");
         } else {
 			try {
 				VistaJuego vistaJuego = new VistaJuego(nombre);

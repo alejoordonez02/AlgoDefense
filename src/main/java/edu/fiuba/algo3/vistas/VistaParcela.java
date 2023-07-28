@@ -49,9 +49,23 @@ public class VistaParcela extends StackPane {
 	public void actualizar() {
 		List<Enemigo> enemigos = parcela.getEnemigos();
 		this.vistaEnemigos.actualizar(enemigos);
-		this.vistaImagenTorreBlanca.actualizar(this.parcela.hayTorre());
-		this.vistaImagenTorrePlateada.actualizar(this.parcela.hayTorre());
-		this.vistaImagenTrampaArenosa.actualizar(this.parcela.hayTrampa());
+		if(!this.parcela.hayTorre() && !this.parcela.hayTrampa()) {
+			this.vistaImagenTorreBlanca.actualizar(false);
+			this.vistaImagenTorrePlateada.actualizar(false);
+			this.vistaImagenTrampaArenosa.actualizar(false);
+		}
+	}
+
+	public void construirTorreBlanca() {
+		this.vistaImagenTorreBlanca.actualizar(true);
+	}
+
+	public void construirTorrePlateada() {
+		this.vistaImagenTorrePlateada.actualizar(true);
+	}
+	
+	public void construirTrampaArenosa() {
+		this.vistaImagenTrampaArenosa.actualizar(true);
 	}
 
 	public void actualizarVistaInformacionEnemigos() {

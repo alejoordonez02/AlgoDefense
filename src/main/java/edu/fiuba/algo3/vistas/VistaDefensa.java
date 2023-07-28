@@ -11,7 +11,7 @@ public class VistaDefensa extends ImageView {
 	
 	public VistaDefensa(FileInputStream linkImagenTorre) {
 		super(new Image(linkImagenTorre, IMG_SIZE, IMG_SIZE, false, true));
-		this.setOpacity(0.5);
+		//this.setOpacity(0.5);
 
 		this.actualizar(false);
 	}

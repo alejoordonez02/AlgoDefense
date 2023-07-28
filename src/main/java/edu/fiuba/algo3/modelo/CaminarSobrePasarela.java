@@ -21,16 +21,20 @@ public class CaminarSobrePasarela implements Movedor {
 
     public Parcela mover(Enemigo enemigo) {
 		int velocidadActual = this.velocidad;
+		Pasarela pasarelaActual = this.pasarela;
 
 		if (ralentizado) {
 			velocidadActual /= 2;
 		}
 
         for (int i = 0; i < velocidadActual; i++) {
-            this.pasarela = (Pasarela) this.pasarela.getSiguiente();
+            pasarelaActual = (Pasarela) pasarelaActual.getSiguiente();
         }
 
-        this.pasarela.agregarEnemigo(enemigo);
+		if (!pasarelaActual.equals(this.pasarela)) {
+			pasarelaActual.agregarEnemigo(enemigo);
+			this.pasarela = pasarelaActual;
+		}
 
 		this.ralentizado = false;
 

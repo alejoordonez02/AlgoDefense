@@ -1,10 +1,17 @@
 package edu.fiuba.algo3.vistas;
 
 import java.io.FileInputStream;
+import java.util.Arrays;
 
 import edu.fiuba.algo3.controladores.ControladorConstrucciones;
 import edu.fiuba.algo3.modelo.*;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 
@@ -39,15 +46,24 @@ public class VistaMapa extends GridPane {
                 VistaParcela vistaParcela = new VistaParcela(linkImagenParcela, vistaInformacionEnemigos, parcela);
                 this.add(vistaParcela, y, x);
 
-                final int[] coordenadas = {x, y};
+                final Posicion posicion = new Posicion(x,y);
                 vistaParcela.setOnMouseClicked(event -> {
-                    Posicion pos = new Posicion(coordenadas[0], coordenadas[1]);
                     try {
-                        handler.construir(pos);
+                        handler.construir(vistaParcela, this.mapa, posicion);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                 });
+
+				vistaParcela.setOnMouseEntered(event -> {
+					vistaParcela.setBorder(new Border(new BorderStroke(Color.RED,
+                													   BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+				});
+
+				vistaParcela.setOnMouseExited(event -> {
+					vistaParcela.setBorder(new Border(new BorderStroke(Color.BLACK,
+                													   BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+				});
 
                 this.vistasParcelas[x][y] = vistaParcela;
             }

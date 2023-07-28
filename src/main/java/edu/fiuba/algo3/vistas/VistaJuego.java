@@ -31,18 +31,17 @@ public class VistaJuego extends BorderPane {
 
         // boton construccion crea la defensa a colocar, se guarda como atributo para que
         // el controlador de construcciones lo use despues.
-
-        ControladorBotonConstruccion controladorBotonConstruccion = new ControladorBotonConstruccion();
-        ControladorConstrucciones controladorConstrucciones = new ControladorConstrucciones(controladorBotonConstruccion, juego, jugador);
-
-        VistaInformacionEnemigos vistaInformacionEnemigos = new VistaInformacionEnemigos();
-
         VistaBotonPasarTurno botonPasarTurno = new VistaBotonPasarTurno();
         ControladorBotonPasarTurno controladorBotonPasarTurno = new ControladorBotonPasarTurno(this, juego);
         botonPasarTurno.setOnAction(controladorBotonPasarTurno);
 
-        this.vistaMapa = new VistaMapa(vistaInformacionEnemigos, juego.getMapa(), controladorConstrucciones);
+        VistaInformacionEnemigos vistaInformacionEnemigos = new VistaInformacionEnemigos();
         this.vistaInformacion = new VistaInformacion(vistaInformacionEnemigos, vistaMapa, botonPasarTurno, juego);
+
+        ControladorBotonConstruccion controladorBotonConstruccion = new ControladorBotonConstruccion();
+        ControladorConstrucciones controladorConstrucciones = new ControladorConstrucciones(controladorBotonConstruccion, vistaInformacion, juego, jugador);
+
+        this.vistaMapa = new VistaMapa(vistaInformacionEnemigos, juego.getMapa(), controladorConstrucciones);
 
         // que sea vistaConstruir y tener vistaConstruccion, con tamaño distinto al de una torre construida en la vistaMapa
 

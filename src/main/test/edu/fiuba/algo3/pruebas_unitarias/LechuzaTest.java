@@ -93,7 +93,7 @@ public class LechuzaTest {
 		
 		lechuza.atacar(mockedJugador, 1);
 
-		verify(mockedJugador).destruirTorre();
+		verify(mockedJugador).destruirDefensa();
 	}
 
 	@Test

@@ -27,9 +27,9 @@ public class TrampaArenosa implements Defensa{
 		for (Enemigo enemigo : enemigos) {
 			enemigo.ralentizado();
 		}
-
-		tiempoDeFuncionamiento--;
 		
+		tiempoDeFuncionamiento--;
+
 		if (tiempoDeFuncionamiento == 0) {
 			return null;
 		}

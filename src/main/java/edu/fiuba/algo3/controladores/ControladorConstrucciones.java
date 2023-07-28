@@ -1,39 +1,53 @@
 package edu.fiuba.algo3.controladores;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.vistas.VistaParcela;
+import edu.fiuba.algo3.vistas.VistaInformacion;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
 public class ControladorConstrucciones {
 
-    private ControladorBotonConstruccion handler;
-
-    public Defensa defensa;
-
-    private Juego juego;
-
-    private Posicion posicion;
+    ControladorBotonConstruccion handler;
+	VistaInformacion vistaInformacion;
+    Juego juego;
 
     private Jugador jugador;
     public ControladorConstrucciones(ControladorBotonConstruccion controladorBotonConstruccion,
-                                     Juego juego, Jugador jugador){
+									 VistaInformacion vistaInformacion,
+									 Juego juego, Jugador jugador){
 
         this.handler = controladorBotonConstruccion;
+		this.vistaInformacion = vistaInformacion;
         this.juego = juego;
         this.jugador = jugador;
     }
 
-    public void construir(Posicion pos) throws Exception {
-        if(handler.getDefensa() != null){
+    public void construir(VistaParcela vistaParcela, Mapa mapa, Posicion posicion) {
+		Defensa defensa = handler.getDefensa();
 
-            if(handler.getDefensa().getClass().equals(Torre.class)){
-                juego.getMapa().construirTorre(jugador, pos, (Torre)handler.getDefensa());
-            } else if (handler.getDefensa().getClass().equals(TrampaArenosa.class)){
-                juego.getMapa().construirTrampa(jugador, pos, (TrampaArenosa)handler.getDefensa());
-            }
-
-            handler.getBoton().setSelected(false);
-        }
+		if (defensa != null) {
+			try {
+				if (defensa instanceof Torre) {
+					mapa.construirTorre(jugador, posicion, (Torre) defensa);
+		
+					if(defensa.getClass().equals(TorreBlanca.class)) {
+						vistaParcela.construirTorreBlanca();
+					}
+					else {
+						vistaParcela.construirTorrePlateada();
+					}
+				}
+				else {
+					mapa.construirTrampa(jugador, posicion, (TrampaArenosa) defensa);
+					vistaParcela.construirTrampaArenosa();
+				}
+				vistaInformacion.actualizar();
+			}
+			catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
     }
 
 }
