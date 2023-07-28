@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
+import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 
 public class VistaInformacionEnemigos extends HBox {
@@ -11,6 +12,10 @@ public class VistaInformacionEnemigos extends HBox {
 
 	public VistaInformacionEnemigos() {
 		this.setPrefWidth(600);
+		this.setAlignment(Pos.CENTER);
+		this.setFillHeight(true);
+		this.setSpacing(50);
+
 		String pathImagenHormiga = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/hormiga.png";
         String pathImagenArania = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/arania.png";
         String pathImagenTopo = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/topo.png";

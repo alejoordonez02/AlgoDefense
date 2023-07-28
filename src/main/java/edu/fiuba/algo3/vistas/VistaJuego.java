@@ -46,6 +46,8 @@ public class VistaJuego extends BorderPane {
         this.setLeft(vistaDefensas);
         this.setCenter(vistaMapa);
         this.setBottom(vistaInformacion);
+
+
     }
 
     public void actualizar() {

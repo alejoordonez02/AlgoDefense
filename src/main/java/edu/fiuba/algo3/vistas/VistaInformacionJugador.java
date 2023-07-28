@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.*;
+import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 
 public class VistaInformacionJugador extends VBox {
@@ -10,6 +11,8 @@ public class VistaInformacionJugador extends VBox {
 
 	public VistaInformacionJugador(ControladorJugador controladorJugador) {
 		this.setPrefWidth(150);
+		this.setSpacing(15);
+		this.setAlignment(Pos.CENTER);
 		this.controladorJugador = controladorJugador;
 
 		String pathImagenVida = "file:src/main/java/edu/fiuba/algo3/vistas/imagenes/vida.png";

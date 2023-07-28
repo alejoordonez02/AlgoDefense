@@ -27,7 +27,7 @@ public class VistaDefensas extends VBox {
 		botonTorreBlanca.setOnAction(handler);
 		botonTorrePlateada.setOnAction(handler);
 		botonTrampaArenosa.setOnAction(handler);
-		// this.getChildren().add(grupoDefensas);
+		//this.getChildren().add(grupoDefensas);
 
 		this.getChildren().add(botonTorreBlanca);
 		this.getChildren().add(botonTorrePlateada);
