@@ -58,11 +58,13 @@ public class VistaMapa extends GridPane {
 				vistaParcela.setOnMouseEntered(event -> {
 					vistaParcela.setBorder(new Border(new BorderStroke(Color.RED,
                 													   BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+					vistaParcela.actualizarVistaInformacionEnemigos();
 				});
 
 				vistaParcela.setOnMouseExited(event -> {
 					vistaParcela.setBorder(new Border(new BorderStroke(Color.BLACK,
                 													   BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+					vistaInformacionEnemigos.limpiar();
 				});
 
                 this.vistasParcelas[x][y] = vistaParcela;
