@@ -14,7 +14,7 @@ import javafx.scene.control.ToggleGroup;
 
 public class VistaDefensas extends VBox {
 
-	private static final int IMG_SIZE = 100;
+	private static final int IMG_SIZE = 20 * consts.UNIT_SIZE;
     
 	public VistaDefensas(ControladorBotonConstruccion handler) throws Exception {
 		this.setPrefWidth(IMG_SIZE);

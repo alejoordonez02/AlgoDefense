@@ -28,6 +28,7 @@ public class VistaJuego extends BorderPane {
         Border borde = new Border(new BorderStroke(Color.BLACK,
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 
+
         // boton construccion crea la defensa a colocar, se guarda como atributo para que
         // el controlador de construcciones lo use despues.
 

@@ -14,8 +14,10 @@ import javafx.scene.control.Label;
 public class VistaEnemigo extends StackPane {
     ImageView vistaImagenEnemigo;
 
+    private static final int IMG_SIZE = 5 * consts.UNIT_SIZE;
+
     public VistaEnemigo(FileInputStream linkImagen) throws Exception {
-        Image imagen = new Image(linkImagen, 25, 25, false, true);
+        Image imagen = new Image(linkImagen, IMG_SIZE, IMG_SIZE, false, true);
 
         this.vistaImagenEnemigo = new ImageView(imagen);
         this.getChildren().add(vistaImagenEnemigo);

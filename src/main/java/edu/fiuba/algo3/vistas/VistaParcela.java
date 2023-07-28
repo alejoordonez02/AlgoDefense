@@ -23,7 +23,7 @@ public class VistaParcela extends StackPane {
 	VistaEnemigos vistaEnemigos;
     Parcela parcela;
 
-	private static final int CELL_SIZE = 50;
+	private static final int CELL_SIZE = 10 * consts.UNIT_SIZE;
 
     public VistaParcela(FileInputStream linkVistaParcela, VistaInformacionEnemigos vistaInformacionEnemigos, Parcela parcela) throws Exception {
 		this.setBorder(new Border(new BorderStroke(Color.BLACK,

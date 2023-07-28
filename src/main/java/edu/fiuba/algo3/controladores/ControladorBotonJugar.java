@@ -16,8 +16,8 @@ public class ControladorBotonJugar implements EventHandler<ActionEvent> {
     TextField textFieldNombre;
 	Label labelNombreIncorrecto;
 
-	private static final int SCENE_HEIGHT = 900;
-	private static final int SCENE_WIDTH = 900;
+	private static final int SCENE_HEIGHT = 180 * consts.UNIT_SIZE;
+	private static final int SCENE_WIDTH = 180 * consts.UNIT_SIZE;
 
     public ControladorBotonJugar(Stage stage, TextField textFieldNombre, Label labelNombreIncorrecto) {
         this.stage = stage;

@@ -25,7 +25,13 @@ public class ControladorConstrucciones {
 
     public void construir(Posicion pos) throws Exception {
         if(handler.getDefensa() != null){
-            juego.getMapa().construirTorre(jugador, pos, (Torre)handler.getDefensa());
+
+            if(handler.getDefensa().getClass().equals(Torre.class)){
+                juego.getMapa().construirTorre(jugador, pos, (Torre)handler.getDefensa());
+            } else if (handler.getDefensa().getClass().equals(TrampaArenosa.class)){
+                juego.getMapa().construirTrampa(jugador, pos, (TrampaArenosa)handler.getDefensa());
+            }
+
             handler.getBoton().setSelected(false);
         }
     }

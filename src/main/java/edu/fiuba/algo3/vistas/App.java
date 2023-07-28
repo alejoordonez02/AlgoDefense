@@ -12,10 +12,13 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
+    private static final int BIENVENIDA_ANCHO = 128 * consts.UNIT_SIZE;
+    private static final int BIENVENIDA_ALTO = 96 * consts.UNIT_SIZE;
+
     @Override
     public void start(Stage stage) {
         VistaInicio vistaInicio = new VistaInicio(stage);
-        Scene escenaInicio = new Scene(vistaInicio, 640, 480);
+        Scene escenaInicio = new Scene(vistaInicio, BIENVENIDA_ANCHO, BIENVENIDA_ALTO);
 
         stage.setTitle("AlgoDefense");
         stage.setScene(escenaInicio);

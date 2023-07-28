@@ -2,11 +2,10 @@ package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorBotonJugar;
 import edu.fiuba.algo3.modelo.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
 
 public class VistaInformacion extends HBox {
 	VistaInformacionJugador vistaInformacionJugador;
@@ -16,11 +15,18 @@ public class VistaInformacion extends HBox {
     public VistaInformacion(VistaInformacionEnemigos vistaInformacionEnemigos, VistaMapa vistaMapa, Button botonPasarTurno, Juego juego) throws Exception {
 		Jugador jugador = juego.getJugador();
 
-		this.setPrefSize(900, 200);
+		this.setMaxSize(900, 200);
+
+		Border borde = new Border(new BorderStroke(Color.BLACK,
+				BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 
         this.vistaInformacionJugador = new VistaInformacionJugador(jugador);
 		this.vistaInformacionEnemigos = vistaInformacionEnemigos;
 		this.botonPasarTurno = botonPasarTurno;
+
+		/*this.vistaInformacionJugador.setBorder(borde);
+		this.vistaInformacionEnemigos.setBorder(borde);
+		this.botonPasarTurno.setBorder(borde);*/
 
 		// //(idea xd)
 		// controladorBotonPasarTurno = new ControladorBotonPasarTurno(vistaMapa.actualizar(jugador, mapa));
