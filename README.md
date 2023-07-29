@@ -1,4 +1,4 @@
-![tp2](https://github.com/alejoordonez02/AlgoDefense/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/alejoordonez02/AlgoDefense/branch/main/graph/badge.svg)](https://codecov.io/gh/alejoordonez02/AlgoDefense)
+![tp2](https://github.com/alejoordonez02/AlgoDefense/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/alejoordonez02/AlgoDefense/branch/main/graph/badge.svg?token=PVU6C7AQE1)](https://codecov.io/gh/alejoordonez02/AlgoDefense)
 
 # TP2 Algoritmos 3: AlgoDefense
 
