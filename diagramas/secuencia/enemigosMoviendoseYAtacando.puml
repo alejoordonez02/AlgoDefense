@@ -34,6 +34,7 @@ loop parcela in parcelas
 end
 
 mapa -> pasarelaFinal: atacar(jugador, turno)
+activate pasarelaFinal
 
 loop enemigo in enemigos
 
@@ -45,6 +46,7 @@ loop enemigo in enemigos
 
 end
 
+deactivate pasarelaFinal
 deactivate mapa
 
 @enduml
