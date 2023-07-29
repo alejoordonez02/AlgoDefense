@@ -1,0 +1,16 @@
+@startuml
+
+folder "modelo" as modelo {
+}
+
+folder "vistas" as vistas {
+}
+
+folder "controladores" as controladores {
+}
+
+vistas -> controladores
+controladores -> modelo
+controladores -> vistas
+
+@enduml
