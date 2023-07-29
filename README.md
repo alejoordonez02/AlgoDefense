@@ -11,7 +11,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Gonzalo Olmos** - [gonzalo912](https://github.com/gonzalo912)
 
 
-Corrector: **{Corrector}**
+Corrector: **Diego Sánchez**
 
 ## Aplicación
 
