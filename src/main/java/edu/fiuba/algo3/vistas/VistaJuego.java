@@ -4,6 +4,7 @@ import edu.fiuba.algo3.controladores.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class VistaJuego extends BorderPane {
     VistaMapa vistaMapa;
@@ -12,7 +13,7 @@ public class VistaJuego extends BorderPane {
 	ControladorJuego controladorJuego;
     
 
-    public VistaJuego(String nombre) throws Exception {
+    public VistaJuego(String nombre, Stage stage) throws Exception {
 		this.controladorJugador = new ControladorJugador(nombre);
 		this.controladorJuego = new ControladorJuego(controladorJugador);
 
@@ -22,7 +23,7 @@ public class VistaJuego extends BorderPane {
         // boton construccion crea la defensa a colocar, se guarda como atributo para que
         // el controlador de construcciones lo use despues.
         VistaBotonPasarTurno botonPasarTurno = new VistaBotonPasarTurno();
-        ControladorBotonPasarTurno controladorBotonPasarTurno = new ControladorBotonPasarTurno(this, controladorJuego);
+        ControladorBotonPasarTurno controladorBotonPasarTurno = new ControladorBotonPasarTurno(this, controladorJuego, stage);
         botonPasarTurno.setOnAction(controladorBotonPasarTurno);
 
         VistaInformacionEnemigos vistaInformacionEnemigos = new VistaInformacionEnemigos();

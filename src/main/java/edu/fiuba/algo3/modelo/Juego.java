@@ -30,7 +30,7 @@ public class Juego {
 	}
 
 	public boolean victoria() {
-		return (jugador.estaVivo() && !(mapa.tieneEnemigos()));
+		return (jugador.estaVivo() && turno > 12);
 	}
 
 	public boolean derrota() {

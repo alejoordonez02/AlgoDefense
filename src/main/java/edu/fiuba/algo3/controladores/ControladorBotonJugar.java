@@ -14,6 +14,8 @@ public class ControladorBotonJugar implements EventHandler<ActionEvent> {
     TextField textFieldNombre;
 	Label labelNombreIncorrecto;
 
+	String nombre;
+
 	static final int SCENE_HEIGHT = 180 * Constantes.UNIT_SIZE + 32;
 	static final int SCENE_WIDTH = 180 * Constantes.UNIT_SIZE;
 
@@ -25,13 +27,13 @@ public class ControladorBotonJugar implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-		String nombre = textFieldNombre.getText().trim();
+		this.nombre = textFieldNombre.getText().trim();
 
 		if (nombre.length() < 6) {
             labelNombreIncorrecto.setText("El nombre ingresado debe tener mas de 6 caracteres");
         } else {
 			try {
-				VistaJuego vistaJuego = new VistaJuego(nombre);
+				VistaJuego vistaJuego = new VistaJuego(nombre, stage);
 				Scene escenaJuego = new Scene(vistaJuego, SCENE_WIDTH, SCENE_HEIGHT);
 				stage.setScene(escenaJuego);
 			}

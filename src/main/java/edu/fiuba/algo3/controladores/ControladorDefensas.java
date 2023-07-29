@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.controladores;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.vistas.VistaMovimientoInvalido;
 import edu.fiuba.algo3.vistas.VistaParcela;
 import edu.fiuba.algo3.vistas.VistaInformacion;
 // import javafx.event.Event;
@@ -48,6 +49,7 @@ public class ControladorDefensas {
 			}
 			catch (Exception e) {
 				System.out.println(e.getMessage());
+				new VistaMovimientoInvalido(e.getMessage());
 			}
 		}
 
