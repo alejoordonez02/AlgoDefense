@@ -7,6 +7,7 @@
 
 ## Supuestos
 - Cuando muere una lechuza retorna 5 créditos
+- El jugador gana la partida si pasan 50 turnos y no muere
 
 ## Diagramas de clases
 ### Juego Jugador y Mapa

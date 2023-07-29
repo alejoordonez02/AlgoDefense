@@ -112,6 +112,19 @@ public class Entrega2Test {
 
 		Juego juego = new Juego(jugador, mapaRepository, enemigoRepository);
 
+		try {
+			juego.getMapa().construirTorre(jugador, new Posicion(2,3), new TorrePlateada());
+			juego.getMapa().construirTorre(jugador, new Posicion(3,4), new TorrePlateada());
+			juego.getMapa().construirTorre(jugador, new Posicion(4,5), new TorrePlateada());
+			juego.getMapa().construirTorre(jugador, new Posicion(2,5), new TorrePlateada());
+			juego.getMapa().construirTorre(jugador, new Posicion(4,7), new TorrePlateada());
+		}
+		catch (Exception e) {}
+
+		for (int i = 0; i < 50; i++) {
+			juego.pasarTurno();
+		}
+
 		assertTrue(juego.victoria());
 	}
 

@@ -1,8 +1,14 @@
 package edu.fiuba.algo3.controladores;
 
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.vistas.VistaMovimientoInvalido;
 import edu.fiuba.algo3.vistas.VistaParcela;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import edu.fiuba.algo3.vistas.Constantes;
 import edu.fiuba.algo3.vistas.VistaInformacion;
 // import javafx.event.Event;
 // import javafx.event.EventHandler;
@@ -49,7 +55,15 @@ public class ControladorDefensas {
 			}
 			catch (Exception e) {
 				System.out.println(e.getMessage());
-				new VistaMovimientoInvalido(e.getMessage());
+				Stage ventanaExcepcion = new Stage();
+				Label label = new Label(e.getMessage());
+				label.setFont(Constantes.FUENTE_TEXTO);
+				StackPane stackPane = new StackPane(label);
+				stackPane.setAlignment(Pos.CENTER);
+				stackPane.setPadding(new Insets(Constantes.UNIT_SIZE));
+				Scene escenaExcepcion = new Scene(stackPane);
+				ventanaExcepcion.setScene(escenaExcepcion);
+				ventanaExcepcion.show();
 			}
 		}
 

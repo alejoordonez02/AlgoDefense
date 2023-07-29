@@ -4,12 +4,9 @@ import edu.fiuba.algo3.controladores.ControladorBotonJugarDeNuevo;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class VistaFinDeJuego extends VBox {
-
-    private static final int FONT_SIZE = Constantes.UNIT_SIZE * 10;
 
     public VistaFinDeJuego(Stage stage, String nombre, String mensaje){
         this.setAlignment(Pos.CENTER);

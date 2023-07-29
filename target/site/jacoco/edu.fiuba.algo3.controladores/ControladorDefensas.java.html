@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControladorDefensas.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp2</a> &gt; <a href="index.source.html" class="el_package">edu.fiuba.algo3.controladores</a> &gt; <span class="el_source">ControladorDefensas.java</span></div><h1>ControladorDefensas.java</h1><pre class="source lang-java linenums">package edu.fiuba.algo3.controladores;
+
+import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.vistas.VistaParcela;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import edu.fiuba.algo3.vistas.Constantes;
+import edu.fiuba.algo3.vistas.VistaInformacion;
+// import javafx.event.Event;
+// import javafx.event.EventHandler;
+
+public class ControladorDefensas {
+	VistaInformacion vistaInformacion;
+    ControladorBotonDefensas controladorBotonDefensas;
+    ControladorJugador controladorJugador;
+	ControladorMapa controladorMapa;
+
+    public ControladorDefensas(VistaInformacion vistaInformacion,
+								ControladorBotonDefensas controladorBotonDefensas,
+								ControladorJugador controladorJugador,
+<span class="nc" id="L25">								ControladorMapa controladorMapa) {</span>
+
+<span class="nc" id="L27">		this.vistaInformacion = vistaInformacion;</span>
+<span class="nc" id="L28">		this.controladorBotonDefensas = controladorBotonDefensas;</span>
+<span class="nc" id="L29">        this.controladorJugador = controladorJugador;</span>
+<span class="nc" id="L30">        this.controladorMapa = controladorMapa;</span>
+<span class="nc" id="L31">    }</span>
+
+    public void construir(VistaParcela vistaParcela, Posicion posicion) {
+<span class="nc" id="L34">		Defensa defensa = controladorBotonDefensas.getDefensa();</span>
+<span class="nc" id="L35">		Jugador jugador = controladorJugador.getJugador();</span>
+<span class="nc" id="L36">		Mapa mapa = controladorMapa.getMapa();</span>
+
+<span class="nc bnc" id="L38" title="All 2 branches missed.">		if (defensa != null) {</span>
+			try {
+<span class="nc bnc" id="L40" title="All 2 branches missed.">				if (defensa instanceof Torre) {</span>
+<span class="nc" id="L41">					mapa.construirTorre(jugador, posicion, (Torre) defensa);</span>
+		
+<span class="nc bnc" id="L43" title="All 2 branches missed.">					if(defensa.getClass().equals(TorreBlanca.class)) {</span>
+<span class="nc" id="L44">						vistaParcela.construirTorreBlanca();</span>
+					}
+					else {
+<span class="nc" id="L47">						vistaParcela.construirTorrePlateada();</span>
+					}
+				}
+				else {
+<span class="nc" id="L51">					mapa.construirTrampa(jugador, posicion, (TrampaArenosa) defensa);</span>
+<span class="nc" id="L52">					vistaParcela.construirTrampaArenosa();</span>
+				}
+<span class="nc" id="L54">				vistaInformacion.actualizar();</span>
+			}
+<span class="nc" id="L56">			catch (Exception e) {</span>
+<span class="nc" id="L57">				System.out.println(e.getMessage());</span>
+<span class="nc" id="L58">				Stage ventanaExcepcion = new Stage();</span>
+<span class="nc" id="L59">				Label label = new Label(e.getMessage());</span>
+<span class="nc" id="L60">				label.setFont(Constantes.FUENTE_TEXTO);</span>
+<span class="nc" id="L61">				StackPane stackPane = new StackPane(label);</span>
+<span class="nc" id="L62">				stackPane.setAlignment(Pos.CENTER);</span>
+<span class="nc" id="L63">				stackPane.setPadding(new Insets(Constantes.UNIT_SIZE));</span>
+<span class="nc" id="L64">				Scene escenaExcepcion = new Scene(stackPane);</span>
+<span class="nc" id="L65">				ventanaExcepcion.setScene(escenaExcepcion);</span>
+<span class="nc" id="L66">				ventanaExcepcion.show();</span>
+<span class="nc" id="L67">			}</span>
+		}
+
+<span class="nc" id="L70">		controladorBotonDefensas.deseleccionar();</span>
+<span class="nc" id="L71">    }</span>
+
+	public int getCosto(String nombre) {
+<span class="nc bnc" id="L74" title="All 2 branches missed.">		if (nombre.equals(&quot;TorreBlanca&quot;)) {</span>
+<span class="nc" id="L75">			return new TorreBlanca().getCosto().getCantidad();</span>
+		}
+<span class="nc bnc" id="L77" title="All 2 branches missed.">		else if (nombre.equals(&quot;TorrePlateada&quot;)) {</span>
+<span class="nc" id="L78">			return new TorrePlateada().getCosto().getCantidad();</span>
+		}
+<span class="nc bnc" id="L80" title="All 2 branches missed.">		else if (nombre.equals(&quot;TrampaArenosa&quot;)){</span>
+<span class="nc" id="L81">			return new TrampaArenosa().getCosto().getCantidad();</span>
+		}
+
+<span class="nc" id="L84">		return 0;</span>
+	}
+
+	public int getTiempoDeConstruccion(String nombre) {
+<span class="nc bnc" id="L88" title="All 2 branches missed.">		if (nombre.equals(&quot;TorreBlanca&quot;)) {</span>
+<span class="nc" id="L89">			return new TorreBlanca().getTiempoDeConstruccion();</span>
+		}
+<span class="nc bnc" id="L91" title="All 2 branches missed.">		else if (nombre.equals(&quot;TorrePlateada&quot;)) {</span>
+<span class="nc" id="L92">			return new TorrePlateada().getTiempoDeConstruccion();</span>
+		}
+
+<span class="nc" id="L95">		return 0;</span>
+	}
+
+	public int getRango(String nombre) {
+<span class="nc bnc" id="L99" title="All 2 branches missed.">		if (nombre.equals(&quot;TorreBlanca&quot;)) {</span>
+<span class="nc" id="L100">			return new TorreBlanca().getRango().getAlcance();</span>
+		}
+<span class="nc bnc" id="L102" title="All 2 branches missed.">		else if (nombre.equals(&quot;TorrePlateada&quot;)) {</span>
+<span class="nc" id="L103">			return new TorrePlateada().getRango().getAlcance();</span>
+		}
+
+<span class="nc" id="L106">		return 0;</span>
+	}
+
+	public int getDanio(String nombre) {
+<span class="nc bnc" id="L110" title="All 2 branches missed.">		if (nombre.equals(&quot;TorreBlanca&quot;)) {</span>
+<span class="nc" id="L111">			return new TorreBlanca().getDanio();</span>
+		}
+<span class="nc bnc" id="L113" title="All 2 branches missed.">		else if (nombre.equals(&quot;TorrePlateada&quot;)) {</span>
+<span class="nc" id="L114">			return new TorrePlateada().getDanio();</span>
+		}
+
+<span class="nc" id="L117">		return 0;</span>
+	}
+
+	public int getDuracion(String nombre) {
+<span class="nc bnc" id="L121" title="All 2 branches missed.">		if (nombre.equals(&quot;TrampaArenosa&quot;)) {</span>
+<span class="nc" id="L122">			return new TrampaArenosa().getTiempoDeFuncionamiento();</span>
+		}
+
+<span class="nc" id="L125">		return 0;</span>
+	}
+
+	public int getRalentizacion(String nombre) {
+<span class="nc bnc" id="L129" title="All 2 branches missed.">		if (nombre.equals(&quot;TrampaArenosa&quot;)) {</span>
+<span class="nc" id="L130">			return new TrampaArenosa().getRalentizacion();</span>
+		}
+
+<span class="nc" id="L133">		return 0;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonMapRepository.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp2</a> &gt; <a href="index.source.html" class="el_package">edu.fiuba.algo3.repositories</a> &gt; <span class="el_source">JsonMapRepository.java</span></div><h1>JsonMapRepository.java</h1><pre class="source lang-java linenums">package edu.fiuba.algo3.repositories;
+
+import java.io.FileReader;
+import java.io.IOException;
+
+import edu.fiuba.algo3.modelo.*;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.util.List;
+import java.util.ArrayList;
+
+/*MapaParser parser = new MapaParser(mapa.json);
+Mapa mapa = new Mapa (parser.parsear());*/
+
+public class JsonMapRepository implements MapRepository {
+    private String path;
+
+<span class="fc" id="L21">    public JsonMapRepository(String p) {</span>
+<span class="fc" id="L22">        this.path = p;</span>
+<span class="fc" id="L23">    }</span>
+
+    private JSONObject setJSON() throws IOException, ParseException {
+<span class="fc" id="L26">        JSONParser parser = new JSONParser();</span>
+<span class="fc" id="L27">        FileReader reader = new FileReader(this.path);</span>
+<span class="fc" id="L28">        Object obj = parser.parse(reader);</span>
+<span class="fc" id="L29">        JSONObject jsonObj = (JSONObject) obj;</span>
+<span class="fc" id="L30">        reader.close();</span>
+<span class="fc" id="L31">        return jsonObj;</span>
+    }
+
+    private Posicion buscarPasarelaSiguiente(boolean[][] pasarelas, Posicion posicion, Posicion anterior) {
+<span class="fc" id="L35">        List&lt;Posicion&gt; posiciones = new ArrayList&lt;Posicion&gt;();</span>
+
+<span class="fc" id="L37">        posiciones.add(posicion.sumar(new Posicion(-1,0)));</span>
+<span class="fc" id="L38">        posiciones.add(posicion.sumar(new Posicion(0,1)));</span>
+<span class="fc" id="L39">        posiciones.add(posicion.sumar(new Posicion(1,0)));</span>
+<span class="fc" id="L40">        posiciones.add(posicion.sumar(new Posicion(0,-1)));</span>
+
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        for (Posicion p : posiciones)  {</span>
+<span class="fc" id="L43">			int posX = p.x();</span>
+<span class="fc" id="L44">			int posY = p.y();</span>
+
+<span class="fc bfc" id="L46" title="All 2 branches covered.">			if (posX &lt; 0) {</span>
+<span class="fc" id="L47">				posX = 0;</span>
+			}
+<span class="fc bfc" id="L49" title="All 2 branches covered.">			if (posX &gt; pasarelas.length - 1) {</span>
+<span class="fc" id="L50">				posX = pasarelas.length - 1;</span>
+			}
+<span class="fc bfc" id="L52" title="All 2 branches covered.">			if (posY &lt; 0) {</span>
+<span class="fc" id="L53">				posY = 0;</span>
+			}
+<span class="fc bfc" id="L55" title="All 2 branches covered.">			if (posY &gt; pasarelas.length - 1) {</span>
+<span class="fc" id="L56">				posY = pasarelas.length - 1;</span>
+			}
+<span class="fc" id="L58">			p = new Posicion(posX, posY);</span>
+
+<span class="fc bfc" id="L60" title="All 4 branches covered.">            if(pasarelas[posX][posY] &amp;&amp; !(p.equals(posicion))) {</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">				if (anterior == null) {</span>
+<span class="fc" id="L62">					return p;</span>
+				}
+<span class="fc bfc" id="L64" title="All 2 branches covered.">				if (!(p.equals(anterior))) {</span>
+<span class="fc" id="L65">					return p;</span>
+				}
+            }
+<span class="fc" id="L68">        }</span>
+
+<span class="fc" id="L70">        return null;</span>
+    }
+
+    public Mapa parsear() throws IOException, FormatoJSONInvalido {
+<span class="fc" id="L74">        JSONObject jsonObj = null;</span>
+
+        try {
+<span class="fc" id="L77">            jsonObj = setJSON();</span>
+<span class="nc" id="L78">        } catch (ParseException e) {</span>
+
+<span class="nc" id="L80">            throw new RuntimeException(e);</span>
+<span class="fc" id="L81">        }</span>
+
+<span class="fc" id="L83">        JSONObject map = (JSONObject) jsonObj.get(&quot;Mapa&quot;);</span>
+<span class="fc" id="L84">        Parcela[][] mapa = new Parcela[map.size()][map.size()];</span>
+<span class="fc" id="L85">        boolean[][] pasarelas = new boolean[map.size()][map.size()];</span>
+
+<span class="fc" id="L87">        Pasarela pasarelaInicial = null;</span>
+<span class="fc" id="L88">        Pasarela pasarelaFinal = null;</span>
+
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        for (int x = 0; x &lt; map.size(); x++) {</span>
+<span class="fc" id="L91">            JSONArray line = (JSONArray) map.get(Integer.toString(x + 1));</span>
+
+<span class="fc bfc" id="L93" title="All 2 branches covered.">            for (int y = 0; y &lt; map.size(); y++) {</span>
+<span class="fc" id="L94">                Parcela parcela = asignar((String) line.get(y), x, y);</span>
+<span class="fc" id="L95">                mapa[x][y] = parcela;</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">                if ((&quot;Pasarela&quot;.equals(line.get(y)))) {</span>
+<span class="fc" id="L97">                    pasarelaFinal = (Pasarela) parcela;</span>
+<span class="fc" id="L98">                    pasarelas[x][y] = true;</span>
+
+<span class="fc bfc" id="L100" title="All 2 branches covered.">                    if (pasarelaInicial == null) {</span>
+<span class="fc" id="L101">                        pasarelaInicial = (Pasarela) parcela;</span>
+                    }
+                } else {
+<span class="fc" id="L104">                    pasarelas[x][y] = false;</span>
+                }
+            }
+
+        }
+
+<span class="fc" id="L110">        Posicion posicionEncontrada = buscarPasarelaSiguiente(pasarelas, pasarelaInicial.getPosicion(), null);</span>
+<span class="fc" id="L111">		Pasarela pasarelaAnterior = pasarelaInicial;</span>
+<span class="fc" id="L112">		Pasarela pasarelaSiguiente = (Pasarela) mapa[posicionEncontrada.x()][posicionEncontrada.y()];</span>
+<span class="fc" id="L113">        pasarelaInicial.setSiguiente(pasarelaSiguiente);</span>
+<span class="fc" id="L114">		posicionEncontrada = buscarPasarelaSiguiente(pasarelas, pasarelaSiguiente.getPosicion(), pasarelaAnterior.getPosicion());</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">		while (posicionEncontrada != null) {</span>
+<span class="fc" id="L116">			pasarelaAnterior = pasarelaSiguiente;</span>
+<span class="fc" id="L117">			pasarelaSiguiente = (Pasarela) mapa[posicionEncontrada.x()][posicionEncontrada.y()];</span>
+<span class="fc" id="L118">			pasarelaAnterior.setSiguiente(pasarelaSiguiente);</span>
+<span class="fc" id="L119">			posicionEncontrada = buscarPasarelaSiguiente(pasarelas, pasarelaSiguiente.getPosicion(), pasarelaAnterior.getPosicion());</span>
+		}
+
+<span class="fc" id="L122">        Mapa m = new Mapa(mapa, pasarelaInicial, pasarelaFinal);</span>
+
+<span class="fc" id="L124">        return m;</span>
+    }
+
+    private Parcela asignar(String s, int x, int y) throws FormatoJSONInvalido {
+<span class="fc" id="L128">        Parcela parcela = null;</span>
+
+<span class="pc bpc" id="L130" title="1 of 4 branches missed.">        switch (s) {</span>
+            case &quot;Tierra&quot;:
+<span class="fc" id="L132">                parcela = new Tierra(new Posicion(x, y));</span>
+<span class="fc" id="L133">                break;</span>
+            case &quot;Rocoso&quot;:
+<span class="fc" id="L135">                parcela = new Roca(new Posicion(x, y));</span>
+<span class="fc" id="L136">                break;</span>
+            case &quot;Pasarela&quot;:
+<span class="fc" id="L138">                parcela = new Pasarela(new Posicion(x, y));</span>
+<span class="fc" id="L139">                break;</span>
+            default:
+<span class="nc" id="L141">                throw new FormatoJSONInvalido(&quot;El formato del archivo JSON es incorrecto&quot;);</span>
+        }
+		
+<span class="fc" id="L144">        return parcela;</span>
+    }
+
+    public void formatoCorrecto() throws IOException, ParseException, JSONVacio, FormatoJSONInvalido {
+<span class="fc" id="L148">        JSONObject jsonObj = setJSON();</span>
+
+<span class="pc bpc" id="L150" title="1 of 2 branches missed.">        if (jsonObj.isEmpty()) {</span>
+
+<span class="nc" id="L152">            throw new JSONVacio(&quot;El archivo JSON de enemigos esta vacio.&quot;);</span>
+        }
+
+        try {
+<span class="fc" id="L156">            JSONObject map = (JSONObject) jsonObj.get(&quot;Mapa&quot;);</span>
+
+<span class="fc bfc" id="L158" title="All 2 branches covered.">            for (int x = 0; x &lt; map.size(); x++) {</span>
+<span class="fc" id="L159">                JSONArray line = (JSONArray) map.get(Integer.toString(x + 1));</span>
+
+<span class="fc bfc" id="L161" title="All 2 branches covered.">                for (int y = 0; y &lt; map.size(); y++) {</span>
+<span class="fc" id="L162">                    String s = (String) line.get(y);</span>
+
+<span class="pc bpc" id="L164" title="1 of 6 branches missed.">                    if (!s.equals(&quot;Tierra&quot;) &amp;&amp; !s.equals(&quot;Rocoso&quot;) &amp;&amp; !s.equals(&quot;Pasarela&quot;)) {</span>
+<span class="nc" id="L165">                        throw new FormatoJSONInvalido(&quot;El formato del archivo JSON de enemigos esta vacio&quot;);</span>
+                    }
+                }
+            }
+
+<span class="nc" id="L170">        } catch (Exception e) {</span>
+
+<span class="nc" id="L172">            throw new FormatoJSONInvalido(&quot;El formato del archivo JSON de enemigos esta vacio&quot;);</span>
+<span class="fc" id="L173">        }</span>
+<span class="fc" id="L174">    }</span>
+
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

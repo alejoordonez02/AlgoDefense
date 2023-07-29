@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VistaInformacionEnemigos.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp2</a> &gt; <a href="index.source.html" class="el_package">edu.fiuba.algo3.vistas</a> &gt; <span class="el_source">VistaInformacionEnemigos.java</span></div><h1>VistaInformacionEnemigos.java</h1><pre class="source lang-java linenums">package edu.fiuba.algo3.vistas;
+
+import javafx.geometry.Pos;
+import javafx.scene.layout.HBox;
+
+public class VistaInformacionEnemigos extends HBox {
+
+	VistaInformacionEnemigo vistaInformacionHormiga;
+	VistaInformacionEnemigo vistaInformacionArania;
+	VistaInformacionEnemigo vistaInformacionTopo;
+	VistaInformacionEnemigo vistaInformacionLechuza;
+
+<span class="nc" id="L13">	public VistaInformacionEnemigos() {</span>
+<span class="nc" id="L14">		this.setPrefWidth(600);</span>
+<span class="nc" id="L15">		this.setAlignment(Pos.CENTER);</span>
+<span class="nc" id="L16">		this.setFillHeight(true);</span>
+<span class="nc" id="L17">		this.setSpacing(50);</span>
+
+<span class="nc" id="L19">		String pathImagenHormiga = &quot;file:src/main/java/edu/fiuba/algo3/vistas/imagenes/hormiga.png&quot;;</span>
+<span class="nc" id="L20">        String pathImagenArania = &quot;file:src/main/java/edu/fiuba/algo3/vistas/imagenes/arania.png&quot;;</span>
+<span class="nc" id="L21">        String pathImagenTopo = &quot;file:src/main/java/edu/fiuba/algo3/vistas/imagenes/topo.png&quot;;</span>
+<span class="nc" id="L22">        String pathImagenLechuza = &quot;file:src/main/java/edu/fiuba/algo3/vistas/imagenes/lechuza.png&quot;;</span>
+		
+<span class="nc" id="L24">		this.vistaInformacionHormiga = new VistaInformacionEnemigo(pathImagenHormiga);</span>
+<span class="nc" id="L25">		this.vistaInformacionArania = new VistaInformacionEnemigo(pathImagenArania);</span>
+<span class="nc" id="L26">		this.vistaInformacionTopo = new VistaInformacionEnemigo(pathImagenTopo);</span>
+<span class="nc" id="L27">		this.vistaInformacionLechuza = new VistaInformacionEnemigo(pathImagenLechuza);</span>
+
+<span class="nc" id="L29">		this.getChildren().add(vistaInformacionHormiga);</span>
+<span class="nc" id="L30">		this.getChildren().add(vistaInformacionArania);</span>
+<span class="nc" id="L31">		this.getChildren().add(vistaInformacionTopo);</span>
+<span class="nc" id="L32">		this.getChildren().add(vistaInformacionLechuza);</span>
+<span class="nc" id="L33">	}</span>
+	
+	public void actualizar(int cantidadHormigas, int cantidadArania, int cantidadTopo, int cantidadLechuza) {
+<span class="nc" id="L36">		this.vistaInformacionHormiga.actualizar(cantidadHormigas);</span>
+<span class="nc" id="L37">		this.vistaInformacionArania.actualizar(cantidadArania);</span>
+<span class="nc" id="L38">		this.vistaInformacionTopo.actualizar(cantidadTopo);</span>
+<span class="nc" id="L39">		this.vistaInformacionLechuza.actualizar(cantidadLechuza);</span>
+<span class="nc" id="L40">	}</span>
+
+	public void limpiar() {
+<span class="nc" id="L43">		this.vistaInformacionHormiga.limpiar();</span>
+<span class="nc" id="L44">		this.vistaInformacionArania.limpiar();</span>
+<span class="nc" id="L45">		this.vistaInformacionTopo.limpiar();</span>
+<span class="nc" id="L46">		this.vistaInformacionLechuza.limpiar();</span>
+<span class="nc" id="L47">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

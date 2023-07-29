@@ -30,7 +30,7 @@ public class Juego {
 	}
 
 	public boolean victoria() {
-		return (jugador.estaVivo() && turno > 12);
+		return (jugador.estaVivo() && turno > 50);
 	}
 
 	public boolean derrota() {

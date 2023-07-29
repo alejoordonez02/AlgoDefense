@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VistaEnemigos.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tp2</a> &gt; <a href="index.source.html" class="el_package">edu.fiuba.algo3.vistas</a> &gt; <span class="el_source">VistaEnemigos.java</span></div><h1>VistaEnemigos.java</h1><pre class="source lang-java linenums">package edu.fiuba.algo3.vistas;
+
+import edu.fiuba.algo3.controladores.ControladorEnemigos;
+import javafx.scene.layout.GridPane;
+
+public class VistaEnemigos extends GridPane {
+<span class="nc" id="L7">	final int HORMIGA = 0;</span>
+<span class="nc" id="L8">	final int ARANIA = 1;</span>
+<span class="nc" id="L9">	final int TOPO = 2;</span>
+<span class="nc" id="L10">	final int LECHUZA = 3;</span>
+
+	VistaEnemigo vistaHormigas;
+    VistaEnemigo vistaAranias;
+    VistaEnemigo vistaTopos;
+    VistaEnemigo vistaLechuzas;
+    int cantidadHormigas;
+    int cantidadAranias;
+    int cantidadTopos;
+    int cantidadLechuzas;
+	VistaInformacionEnemigos vistaInformacionEnemigos;
+
+<span class="nc" id="L22">    public VistaEnemigos(VistaInformacionEnemigos vistaInformacionEnemigos) {</span>
+<span class="nc" id="L23">		this.vistaInformacionEnemigos = vistaInformacionEnemigos;</span>
+
+<span class="nc" id="L25">        String pathImagenHormiga = &quot;file:src/main/java/edu/fiuba/algo3/vistas/imagenes/hormiga.png&quot;;</span>
+<span class="nc" id="L26">        String pathImagenArania = &quot;file:src/main/java/edu/fiuba/algo3/vistas/imagenes/arania.png&quot;;</span>
+<span class="nc" id="L27">        String pathImagenTopo = &quot;file:src/main/java/edu/fiuba/algo3/vistas/imagenes/topo.png&quot;;</span>
+<span class="nc" id="L28">        String pathImagenLechuza = &quot;file:src/main/java/edu/fiuba/algo3/vistas/imagenes/lechuza.png&quot;;</span>
+
+<span class="nc" id="L30">        this.vistaHormigas = new VistaEnemigo(pathImagenHormiga);</span>
+<span class="nc" id="L31">        this.vistaAranias = new VistaEnemigo(pathImagenArania);</span>
+<span class="nc" id="L32">        this.vistaTopos = new VistaEnemigo(pathImagenTopo);</span>
+<span class="nc" id="L33">        this.vistaLechuzas = new VistaEnemigo(pathImagenLechuza);</span>
+
+<span class="nc" id="L35">        this.add(vistaHormigas, 0, 0);</span>
+<span class="nc" id="L36">        this.add(vistaAranias, 0, 1);</span>
+<span class="nc" id="L37">        this.add(vistaTopos, 1, 0);</span>
+<span class="nc" id="L38">        this.add(vistaLechuzas, 1, 1);</span>
+<span class="nc" id="L39">    }</span>
+
+	public void actualizar(ControladorEnemigos controladorEnemigos) {
+<span class="nc" id="L42">		this.actualizarCantidadEnemigos(controladorEnemigos);</span>
+
+<span class="nc" id="L44">		this.vistaHormigas.actualizar(cantidadHormigas);</span>
+<span class="nc" id="L45">		this.vistaAranias.actualizar(cantidadAranias);</span>
+<span class="nc" id="L46">		this.vistaTopos.actualizar(cantidadTopos);</span>
+<span class="nc" id="L47">		this.vistaLechuzas.actualizar(cantidadLechuzas); </span>
+<span class="nc" id="L48">	}</span>
+
+
+	private void actualizarCantidadEnemigos(ControladorEnemigos controladorEnemigos) {
+<span class="nc" id="L52">		int[] cantidadEnemigos = controladorEnemigos.getCantidadEnemigos();</span>
+
+<span class="nc" id="L54">		this.cantidadHormigas = cantidadEnemigos[HORMIGA];</span>
+<span class="nc" id="L55">        this.cantidadAranias = cantidadEnemigos[ARANIA];</span>
+<span class="nc" id="L56">        this.cantidadTopos = cantidadEnemigos[TOPO];</span>
+<span class="nc" id="L57">        this.cantidadLechuzas = cantidadEnemigos[LECHUZA];</span>
+<span class="nc" id="L58">	}</span>
+
+	public void actualizarVistaInformacionEnemigos() {
+<span class="nc" id="L61">		this.vistaInformacionEnemigos.actualizar(cantidadHormigas, cantidadAranias, cantidadTopos, cantidadLechuzas);</span>
+<span class="nc" id="L62">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
