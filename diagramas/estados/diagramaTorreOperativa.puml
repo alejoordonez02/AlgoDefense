@@ -1,0 +1,18 @@
+@startuml
+
+hide empty description
+
+state NoOperativa
+state Operativa
+
+NoOperativa -> Operativa: pasarTurno()
+
+note on link
+Las torres se vuelven operativasluego de
+que pasen la cantidad correspondiente de
+turnos para cada una
+end note
+
+footer Torre pasa a estar operativa
+
+@enduml
